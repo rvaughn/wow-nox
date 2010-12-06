@@ -1,0 +1,2076 @@
+<user-guide>
+  <project>Nox Information Bar</project>
+  <topic>User Guide</topic>
+  <version>3.0.0</version>
+  <author>Gruma</author>
+  <email>gruma@pobox.com</email>
+  <section name="Description">
+    <p>
+      Nox Information Bar is an add-on for World of Warcraft that lets you
+      display the game or character information important to you -
+      continuously and in real-time.  Most other info bars give you a
+      limited selection of data points you can turn on or off, but Nox 
+      gives you exactly what you want to see, exactly the way you want to 
+      see it.
+    </p>
+    <p>
+      With the Nox Information Bar, you get the ability to customize both
+      the data displayed on the bar itself, and in the tooltip displayed
+      when you mouse over the bar.  Nox and its various bundled extensions
+      give you a huge number of data points and optional formats to choose
+      from, as well as any static text you want to configure.  All of this
+      configuration can be done through a convenient GUI panel.
+    </p>
+    <p>
+      Nox Information Bar comes to you courtesy of ins0mniaque, who created
+      the original addon, and Gruma of Uther, who took over the addon when
+      ins0mniaque became too busy to work on it.  We also have to extend
+      thanks to the innumerable addon authors from whom we borrowed code, 
+      ideas, and techniques, including Mairelon, Telo, the TitanMod team,
+      and many, many others.
+    </p>
+  </section>
+  <section name="Features">
+    <p>
+      Nox Information Bar has many great features built-in:
+    </p>
+    <feature-list>
+      <feature>
+        Slim, clean looks integrate with WoW without using unnecessary
+        screen space.
+      </feature>
+      <feature>
+        Sixteen fully customizable data slots.
+      </feature>
+      <feature>
+        A fully customizable 30-line tooltip which by default displays
+        experience stats similar to Telo's Clock, but can be
+        configured to display anything you want.
+      </feature>
+      <feature>
+        Experience bar overlays showing current and rested experience
+        in a format easier to read than the default experience bar.
+      </feature>
+      <feature>
+        Automatic resizing to accommodate the configured data.
+      </feature>
+      <feature>
+        Complete mobility, allowing you to place the bar wherever you like,
+        and optionally lock it in place once there.
+      </feature>
+      <feature>
+        A GUI panel for customizing the bar, data slots, and tooltip.
+      </feature>
+      <feature>
+        Compatibility with myAddOns.
+      </feature>
+      <feature>
+        Clock offsets from server time configurable per-character for
+        local time displays.
+      </feature>
+      <feature>
+        Many configurable variables for everything from client 
+        performance to character honor to combat to inventory and more.
+      </feature>
+      <feature>
+        Optional format selectors for most variables to display them
+        in various ways.
+      </feature>
+      <feature>
+        Ability to configure plain text and colors in any display slot.
+      </feature>
+      <feature>
+        Includes an optional addon to move many default GUI frames where
+        you want them.
+      </feature>
+    </feature-list>
+  </section>
+  <section name="What's Included">
+    <p>
+      Nox Information Bar is delivered as several bundled and related
+      addons.  Since every addon requires some of WoW's limited addon
+      memory, and since some of these add background processing to the
+      WoW client as things happen in the game world - even if their data
+      isn't being displayed - packaging the addons like this lets you
+      choose exactly which ones you want to have loaded.
+    </p>
+    <p>
+      Nox Information Bar includes the following addons:
+    </p>
+    <addon-list>
+      <addon name="NoxInformationBar">
+        This includes the bar itself and many basic variables.
+        This is required for most of the other addons to work.
+      </addon>
+      <addon name="NoxCombatStats">
+        Adds combat-related information to the bar.
+      </addon>
+      <addon name="NoxEquipmentStats">
+        Adds information about equipped items to the bar, including
+        names, types, durability and repair costs.
+      </addon>
+      <addon name="NoxHonorStats">
+        Adds honor-system information to the bar.
+      </addon>
+      <addon name="NoxMoneyExtension">
+        Adds a coin display showing your current money, like the one
+        at the bottom of the backpack.
+      </addon>
+      <addon name="NoxPlayerStats">
+        Adds basic character and realm information to the bar.
+      </addon>
+      <addon name="NoxSkillStats">
+        Adds information about your character's skills to the bar.
+      </addon>
+      <addon name="NoxMover">
+        Allows you to move several UI frames around to make room for the
+        bar - or just because you want to.  Can be used without the
+        Nox Information Bar, but can only be configured using the bar's
+        config panel.
+      </addon>
+      <addon name="NoxSampleExtension">
+        Demonstrates how to write extension addons for Nox Information Bar,
+        but adds no useful information by itself.
+      </addon>
+    </addon-list>
+  </section>
+  <section name="Installation">
+    <p>
+      To install, simply unzip the NoxInformationBar_vX.X.X.zip file into
+      your <i>&lt;World of Warcraft&gt;</i>\Interface\AddOns directory.
+      If you do not have the "Interface\AddOns" subdirectories in your game
+      directory, create them before unzipping the Nox Information Bar.
+    </p>
+    <p>
+      If you are already using an older version of the Nox Information Bar, I
+      recommend deleting any old Interface\AddOns\Nox* subdirectories before
+      unzipping the new file.  This will prevent conflicts with files and 
+      addons that have been removed in the new version.
+    </p>
+  </section>
+  <section name="Using The Bar">
+    <p>
+      Using the Nox Information Bar is easy - it doesn't <i>do</i> much
+      other than show data.
+    </p>
+    <p>
+      When you first load the bar, it will show up at the top of your
+      screen displaying its default slots.  Hovering over the bar with
+      the mouse pointer will bring up the tooltip, which also displays
+      its default configuration at first.  Left click on the bar and
+      hold the left mouse button down to drag the bar wherever you
+      like on your screen.  Right click on the bar to bring up a brief
+      menu.  This gives you the options of resetting the current
+      session variables or of opening the configuration panel.  Move
+      the mouse pointer off of the menu for a few seconds or hit the
+      Esc key to close the menu without selecting an option.
+    </p>
+    <p>
+      The background of the bar tracks your experience in your current
+      level.  The purple bar shows your current experience earned, and the
+      blue bar behind it shows how much experience you can earn while
+      staying rested.  Once the purple bar passes the blue bar, you no
+      longer earn rested experience until you rest again.  Once the purple
+      bar fills the entire background, your character will progress to the
+      next level and the both the blue and purple bars will reset to
+      reflect your new level.
+    </p>
+    <p>
+      Note that you cannot resize the Nox bar explicitly.  Instead you
+      set the size of each of its display slots, and the bar will resize
+      itself to fit them.
+    </p>
+  </section>
+  <section name="Slash Commands">
+    <p>
+      Slash commands let you quickly control the look and behavior of the
+      Nox bar.  Note that all of the functionality you can access through
+      slash commands can also be accessed through the right-click menu
+      or the configuration GUI.  Conversely, the configuration GUI can
+      do some additional things that the slash commands cannot.
+    </p>
+    <slash>
+      <desc>
+        Show the configuration panel:
+      </desc>
+      <command>
+        /noxib config
+      </command>
+    </slash>
+    <slash>
+      <desc>
+        Show or hide the bar or individual slots:
+      </desc>
+      <command>
+        /noxib show [slot=table]
+      </command>
+      <command>
+        /noxib hide [slot=table]
+      </command>
+      <command>
+        /noxib toggle [slot=table]
+      </command>
+    </slash>
+    <slash>
+      <desc>
+        Lock the bar position:
+      </desc>
+      <command>
+        /noxib lock
+      </command>
+      <command>
+        /noxib unlock
+      </command>
+    </slash>
+    <slash>
+      <desc>
+        Customize slot displays:
+      </desc>
+      <command>
+        /noxib resize slot=table width=number
+      </command>
+      <command>
+        /noxib remap slot=table display='string'
+      </command>
+    </slash>
+    <slash>
+      <desc>
+        Reset the curent session statistics:
+      </desc>
+      <command>
+        /noxib reset
+      </command>
+    </slash>
+    <slash>
+      <desc>
+        Configure the tooltip:
+      </desc>
+      <command>
+        /noxib tooltip [state=&lt;'on', 'off'&gt;] [position=&lt;'anchor'&gt;] [x=number] [y=number]
+      </command>
+    </slash>
+    <slash>
+      <desc>
+        Configure the clock offset from server time:
+      </desc>
+      <command>
+        /noxib clock [offsethour=number] [offsetminute=number]
+      </command>
+    </slash>
+    <p>
+      "table" parameters can be specified as:
+    </p>
+    <valuelist>
+      <value name="numbers">"slot=1"</value>
+      <value name="ranges">"slot=1-6"</value>
+      <value name="lists">"slot=[ 1 3 7 8 ]"</value>
+    </valuelist>
+    <p>
+      Display strings for the remap command (enclosed in single
+      quotes) define what each slot will display. Variables in each
+      display string (enclosed in braces) will be replaced in the bar
+      with their current values.
+    </p>
+    <p>
+      Anchor values for the tooltip can be:
+    </p>
+    <list>
+      <value>'left'</value>
+      <value>'topleft'</value>
+      <value>'top'</value>
+      <value>'topright'</value>
+      <value>'right'</value>
+      <value>'bottomright'</value>
+      <value>'bottom'</value>
+      <value>'bottomleft'</value>
+      <value>'center'</value>
+    </list>
+    <subsection name="Examples">
+      <example>
+        <desc>
+          Mark slots 4, 5 and 6 as visible
+        </desc>
+        <text>
+          /noxib show slot=4-6
+        </text>
+      </example>
+      <example>
+        <desc>
+          Display only the clock (in white) in a 100 pixel wide slot
+        </desc>
+        <text>
+          /noxib hide slot=1-9
+        </text>
+        <text>
+          /noxib show slot=1
+        </text>
+        <text>
+          /noxib resize slot=1 width=100
+        </text>
+        <text>
+          /noxib remap slot=1 display='|cffffffff{24hours}:{minutes}'
+        </text>
+      </example>
+      <example>
+        <desc>
+         Display the current framerate in slot 6, followed by a space and 
+         then "fps"
+        </desc>
+        <text>
+          /noxib remap slot=6 display='{framerate} fps'
+        </text>
+      </example>
+      <example>
+        <desc>
+          Put the tooltip in the bottom right corner
+        </desc>
+        <text>
+          /noxib tooltip position='bottomright' x=-32 y=32
+        </text>
+      </example>
+      <example>
+        <desc>
+          Shut off the tooltip
+        </desc>
+        <text>
+          /noxib tooltip state='off'
+        </text>
+      </example>
+      <example>
+        <desc>
+          Reset the clock offsets to zero
+        </desc>
+        <text>
+          /noxib clock
+        </text>
+      </example>
+      <example>
+        <desc>
+          Set the clock offset to minus 2 hours and 30 minutes
+        </desc>
+        <text>
+          /noxib clock offsethour=-2 offsetminute=-30
+        </text>
+      </example>
+    </subsection>
+  </section>
+  <section name="Customizing The Bar">
+    <p>
+      Both the main bar and the tooltip of the Nox Information Bar can
+      be customized to show any information you want.  You do this by
+      specifying <i>display strings</i> for the bar to show.
+    </p>
+    <subsection name="Display Strings">
+      <p>
+        Display strings determine what each element of the Nox bar will show.
+        These are made of up any combination of variables, formats, color 
+        codes and plain text.
+      </p>
+      <p>
+        <i>Variables</i> are special words contained in
+        braces that the Nox bar replaces at runtime with the actual values
+        they represent.  Lists of the variables Nox recognizes are shown
+        in the sections that follow.  If Nox does not recognize a variable,
+        for instance if it is misspelled or simply not known, it will not
+        replace the variable and it will instead show up exactly as entered
+        on your screen.
+      </p>
+      <p>
+        <i>Formats</i> are additional words placed inside the braces of a
+        variable that alter the way the variables shows its value.  These
+        can for instance be used to choose between integer and decimal
+        number displays, or for other similar changes.  These are also
+        listed later, after the variable sections.
+      </p>
+      <p>
+        <i>Color codes</i> allow you to change the color and transparency of any
+        text entered.  These will work for any variables or plain text,
+        except for certain variables that automatically color themselves.
+        These are explained in more detail later.
+      </p>
+      <p>
+        <i>Plain text</i> is anything else you enter that is not a variable,
+        color code, or format.  Nox always displays plain text exactly as
+        you entered it.
+      </p>
+      <p>
+        For example, in the display string:
+      </p>
+      <block>
+        Time played: {timeplayed:short}
+      </block>
+      <p>
+        "Time played: " is plain text, "{timeplayed}" is a variable,
+        and "short" is a format that changes the way the {timeplayed} 
+        variable displays.
+      </p>
+    </subsection>
+    <subsection name="The Main Bar">
+      <p>
+        The main bar has sixteen display slots that you can turn on
+        and off, resize, and configure independently.  Each slot gets
+        its own display string which you specify.  You could configure
+        Nox to show one variable in each slot, configure the entire
+        bar to show only one slot with sixteen variables in it, or
+        create any other configuration you choose.  The potential
+        combinations are unlimited.
+      </p>
+    </subsection>
+    <subsection name="The Tooltip">
+      <p>
+        The tooltip consists of 30 lines, each containing a left half and
+        a right half.  A display string entered in the left half of a line
+        will show up left-justified in the tooltip, and a display string
+        in the right half will show up right-justified.  If the right half
+        is left blank, then it will be ignored and the left half will
+        fill the full width of the tooltip.
+      </p>
+      <p>
+        To leave a blank line in the tooltip, put at least one space in the
+        left display string and leave the right half empty.  If both halves
+        of a line are empty, the tooltip will ignore the line entirely,
+        and Nox will remove the line the next time you open the
+        configuration GUI.  (This is an easy way to move the contents of the
+        tooltip up - just blank the lines you don't want, close the config
+        GUI and open it up again.  The blank lines will be gone.)
+      </p>
+      <p>
+        Tooltip lines cannot be sized.  The tooltip will automatically size
+        itself to fit the text it is showing at the time.
+      </p>
+    </subsection>
+    <subsection name="Character-specific Overrides">
+      <p>
+        Nox allows each character to override specific groups of
+        options, so that each character can share the common settings,
+        can have their own settings, or any combination of the two.
+        The four option groups that can be customized are the General
+        options, the Clock settings, the Slot contents, and the
+        Tooltip settings and contents.
+      </p>
+      <p>
+        By default, all characters share one common set of settings.
+        You can give a character private settings by checking the box
+        for the appropriate group (or groups) in the
+        "Character-specific Options" panel in the config GUI.  The
+        common settings for that group will be copied over to the
+        character, and you can start editing them immediately.
+      </p>
+      <p>
+        To switch a character back to the common settings from
+        customized settings, just uncheck the appropriate checkbox in
+        the config GUI.  Note that if you make changes to customized
+        settings and turn off the customization checkbox at the same
+        time, the settings changes will <i>not</i> be saved.  Only the
+        customization checkbox will be saved in that case.  If you
+        want to change both in one edit session, turn off the checkbox
+        first and then press the "Apply" button.  Your checkbox change
+        will be saved, and the common settings will be loaded into the
+        config GUI.  Now make your changes to the common settings and
+        save them as normal.
+      </p>
+      <p>
+        Note that the common settings are copied into the character's
+        settings when you customize, but there is not yet a way to
+        copy a character's custom settings to the common settings.
+      </p>
+    </subsection>
+  </section>  
+  <section name="Variables">
+    <p>
+      Variables provide data about the state of the game and your character.
+      This section lists the variables that the Nox Information Bar and
+      its extensions make available to you.
+    </p>
+    <subsection name="Variables provided by NoxInformationBar">
+      <variable-list>
+        <var>
+          <code>{latency}</code>
+          <desc>Current network latency in milliseconds.</desc>
+        </var>
+        <var>
+          <code>{framerate}</code>
+          <desc>Current framerate in frames per second.</desc>
+        </var>
+        <var>
+          <code>{24hours}</code>
+          <desc>Hours in current time in military format.</desc>
+        </var>
+        <var>
+          <code>{hours}</code>
+          <desc>Hours in current time.</desc>
+        </var>
+        <var>
+          <code>{minutes}</code>
+          <desc>Minutes in current time.</desc>
+        </var>
+        <var>
+          <code>{ampm}</code>
+          <desc>AM or PM of current time.</desc>
+        </var>
+        <var>
+          <code>{x}</code>
+          <desc>Current horizontal map location.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{y}</code>
+          <desc>Current vertical map location.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{money}</code>
+          <desc>Current amount of money owned.</desc>
+          <type>Money</type>
+        </var>
+        <var>
+          <code>{hpregen}</code>
+          <desc>Current health regeneration rate.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{manaregen}</code>
+          <desc>Current mana regeneration rate.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{hp}</code>
+          <desc>Current health points.</desc>
+        </var>
+        <var>
+          <code>{hploss}</code>
+          <desc>Current health loss (max - current).</desc>
+        </var>
+        <var>
+          <code>{hp%}</code>
+          <desc>Current health percentage.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{maxhp}</code>
+          <desc>Maximum health.</desc>
+        </var>
+        <var>
+          <code>{mana}</code>
+          <desc>Current mana points.</desc>
+        </var>
+        <var>
+          <code>{manaloss}</code>
+          <desc>Current mana loss (max - current).</desc>
+        </var>
+        <var>
+          <code>{mana%}</code>
+          <desc>Current mana percentage.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{maxmana}</code>
+          <desc>Current mana loss (max - current).</desc>
+        </var>
+        <var>
+          <code>{xp}</code>
+          <desc>Current experience points earned.</desc>
+        </var>
+        <var>
+          <code>{xptolevel}</code>
+          <desc>Additional XP needed to reach next level.</desc>
+        </var>
+        <var>
+          <code>{xp%}</code>
+          <desc>Current XP percentage earned towards next level.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{xptolevel%}</code>
+          <desc>Percentage XP needed to level. (inverse of {xp%})</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{maxxp}</code>
+          <desc>Total XP to get to next level.</desc>
+        </var>
+        <var>
+          <code>{rest}</code>
+          <desc>
+            Amount of "free" XP that is left to be earned for being rested.
+          </desc>
+        </var>
+        <var>
+          <code>{level}</code>
+          <desc>Current level.</desc>
+        </var>
+        <var>
+          <code>{ubs}</code>
+          <desc>Used bag slots.</desc>
+        </var>
+        <var>
+          <code>{abs}</code>
+          <desc>Available bag slots.</desc>
+        </var>
+        <var>
+          <code>{tbs}</code>
+          <desc>Total bag slots.</desc>
+        </var>
+        <var>
+          <code>{mem}</code>
+          <desc>The current amount of UI memory used by addons.</desc>
+          <type>Memory</type>
+        </var>
+        <var>
+          <code>{restbonus}</code>
+          <desc>
+            Amount of additional experience that will be counted as "rested".
+          </desc>
+        </var>
+        <var>
+          <code>{restlimit}</code>
+          <desc>
+            Total amount of experience needed before the "rested" bonus is 
+            used up.
+          </desc>
+        </var>
+        <var>
+          <code>{ammo}</code>
+          <desc>Total amount of equipped ammo.</desc>
+        </var>
+        <var>
+          <code>{sessionttl}</code>
+          <desc>Estimated time to level for this session.</desc>
+          <type>Time</type>
+        </var>
+        <var>
+          <code>{levelttl}</code>
+          <desc>Estimated time to level for this level.</desc>
+          <type>Time</type>
+        </var>
+        <var>
+          <code>{bestttl}</code>
+          <desc>Smallest of session TTL and level TTL.</desc>
+          <type>Time</type>
+        </var>
+        <var>
+          <code>{totaltime}</code>
+          <desc>The total amount of time played for this character.</desc>
+          <type>Time</type>
+        </var>
+        <var>
+          <code>{sessiontime}</code>
+          <desc>
+            The amount of time played this session, or since the last
+            session reset.
+          </desc>
+          <type>Time</type>
+        </var>
+        <var>
+          <code>{leveltime}</code>
+          <desc>The amount of time played at this character level.</desc>
+          <type>Time</type>
+        </var>
+        <var>
+          <code>{sessionxprate}</code>
+          <desc>The average rate of experience gain this session.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{levelxprate}</code>
+          <desc>The average rate of experience gain this level.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{income}</code>
+          <desc>The amount of money earned this session.</desc>
+          <type>Money</type>
+        </var>
+        <var>
+          <code>{expense}</code>
+          <desc>The amount of money earned this session.</desc>
+          <type>Money</type>
+        </var>
+        <var>
+          <code>{netincome}</code>
+          <desc>
+            The net amount of money earned (or lost) this session.  
+            This is the same as {income} - {expense}.
+          </desc>
+          <type>Money</type>
+        </var>
+        <var>
+          <code>{incomerate}</code>
+          <desc>The average amount of money earned per hour this session.</desc>
+          <type>Money</type>
+        </var>
+        <var>
+          <code>{expenserate}</code>
+          <desc>The average amount of money spent per hour this session.</desc>
+          <type>Money</type>
+        </var>
+        <var>
+          <code>{netincomerate}</code>
+          <desc>
+            The net amount of money earned (or lost) per hour this session.  
+            This is the same as {incomerate} - {expenserate}.
+          </desc>
+          <type>Money</type>
+        </var>
+        <var>
+          <code>{factionname}</code>
+          <desc>
+            The name of the indicated faction.  Since this returns the same
+            thing as the faction name indicated, it is not expected to be
+            very useful.
+          </desc>
+          <type>Faction</type>
+        </var>
+        <var>
+          <code>{factionstanding}</code>
+          <desc>
+            Your current standing with the indicated faction: Friendly,
+            Hostile, etc.
+          </desc>
+          <type>Faction</type>
+        </var>
+        <var>
+          <code>{reputation}</code>
+          <desc>
+            Your current reputation with the indicated faction, expressed
+            as a number.  This is the same number that shows up on your
+            character's reputation panel.
+          </desc>
+          <type>Faction</type>
+        </var>
+        <var>
+          <code>{reputationmax}</code>
+          <desc>
+            The maximum number of reputation points you can earn with the
+            indicated faction, before advancing to the next standing.
+          </desc>
+          <type>Faction</type>
+        </var>
+        <var>
+          <code>{reputation%}</code>
+          <desc>
+            Your current reputation with the indicated faction, expressed
+            as a percentage of the maximum points in this standing.
+          </desc>
+          <type>Faction, Number</type>
+        </var>
+        <var>
+          <code>{factionatwar}</code>
+          <desc>
+            Indicates whether or not you are at war with the indicated
+            faction.
+          </desc>
+          <type>Faction, Boolean</type>
+        </var>
+      </variable-list>
+    </subsection>
+    <subsection name="Variables provided by NoxCombatStats">
+      <variable-list>
+        <var>
+          <code>{dps}</code>
+          <desc>Damage per second this fight.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{hps}</code>
+          <desc>Healing per second this fight.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{petdps}</code>
+          <desc>Pet damage per second fight.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{totaldamage}</code>
+          <desc>Total damage dealt this fight.</desc>
+        </var>
+        <var>
+          <code>{totalheal}</code>
+          <desc>Total points healed this fight.</desc>
+        </var>
+        <var>
+          <code>{combatduration}</code>
+          <desc>Time spent in combat this fight.</desc>
+        </var>
+        <var>
+          <code>{meleehits}</code>
+          <desc>Number of melee hits this fight.</desc>
+        </var>
+        <var>
+          <code>{meleemisses}</code>
+          <desc>Number of melee misses this fight.</desc>
+        </var>
+        <var>
+          <code>{meleecrits}</code>
+          <desc>Number of melee critical hits this fight.</desc>
+        </var>
+        <var>
+          <code>{meleehits%}</code>
+          <desc>Percentage of melee hits this fight.</desc>
+        </var>
+        <var>
+          <code>{meleemisses%}</code>
+          <desc>Percentage of melee misses this fight.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{meleecrits%}</code>
+          <desc>Percentage of melee critical hits this fight.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{nonmeleehits}</code>
+          <desc>Number of non-melee hits this fight.</desc>
+        </var>
+        <var>
+          <code>{nonmeleemisses}</code>
+          <desc>Number of non-melee misses this fight.</desc>
+        </var>
+        <var>
+          <code>{nonmeleecrits}</code>
+          <desc>Number of non-melee critical hits this fight.</desc>
+        </var>
+        <var>
+          <code>{nonmeleehits%}</code>
+          <desc>Percentage of non-melee hits this fight.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{nonmeleemisses%}</code>
+          <desc>Percentage of non-melee misses this fight.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{nonmeleecrits%}</code>
+          <desc>Percentage of non-melee critical hits this fight.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{healhits}</code>
+          <desc>Number of successful heals this fight.</desc>
+        </var>
+        <var>
+          <code>{healmisses}</code>
+          <desc>Number of failed heals this fight.</desc>
+        </var>
+        <var>
+          <code>{healcrits}</code>
+          <desc>Number of critical heals this fight.</desc>
+        </var>
+        <var>
+          <code>{healhits%}</code>
+          <desc>Percentage of successful heals this fight.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{healmisses%}</code>
+          <desc>Percentage of failed heals this fight.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{healcrits%}</code>
+          <desc>Percentage of critical heals this fight.</desc>
+          <type>Number</type>
+        </var>
+
+
+        <var>
+          <code>{sessiondps}</code>
+          <desc>Damage per second, averaged over this session.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{sessionhps}</code>
+          <desc>Healing per second, averaged over this session.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{sessionpetdps}</code>
+          <desc>Pet damage per second, averaged over this session.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{sessiontotaldamage}</code>
+          <desc>Total damage dealt this session.</desc>
+        </var>
+        <var>
+          <code>{sessiontotalheal}</code>
+          <desc>Total points healed this session.</desc>
+        </var>
+        <var>
+          <code>{sessioncombatduration}</code>
+          <desc>Time spent in combat this session.</desc>
+        </var>
+        <var>
+          <code>{sessionmeleehits}</code>
+          <desc>Number of melee hits this session.</desc>
+        </var>
+        <var>
+          <code>{sessionmeleemisses}</code>
+          <desc>Number of melee misses this session.</desc>
+        </var>
+        <var>
+          <code>{sessionmeleecrits}</code>
+          <desc>Number of melee critical hits this session.</desc>
+        </var>
+        <var>
+          <code>{sessionmeleehits%}</code>
+          <desc>Percentage of melee hits this session.</desc>
+        </var>
+        <var>
+          <code>{sessionmeleemisses%}</code>
+          <desc>Percentage of melee misses this session.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{sessionmeleecrits%}</code>
+          <desc>Percentage of melee critical hits this session.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{sessionnonmeleehits}</code>
+          <desc>Number of non-melee hits this session.</desc>
+        </var>
+        <var>
+          <code>{sessionnonmeleemisses}</code>
+          <desc>Number of non-melee misses this session.</desc>
+        </var>
+        <var>
+          <code>{sessionnonmeleecrits}</code>
+          <desc>Number of non-melee critical hits this session.</desc>
+        </var>
+        <var>
+          <code>{sessionnonmeleehits%}</code>
+          <desc>Percentage of non-melee hits this session.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{sessionnonmeleemisses%}</code>
+          <desc>Percentage of non-melee misses this session.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{sessionnonmeleecrits%}</code>
+          <desc>Percentage of non-melee critical hits this session.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{sessionhealhits}</code>
+          <desc>Number of successful heals this session.</desc>
+        </var>
+        <var>
+          <code>{sessionhealmisses}</code>
+          <desc>Number of failed heals this session.</desc>
+        </var>
+        <var>
+          <code>{sessionhealcrits}</code>
+          <desc>Number of critical heals this session.</desc>
+        </var>
+        <var>
+          <code>{sessionhealhits%}</code>
+          <desc>Percentage of successful heals this session.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{sessionhealmisses%}</code>
+          <desc>Percentage of failed heals this session.</desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{sessionhealcrits%}</code>
+          <desc>Percentage of critical heals this session.</desc>
+          <type>Number</type>
+        </var>
+
+        <var>
+          <code>{kills}</code>
+          <desc>
+            The number of kills made by your party this session.
+          </desc>
+        </var>
+        <var>
+          <code>{xpperkill}</code>
+          <desc>
+            The average experienced gained per kill for your last four
+            kills.
+          </desc>
+          <type>Number</type>
+        </var>
+        <var>
+          <code>{killstolevel}</code>
+          <desc>
+            The estimated number of kills needed to gain the next
+            character level, based on the average experience gained
+            from your last four kills.
+          </desc>
+          <type>Number</type>
+        </var>
+      </variable-list>
+    </subsection>
+    <subsection name="Variables provided by NoxEquipmentStats">
+      <variable-list>
+        <var>
+          <code>{equipslot}</code>
+          <desc>
+            The name of the slot where the item is equipped (eg. "Head", 
+            "Legs", etc).
+          </desc>
+          <type>Equipment</type>
+        </var>
+        <var>
+          <code>{equipname}</code>
+          <desc>The name of the item equipped in the named slot.</desc>
+          <type>Equipment</type>
+        </var>
+        <var>
+          <code>{currdurability}</code>
+          <desc>The current durability of the item in the named slot.</desc>
+          <type>Equipment</type>
+        </var>
+        <var>
+          <code>{maxdurability}</code>
+          <desc>The maximum durability of the item in the named slot.</desc>
+          <type>Equipment</type>
+        </var>
+        <var>
+          <code>{durability%}</code>
+          <desc>
+            The percent durability of the item in the named slot.  An
+            item at 100% is in perfect condition, and one at 0% is broken.
+          </desc>
+          <type>Equipment</type>
+        </var>
+        <var>
+          <code>{repaircost}</code>
+          <desc>
+            The amount of money required to repair the item in the named slot.
+          </desc>
+          <type>Equipment, Money</type>
+        </var>
+        <var>
+          <code>{totalrepaircost}</code>
+          <desc>
+            The amount of money required to repair all equipped items.  This
+            does not count damaged items in your bags.
+          </desc>
+          <type>Money</type>
+        </var>
+        <var>
+          <code>{totalcurrdurability}</code>
+          <desc>
+            The total current durability of all of your equipped items.  This
+            gives you a general feel for your overall equipment damage.
+          </desc>
+        </var>
+        <var>
+          <code>{totalmaxdurability}</code>
+          <desc>
+            The total maximum durability of all of your equipped items.
+          </desc>
+        </var>
+        <var>
+          <code>{totaldurability%}</code>
+          <desc>
+            The percent durability of all of your equipped items.  At 100%,
+            all of your equipment is in perfect condition.  At 0%, it is
+            all broken.  Note that you may have some broken items and still
+            have more than 0% total durability.
+          </desc>
+          <type>Number</type>
+        </var>
+      </variable-list>
+    </subsection>
+    <subsection name="Variables provided by NoxHonorStats">
+      <variable-list>
+        <var>
+          <code>{lifetimehk}</code>
+          <desc>Number of honorable kills over lifetime.</desc>
+        </var>
+        <var>
+          <code>{lifetimerank}</code>
+          <desc>Highest rank achieved over lifetime.</desc>
+        </var>
+        <var>
+          <code>{yesterdayhk}</code>
+          <desc>Number of honorable kills earned yesterday.</desc>
+        </var>
+        <var>
+          <code>{yesterdayhonor}</code>
+          <desc>Number of honor points earned yesterday.</desc>
+        </var>
+        <var>
+          <code>{todayhk}</code>
+          <desc>Number of honorable kills earned today.</desc>
+        </var>
+        <var>
+          <code>{todayhonor}</code>
+          <desc>Number of honor points earned today.</desc>
+        </var>
+        <var>
+          <code>{currentrank}</code>
+          <desc>Player's current rank.</desc>
+        </var>
+        <var>
+          <code>{currentstanding}</code>
+          <desc>Player's current numeric standing.</desc>
+        </var>
+        <var>
+          <code>{rankprogress}</code>
+          <desc>Player's percentage progress towards next PvP rank.</desc>
+          <type>Number</type>
+        </var>
+      </variable-list>
+    </subsection>
+    <subsection name="Variables provided by NoxPlayerStats">
+      <variable-list>
+        <var>
+          <code>{name}</code>
+          <desc>Current character's name.</desc>
+        </var>
+        <var>
+          <code>{class}</code>
+          <desc>Current character's class.</desc>
+        </var>
+        <var>
+          <code>{realm}</code>
+          <desc>Current character's realm.</desc>
+        </var>
+        <var>
+          <code>{sex}</code>
+          <desc>Current character's sex.</desc>
+        </var>
+        <var>
+          <code>{race}</code>
+          <desc>Current character's race.</desc>
+        </var>
+        <var>
+          <code>{faction}</code>
+          <desc>Current character's faction (Horde or Alliance).</desc>
+        </var>
+        <var>
+          <code>{strength}</code>
+          <desc>
+            The character's current strength score, colored for bonuses and 
+            penalties.
+          </desc>
+        </var>
+        <var>
+          <code>{agility}</code>
+          <desc>
+            The character's current agility score, colored for bonuses and
+            penalties.
+          </desc>
+        </var>
+        <var>
+          <code>{stamina}</code>
+          <desc>
+            The character's current stamina score, colored for bonuses and
+            penalties.
+          </desc>
+        </var>
+        <var>
+          <code>{intellect}</code>
+          <desc>
+            The character's current intellect score, colored for bonuses and
+            penalties.
+          </desc>
+        </var>
+        <var>
+          <code>{spirit}</code>
+          <desc>
+            The character's current spirit score, colored for bonuses and
+            penalties.
+          </desc>
+        </var>
+        <var>
+          <code>{armor}</code>
+          <desc>
+            The character's current armor score, colored for bonuses and
+            penalties.
+          </desc>
+        </var>
+        <var>
+          <code>{resistholy}</code>
+          <desc>The character's current holy magic resistance.</desc>
+        </var>
+        <var>
+          <code>{resistarcane}</code>
+          <desc>The character's current arcane magic resistance.</desc>
+        </var>
+        <var>
+          <code>{resistfire}</code>
+          <desc>The character's current fire magic resistance.</desc>
+        </var>
+        <var>
+          <code>{resistnature}</code>
+          <desc>The character's current nature magic resistance.</desc>
+        </var>
+        <var>
+          <code>{resistfrost}</code>
+          <desc>The character's current frost magic resistance.</desc>
+        </var>
+        <var>
+          <code>{resistshadow}</code>
+          <desc>The character's current shadow magic resistance.</desc>
+        </var>
+        <var>
+          <code>{zone}</code>
+          <desc>
+            Current zone the character is in.  Colored green if the
+            player is in friendly territory, red in hostile territory
+            and arenas, orange in contested territory, and yellow
+            everywhere else.
+          </desc>
+        </var>
+        <var>
+          <code>{subzone}</code>
+          <desc>Current subzone the character is in.  Colored like {zone}.</desc>
+        </var>
+        <var>
+          <code>{shortzone}</code>
+          <desc>
+            The zone name as it appears in the minimap.  Seems to be the 
+            same thing as subzone.  Colored like {zone}
+          </desc>
+        </var>
+        <var>
+          <code>{realzone}</code>
+          <desc>
+            The real name of an instance if the player is in one, otherwise
+            the same as {zone}.  Colored like {zone}.
+          </desc>
+        </var>
+      </variable-list>
+    </subsection>
+    <subsection name="Variables provided by NoxSkillStats">
+      <variable-list>
+        <var>
+          <code>{skillrank}</code>
+          <desc>The character's current level in the named skill.</desc>
+          <type>Skill</type>
+        </var>
+        <var>
+          <code>{skillmax}</code>
+          <desc>The character's maximum level in the named skill.</desc>
+          <type>Skill</type>
+        </var>
+        <var>
+          <code>{skillname}</code>
+          <desc>
+            The name of the named skill.  This is most useful when
+            used with the "generic" skill names like "Professions 1".
+            In that case it will return the real name of the skill,
+            instead of the generic name.
+          </desc>
+          <type>Skill</type>
+        </var>
+      </variable-list>
+    </subsection>
+    <subsection name="Variables provided by NoxMoneyExtension">
+      <p>
+        NoxMoneyExtension provides only one variable: {coins}.  This
+        variable shows your current amount of money using coin
+        graphics similar to what appears at the bottom of the
+        backpack.  This variable can only be used in one slot at a
+        time on the main bar, and must be the only thing in that slot.
+        Currently the other money-related variables ({income},
+        {repaircost}, etc.)  cannot be shown with coin graphics.
+      </p>
+    </subsection>
+    <subsection name="Deprecated Variables">
+      <p>
+        This section lists variables that are being phased out and may
+        disappear from future versions, but are still supported for backward
+        compatibility.  All of these variables have newer equivalents using
+        format codes, as shown in the table below.
+      </p>
+      <deprecated-variables>
+        <depvar>
+          <code>{sessionttlshort}</code>
+          <desc>
+            Estimated time to level for this session, in "d.h:m:s" format.
+          </desc>
+          <repl>{sessionttl:short}</repl>
+        </depvar>
+        <depvar>
+          <code>{levelttlshort}</code>
+          <desc>
+            Estimated time to level for this level, in "d.h:m:s" format.
+          </desc>
+          <repl>{levelttl:short}</repl>
+        </depvar>
+        <depvar>
+          <code>{bestttlshort}</code>
+          <desc>
+            Smallest of session TTL and level TTL, in "d.h:m:s" format.
+          </desc>
+          <repl>{bestttl:short}</repl>
+        </depvar>
+        <depvar>
+          <code>{memmb}</code>
+          <desc>UI memory used in megabytes.</desc>
+          <repl>{mem:mb,int}</repl>
+        </depvar>
+        <depvar>
+          <code>{memkb}</code>
+          <desc>UI memory used in kilobytes.</desc>
+          <repl>{mem:kb}</repl>
+        </depvar>
+        <depvar>
+          <code>{memlimitmb}</code>
+          <desc>UI memory GC threshold, in megabytes.</desc>
+          <repl>{memlimit:mb,int}</repl>
+        </depvar>
+        <depvar>
+          <code>{memlimitkb}</code>
+          <desc>UI memory GC threshold, in kilobytes.</desc>
+          <repl>{memlimit:kb}</repl>
+        </depvar>
+        <depvar>
+          <code>{allmoney}</code>
+          <desc>Money displayed in "0g 0s 0c" format.</desc>
+          <repl>{money:short}</repl>
+        </depvar>
+        <depvar>
+          <code>{gold}</code>
+          <desc>Current amount of gold.</desc>
+          <repl>{money:gold}</repl>
+        </depvar>
+        <depvar>
+          <code>{silver}</code>
+          <desc>Current amount of silver.</desc>
+          <repl>{money:silver}</repl>
+        </depvar>
+        <depvar>
+          <code>{copper}</code>
+          <desc>Current amount of copper.</desc>
+          <repl>{money:copper}</repl>
+        </depvar>
+        <depvar>
+          <code>{yesterdaycp}</code>
+          <desc>Number of contribution points earned yesterday.</desc>
+          <repl>{yesterdayhonor}</repl>
+        </depvar>
+        <depvar>
+          <code>{sessionhk}</code>
+          <desc>Number of honorable kills earned this session.</desc>
+          <repl>{todayhk}</repl>
+        </depvar>
+      </deprecated-variables>
+    </subsection>
+  </section>
+  <section name="Supported Formats">
+    <p>
+      Formats are a new feature in version 2.0 that let you change the
+      way many of the variables display their values.  This one
+      feature adds a whole new layer of configurability to the Nox bar
+      - as well as allowing for whole new types of variables.  The
+      sections shown here match up with the allowed formats shown in
+      the tables of variables above.
+    </p>
+    <p>
+      To use a format, you simply place a colon after the variable name,
+      <i>inside</i> the brackets, and place one of the format names shown
+      below after it.  There should be no spaces between the colon and
+      the format name, or between the format name and the end brace.  Some
+      formats allow multiple options at once, and in this case you simply
+      separate each option with a comma, again with no extra spaces.  Multiple
+      options <i>must</i> be specified in the order shown below.
+    </p>
+    <p>
+      Except where noted, formats are always optional - if you leave them
+      out, the variable will display itself using a reasonable default format.
+    </p>
+    <p>
+      For example, to display the total time played in a shortened form,
+      you would use:
+    </p>
+    <block>
+      {totaltime:short}
+    </block>
+    <p>
+      To display your current money in a long form, with the numbers and
+      letters colored like coins, you would use:
+    </p>
+    <block>
+      {money:long,1,1}
+    </block>
+    <p>
+      To display the total time played in the default format, which happens
+      to be the same as the medium format, you would use:
+    </p>
+    <block>
+      {totaltime}
+    </block>
+    <p>
+      Note in this case that since the formats are left out, the colon is
+      left out too.
+    </p>
+    <subsection name="Number Formats">
+      <p>
+        Numbers can be displayed as integers, or as real numbers with
+        two decimal places.
+      </p>
+      <format-list>
+        <format>
+          <spec>int</spec>
+          <desc>
+            Displays the value as an integer.  Any fractional part is
+            truncated.
+          </desc>
+          <example>
+            10
+          </example>
+        </format>
+        <format>
+          <spec>dec</spec>
+          <desc>
+            Displays the value as a real number with two decimal places.
+          </desc>
+          <example>
+            21.34
+          </example>
+        </format>
+      </format-list>
+    </subsection>
+    <subsection name="Boolean Formats">
+      <p>
+        Boolean variables express a value that can be <i>true</i> or
+        <i>false</i>.  Normally these variables will print either the name
+        "true" or the name "false", depending on their value.  Boolean
+        formats let you change either or both of these names.
+      </p>
+      <p>
+        Boolean formats are expressed as {<i>variable</i>:<i>text if true</i>,<i>text if false</i>}.  Either of the text values may be omitted, but note that if you include a false value without a true value, you must still include the comma.
+      </p>
+      <p>
+        For example, to print "yes" or "no" instead of "true" and "false", you
+        would use:
+      </p>
+      <block>
+        {factionatwar:Bloodsail Buccaneers,yes,no}
+      </block>
+      <p>
+        (The "Bloodsail Buccaneers" part is the required "faction" format
+        for this variable, explained below, and is not part of the boolean
+        format.  The boolean part follows it.)
+      </p>
+      <p>
+        If instead you wanted the text "At War" to show up in red only when
+        you were at war, you would use:
+      </p>
+      <block>
+        {factionatwar:Everlook,|cffff0000At War}
+      </block>
+      <p>
+        By contrast, this is how you would do it if you only wanted "At Peace"
+        to show up in green:
+      </p>
+      <block>
+        {factionatwar:Everlook,,|cff00ff00At Peace}
+      </block>
+      <p>
+        Note the extra comma in the format, reserving the "empty" true value.
+      </p>
+      <p>
+        See below for a discussion of color codes.
+      </p>
+    </subsection>
+    <subsection name="Time Formats">
+      <p>
+        Times can be displayed in forms of different lengths.
+      </p>
+      <format-list>
+        <format>
+          <spec>long</spec>
+          <desc>
+            Displays the time with each increment spelled out in full.
+          </desc>
+          <example>
+            1 day, 21 hours, 36 minutes, 5 seconds
+          </example>
+        </format>
+        <format>
+          <spec>medium</spec>
+          <desc>
+            Displays the time with abbreviations for each increment.
+          </desc>
+          <example>
+            1d 21h 36m 5s
+          </example>
+        </format>
+        <format>
+          <spec>short</spec>
+          <desc>
+            Displays the time in a compacted format, without increment names.
+          </desc>
+          <example>
+            1.21:36:05
+          </example>
+        </format>
+      </format-list>
+    </subsection>
+    <subsection name="Money Formats">
+      <p>
+        Money can be displayed in a great variety of formats affecting not
+        only how it is shown, but even <i>what part</i> is shown.  Money
+        values can even be colored like the coins - yellow for gold, grey
+        for silver, and orange for copper.  To color the coins, just include
+        a ",1" at the end of the format, or ",1,1" to color the number and
+        the name of the coin, for formats that include names.
+      </p>
+      <p>
+        Money formats can even be used to extract part of a money
+        value.  For instance, if you are only interested in the amount
+        of gold you have, you can use the "gold" format to show only
+        that part.  The "as gold" format will show you the same thing,
+        but will also include your silver as a decimal fraction.  Note
+        that this behavior is not exactly the same for silver and
+        copper formats.  For example "silver" will show you
+        <i>only</i> the silver part, but "as silver" will also include
+        gold in the value as 100's of silver.
+      </p>
+      <p>
+        This means that a slot configured like:
+      </p>
+      <block>
+        {money:gold}g {money:silver}s {money:copper}c
+      </block>
+      <p>
+        will display the same thing as:
+      </p>
+      <block>
+        {money:short}
+      </block>
+      <p>
+        Note that the latter takes less processing power from the
+        game, though.  (Actually these examples are not strictly the
+        same - the "short" format will omit the gold portion if it is
+        zero, and the silver portion if both gold and silver are zero.
+        The version with three variables will always show all
+        portions, even if they are zero.)
+      </p>
+      <p>
+        Money variables support the following formats:
+      </p>
+      <format-list>
+        <format>
+          <spec>as gold[,dec[,1]]</spec>
+          <desc>
+            Display the total amount as gold, with silver after the
+            decimal.  The number format "dec" may optionally be
+            included, but <i>must</i> be included if you want to color
+            the number gold (with ",1").
+          </desc>
+          <example>
+            1.02
+          </example>
+        </format>
+        <format>
+          <spec>as gold,int[,1]</spec>
+          <desc>
+            Display the total amount in gold, as a whole number.  The
+            "int" portion is the number format for whole numbers.
+            Include the ",1" to color the number gold.
+          </desc>
+          <example>
+            1
+          </example>
+        </format>
+        <format>
+          <spec>as silver[,dec[,1]]</spec>
+          <desc>
+            Display the total amount as silver, with copper after the
+            decimal.  The number format "dec" may optionally be
+            included, but <i>must</i> be included if you want to color
+            the number silver (with ",1").
+          </desc>
+          <example>
+            102.03
+          </example>
+        </format>
+        <format>
+          <spec>as silver,int[,1]</spec>
+          <desc>
+            Display the total amount in silver, as a whole number.
+            The "int" portion is the number format for whole numbers.
+            Include the ",1" to color the number silver.
+          </desc>
+          <example>
+            102
+          </example>
+        </format>
+        <format>
+          <spec>as copper,dec[,1]</spec>
+          <desc>
+            Display the total amount as copper, with zeros after the
+            decimal.  The "dec" portion is the number format for real
+            numbers.  Include the ",1" to color the number copper.
+          </desc>
+          <example>
+            10203.00
+          </example>
+        </format>
+        <format>
+          <spec>as copper[,int[,1]]</spec>
+          <desc>
+            Display the total amount in copper, as a whole number.
+            The number format "int" may optionally be included, but
+            <i>must</i> be included if you want to color the number
+            copper (with ",1").
+          </desc>
+          <example>
+            10203
+          </example>
+        </format>
+        <format>
+          <spec>gold[,1]</spec>
+          <desc>
+            Display the gold portion of the amount.  Include the ",1"
+            to color the number gold.
+          </desc>
+          <example>
+            1
+          </example>
+        </format>
+        <format>
+          <spec>silver[,1]</spec>
+          <desc>
+            Display the silver portion of the amount.  Include the
+            ",1" to color the number silver.
+          </desc>
+          <example>
+            2
+          </example>
+        </format>
+        <format>
+          <spec>copper[,1]</spec>
+          <desc>
+            Display the copper portion of the amount.  Include the
+            ",1" to color the number copper.
+          </desc>
+          <example>
+            3
+          </example>
+        </format>
+        <format>
+          <spec>long[,1[,1]]</spec>
+          <desc>
+            Display the total amount spelled out.  If gold is zero, it will be
+            omitted.  If both gold and silver are zero, both will be omitted.
+            Copper is always shown.  Include ",1" to color the
+            numbers only, or ",1,1" to color the numbers and words.
+          </desc>
+          <example>
+            1 gold 2 silver 3 copper
+          </example>
+        </format>
+        <format>
+          <spec>short[,1[,1]]</spec>
+          <desc>
+            Display the total amount with abbreviations.  If gold is zero, 
+            it will be omitted.  If both gold and silver are zero, both will 
+            be omitted. Copper is always shown.  Include ",1" to color the
+            numbers only, or ",1,1" to color the numbers and words.
+          </desc>
+          <example>
+            1g 2s 3c
+          </example>
+        </format>
+        <format>
+          <spec>numeric[,1]</spec>
+          <desc>
+            Display the total amount in numbers only.  If gold is zero, 
+            it will be omitted.  If both gold and silver are zero, both will 
+            be omitted. Copper is always shown.  Include ",1" to color the
+            numbers.
+          </desc>
+          <example>
+            1 2 3
+          </example>
+        </format>
+        <format>
+          <spec>compact[,1]</spec>
+          <desc>
+            Display the total amount in numbers only, with separators between
+            each number.  If gold is zero, it will be omitted.  If both gold 
+            and silver are zero, both will be omitted. Copper is always shown.
+            Include ",1" to color the numbers.
+          </desc>
+          <example>
+            1.2.3
+          </example>
+        </format>
+      </format-list>
+    </subsection>
+    <subsection name="Memory Formats">
+      <p>
+        Memory formats allow you to display memory values as kilobytes or
+        megabytes.
+      </p>
+      <format-list>
+        <format>
+          <spec>kb</spec>
+          <desc>
+            Display the amount in kilobytes.
+          </desc>
+          <example>
+            21345
+          </example>
+        </format>
+        <format>
+          <spec>mb[,dec]</spec>
+          <desc>
+            Display the amount in megabytes, to two decimal places.
+          </desc>
+          <example>
+            21.34
+          </example>
+        </format>
+        <format>
+          <spec>mb,int</spec>
+          <desc>
+            Display the amount in megabytes, truncated to the nearest whole 
+            megabyte.
+          </desc>
+          <example>
+            21
+          </example>
+        </format>
+      </format-list>
+    </subsection>
+    <subsection name="Equipment Formats">
+      <p>
+        Equipment "formats" don't actually affect <i>how</i> a variable
+        is displayed, rather, they determine which equipment slot the
+        variable reports about.  The equipment format is required for
+        variables that use it.  If it is omitted or unknown, the variable
+        that uses it will display "n/a" instead.
+      </p>
+      <p>
+        The names below can be used for equipment formats.  Note that
+        several alias names are included for convenience, but all names
+        work the same way.  For example, both "shoulders" and "pauldrons"
+        can be used to refer to the shoulder item, regardless of what is
+        worn there.  These are used just like normal format codes.  For 
+        example, {repaircost:chest} will display the repair cost of the
+        armor worn on your character's chest, and {equipname:trinket1}
+        will return the name of your first equipped trinket. 
+      </p>
+      <equip-list>
+        <format>
+          <spec>head</spec>
+          <desc>Head</desc>
+        </format>
+        <format>
+          <spec>helm</spec>
+          <desc>Head</desc>
+        </format>
+        <format>
+          <spec>hat</spec>
+          <desc>Head</desc>
+        </format>
+        <format>
+          <spec>goggles</spec>
+          <desc>Head</desc>
+        </format>
+        <format>
+          <spec>shoulders</spec>
+          <desc>Shoulders</desc>
+        </format>
+        <format>
+          <spec>pauldrons</spec>
+          <desc>Shoulders</desc>
+        </format>
+        <format>
+          <spec>chest</spec>
+          <desc>Chest</desc>
+        </format>
+        <format>
+          <spec>torso</spec>
+          <desc>Chest</desc>
+        </format>
+        <format>
+          <spec>robe</spec>
+          <desc>Chest</desc>
+        </format>
+        <format>
+          <spec>vest</spec>
+          <desc>Chest</desc>
+        </format>
+        <format>
+          <spec>breastplate</spec>
+          <desc>Chest</desc>
+        </format>
+        <format>
+          <spec>tunic</spec>
+          <desc>Chest</desc>
+        </format>
+        <format>
+          <spec>wrist</spec>
+          <desc>Wrists</desc>
+        </format>
+        <format>
+          <spec>bracers</spec>
+          <desc>Wrists</desc>
+        </format>
+        <format>
+          <spec>hands</spec>
+          <desc>Hands</desc>
+        </format>
+        <format>
+          <spec>gloves</spec>
+          <desc>Hands</desc>
+        </format>
+        <format>
+          <spec>gauntlets</spec>
+          <desc>Hands</desc>
+        </format>
+        <format>
+          <spec>waist</spec>
+          <desc>Waist</desc>
+        </format>
+        <format>
+          <spec>belt</spec>
+          <desc>Waist</desc>
+        </format>
+        <format>
+          <spec>legs</spec>
+          <desc>Legs</desc>
+        </format>
+        <format>
+          <spec>pants</spec>
+          <desc>Legs</desc>
+        </format>
+        <format>
+          <spec>skirt</spec>
+          <desc>Legs</desc>
+        </format>
+        <format>
+          <spec>kilt</spec>
+          <desc>Legs</desc>
+        </format>
+        <format>
+          <spec>leggings</spec>
+          <desc>Legs</desc>
+        </format>
+        <format>
+          <spec>feet</spec>
+          <desc>Feet</desc>
+        </format>
+        <format>
+          <spec>boots</spec>
+          <desc>Feet</desc>
+        </format>
+        <format>
+          <spec>shoes</spec>
+          <desc>Feet</desc>
+        </format>
+        <format>
+          <spec>mainhand</spec>
+          <desc>Main Hand Weapon</desc>
+        </format>
+        <format>
+          <spec>weapon</spec>
+          <desc>Main Hand Weapon</desc>
+        </format>
+        <format>
+          <spec>offhand</spec>
+          <desc>Off-hand Weapon</desc>
+        </format>
+        <format>
+          <spec>shield</spec>
+          <desc>Off-hand Weapon</desc>
+        </format>
+        <format>
+          <spec>ranged</spec>
+          <desc>Ranged Weapon</desc>
+        </format>
+        <format>
+          <spec>gun</spec>
+          <desc>Ranged Weapon</desc>
+        </format>
+        <format>
+          <spec>bow</spec>
+          <desc>Ranged Weapon</desc>
+        </format>
+        <format>
+          <spec>finger1</spec>
+          <desc>Finger</desc>
+        </format>
+        <format>
+          <spec>ring1</spec>
+          <desc>Finger</desc>
+        </format>
+        <format>
+          <spec>finger2</spec>
+          <desc>Finger</desc>
+        </format>
+        <format>
+          <spec>ring2</spec>
+          <desc>Finger</desc>
+        </format>
+        <format>
+          <spec>trinket1</spec>
+          <desc>Trinket</desc>
+        </format>
+        <format>
+          <spec>trinket2</spec>
+          <desc>Trinket</desc>
+        </format>
+        <format>
+          <spec>neck</spec>
+          <desc>Neck</desc>
+        </format>
+        <format>
+          <spec>necklace</spec>
+          <desc>Neck</desc>
+        </format>
+        <format>
+          <spec>pendant</spec>
+          <desc>Neck</desc>
+        </format>
+        <format>
+          <spec>back</spec>
+          <desc>Back</desc>
+        </format>
+        <format>
+          <spec>cloak</spec>
+          <desc>Back</desc>
+        </format>
+        <format>
+          <spec>shirt</spec>
+          <desc>Shirt</desc>
+        </format>
+        <format>
+          <spec>tabard</spec>
+          <desc>Tabard</desc>
+        </format>
+        <format>
+          <spec>ammo</spec>
+          <desc>Ammo</desc>
+        </format>
+      </equip-list>
+    </subsection>
+    <subsection name="Skills Formats">
+      <p>
+        Skills "formats" determine which skill a variable applies to, rather
+        than changing the look of the variable.  Because of this, skills
+        formats are required for those variables that use them.  If the skill
+        format is omitted, misspelled, or if your character does not know
+        the skill named, skills variables will display "n/a" instead.
+      </p>
+      <p>
+        Normally, skill formats are entered exactly as the names read on
+        your character's skill panel, for example "Leatherworking" or
+        "Daggers".  So, for instance, if you wanted to know your current
+        alchemy skill, you could use the variable "{skillrank:Alchemy}". 
+        Note the capitalization of the name - it must appear <i>exactly</i>
+        as it does on the skills panel.
+      </p>
+      <p>
+        Skills variables also support "generic" skill formats.  These are
+        special names you can use to refer to your skill when you don't
+        know ahead of time what the real skill name is.  The generic
+        names are formed by taking the name of the skill group on the
+        skills panel (for example, "Professions") and adding a number to
+        the end of it which corresponds to the number of the skill in the
+        group.  So, for example, "Professions 1" refers to your first
+        profession skill, and "Weapon Skills 5" refers to your fifth weapon
+        skill, as shown on the skills panel.
+      </p>
+      <p>
+        The generic names for professions ("Professions 1" and
+        "Professions 2") are the most useful, as they let you set up
+        displays that work for all of your characters, regardless of
+        what professions they have.  If you use these, you might also
+        find the {skillname} variable useful for returning the real
+        name of the skill.  For instance, the variable
+        {skillname:Professions 1} will display the real name of your
+        first profession, no matter what it is.
+      </p>
+    </subsection>
+    <subsection name="Faction Formats">
+      <p>
+        Like skill formats, faction "formats" determine which faction
+        a variable applies to, rather than changing the look of the
+        variable.  Because of this, faction formats are required for
+        those variables that use them.  If the faction format is
+        omitted, misspelled, or if your character has no reputation with
+        the named faction, faction variables will display "n/a" instead.
+      </p>
+      <p>
+        Faction formats are entered exactly as the names read on
+        your character's reputation panel, for example "Ironforge" or
+        "Cenarion Circle".  So, for instance, if you wanted to know your 
+        current reputation with Honor Hold, you would use the variable 
+        "{reputation:Honor Hold}".
+        Note the capitalization of the name - it must appear <i>exactly</i>
+        as it does on the reputation panel.
+      </p>
+    </subsection>
+    <subsection name="Color Codes">
+      <p>
+        Any slot can be colored by entering the following code before it:
+      </p>
+      <block>
+        |c<i>aarrggbb</i>
+      </block>
+      <p>
+        where
+      </p>
+      <block>
+        <i>aa</i> is the alpha (transparency) value,
+      </block>
+      <block>
+        <i>rr</i> is the red value,
+      </block>
+      <block>
+        <i>gg</i> is the green value, and
+      </block>
+      <block>
+        <i>bb</i> is the blue value.
+      </block>
+      <p>
+        All color values are given as two hexadecimal digits from "00"
+        (no color, or transparent in the case of the alpha value) to "ff" 
+        (full color, or opaque for the alpha value).
+      </p>
+      <p>
+        Also, the code:
+      </p>
+      <block>
+        |r
+      </block>
+      <p>
+        will restore the color that was in effect before the last
+        color change.  Even if you leave off the restore code, your
+        color changes will only affect the slot they appear in -
+        colors will not bleed into adjacent slots.  This also means
+        that every slot must be colored independently.  Also, each
+        slot can have several color codes, and the restore code is not
+        required between each color change.
+      </p>
+      <p>
+        For example, a slot containing the display string
+        '|cffff0000{dps}|r dps' will display the current dps in opaque
+        red (ff, ff, 00, 00), and then " dps" in the default color
+        (which is a nearly pure yellow).  As another example, the
+        display string '|cffff0000r|cff00ff00g|cff0000ffb' will
+        display a red 'r', a green 'g', and a blue 'b'.
+      </p>
+      <p>
+        Note that color codes will have no effect when used with
+        variables that color themselves, such as {latency}.
+      </p>
+    </subsection>
+  </section>
+  <section name="More Information">
+    <p>
+      For more information, or to download the latest version of Nox
+      Information Bar, see the addon page on Curse Gaming at
+      <a href="http://wow.curse-gaming.com/downloads/details/1008/">http://wow.curse-gaming.com/downloads/details/1008/</a>.
+    </p>
+  </section>
+</user-guide>

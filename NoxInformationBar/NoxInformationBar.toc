@@ -1,0 +1,14 @@
+## Interface: 40300
+## Title: Nox Information Bar
+## Notes: Displays a complete information bar at the top of the screen.
+## Author: Gruma
+## Version: 4.0.3
+## X-Date: December 5, 2010
+## X-Email: gruma@pobox.com
+## X-Website: http://my.curse.com/downloads/wow-addons/details/nox-information-bar-redux.aspx
+## SavedVariables: NoxInformationBarConfig
+## Dependencies:
+## OptionalDeps: myAddOns
+NoxPopupMenu.xml
+NoxInformationBar.xml
+NoxConfigFrame.xml

@@ -1,0 +1,20 @@
+<!--
+  Nox Sample Extension
+
+  Demonstrates how to write addons to add new variables to the Nox 
+  Information Bar.
+
+  @author Gruma
+-->
+
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+  <script file="NoxSampleExtension.lua" />
+  <Frame name="NoxSampleExtension" parent="UIParent" hidden="true">
+    <Scripts>
+      <OnLoad>
+        NoxSampleExtension_OnLoad();
+      </OnLoad>
+    </Scripts>
+  </Frame>
+</Ui>

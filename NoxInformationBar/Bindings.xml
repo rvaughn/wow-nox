@@ -1,0 +1,11 @@
+<!--
+  Nox Information Bar
+-->
+
+<Bindings>
+	<Binding name="NOX_IB_TOGGLE" runOnUp="true" header="NOX_UI">
+		if (keystate == "down") then
+			NoxInformationBar_ToggleCommand(nil);
+		end
+	</Binding>
+</Bindings>

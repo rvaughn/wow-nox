@@ -1,0 +1,12 @@
+## Interface: 40300
+## Title: Nox Mover
+## Notes: Moves various UI elements to make room for the Nox Info Bar
+## Author: Gruma
+## Version: 4.0.3
+## X-Date: December 5, 2010
+## X-Email: gruma@pobox.com
+## X-Website: http://my.curse.com/downloads/wow-addons/details/nox-information-bar-redux.aspx
+## SavedVariables: NoxMoverConfig
+## Dependencies:
+## OptionalDeps: NoxInformationBar
+NoxMover.xml

@@ -1,0 +1,1416 @@
+<!--
+  Nox Information Bar
+-->
+
+<Ui xmlns="http://www.blizzard.com/wow/ui/" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+  <Script file="NoxConfigFrame.lua"/>
+
+  <!-- Text control template -->
+
+  <EditBox name="NoxConfigEditBoxTemplate" historyLines="0" autoFocus="false" virtual="true">
+    <Layers>
+      <Layer level="BACKGROUND">
+        <Texture name="$parentLeft" file="Interface\Common\Common-Input-Border">
+          <Size>
+            <AbsDimension x="8" y="20"/>
+          </Size>
+          <Anchors>
+            <Anchor point="LEFT">
+              <Offset>
+                <AbsDimension x="-5" y="0"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+          <TexCoords left="0" right="0.0625" top="0" bottom="0.625"/>
+        </Texture>
+        <Texture name="$parentRight" file="Interface\Common\Common-Input-Border">
+          <Size>
+            <AbsDimension x="8" y="20"/>
+          </Size>
+          <Anchors>
+            <Anchor point="RIGHT">
+              <Offset>
+                <AbsDimension x="5" y="0"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+          <TexCoords left="0.9375" right="1.0" top="0" bottom="0.625"/>
+        </Texture>
+        <Texture name="$parentMiddle" file="Interface\Common\Common-Input-Border">
+          <Size>
+            <AbsDimension x="10" y="20"/>
+          </Size>
+          <Anchors>
+            <Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+            <Anchor point="RIGHT" relativeTo="$parentRight" relativePoint="LEFT"/>
+          </Anchors>
+          <TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625"/>
+        </Texture>
+        <FontString name="$parentLabel" inherits="GameFontNormalSmall" justifyH="RIGHT">
+          <Anchors>
+            <Anchor point="RIGHT" relativePoint="LEFT">
+              <Offset>
+                <AbsDimension x="-8" y="-1"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+      </Layer>
+    </Layers>
+    <FontString inherits="ChatFontNormal" />
+    <Scripts>
+      <OnEditFocusLost>
+        self:HighlightText(0, 0);
+      </OnEditFocusLost>
+      <OnEscapePressed>
+        self:ClearFocus();
+      </OnEscapePressed>
+      <OnEditFocusGained>
+        --self:HighlightText();
+      </OnEditFocusGained>
+    </Scripts>
+  </EditBox>
+
+  <!-- Tooltip line template -->
+
+  <EditBox name="NoxConfigTooltipEditBoxTemplate" historyLines="0" autoFocus="false" virtual="true">
+    <Size>
+      <AbsDimension x="0" y="16" />
+    </Size>
+    <FontString inherits="ChatFontNormal" />
+    <Scripts>
+      <OnShow>
+        self:SetTextInsets(2, 2, 0, 1);
+      </OnShow>
+      <OnEditFocusLost>
+        self:HighlightText(0, 0);
+        NoxConfigFrame.tooltipLine = nil;
+      </OnEditFocusLost>
+      <OnEscapePressed>
+        self:ClearFocus();
+      </OnEscapePressed>
+      <OnEditFocusGained>
+        --self:HighlightText();
+        NoxConfigFrame.tooltipLine = self;
+      </OnEditFocusGained>
+      <OnEnterPressed>
+        NoxConfigFrameTooltipEditBox_Next(self);
+      </OnEnterPressed>
+      <OnTabPressed>
+        if (IsShiftKeyDown()) then
+          NoxConfigFrameTooltipEditBox_Prev(self);
+        else
+          NoxConfigFrameTooltipEditBox_Next(self);
+        end
+      </OnTabPressed>
+    </Scripts>
+    <Layers>
+      <Layer name="BACKGROUND">
+        <Texture name="$parentBackground" alphaMode="add">
+          <Size>
+            <AbsDimension x="0" y="14" />
+          </Size>
+          <Anchors>
+            <Anchor point="LEFT">
+              <Offset>
+                <AbsDimension x="0" y="0" />
+              </Offset>
+            </Anchor>
+            <Anchor point="RIGHT">
+              <Offset>
+                <AbsDimension x="0" y="0" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+          <Color r="0.1" g="0.1" b="0.1" />
+        </Texture>
+      </Layer>
+    </Layers>
+  </EditBox>
+
+  <!-- Checkbox template -->
+
+  <CheckButton name="NoxConfigCheckButtonTemplate" inherits="UICheckButtonTemplate" virtual="true">
+    <Scripts>
+      <OnLoad>
+        _G[self:GetName().."Text"]:SetText(_G["NOXCONFIG_"..self:GetName()]);
+      </OnLoad>
+      <OnClick>
+        if (self:GetChecked()) then
+          PlaySound("igMainMenuOptionCheckBoxOff");
+        else
+          PlaySound("igMainMenuOptionCheckBoxOn");
+        end
+        NoxConfigFrameCheckButton_OnClick(self);
+      </OnClick>
+    </Scripts>
+  </CheckButton>
+
+  <!-- Clock slider template -->
+
+  <Slider name="NoxConfigSliderTemplate" inherits="OptionsSliderTemplate" virtual="true">
+    <Scripts>
+      <OnLoad>
+        _G[self:GetName().."Text"]:SetText(_G["NOXCONFIG_"..self:GetName()]);
+        _G[self:GetName().."Low"]:SetText(_G["NOXCONFIG_"..self:GetName().."_MIN"]);
+        _G[self:GetName().."High"]:SetText(_G["NOXCONFIG_"..self:GetName().."_MAX"]);
+      </OnLoad>
+      <OnEnter>
+        GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+        GameTooltip:SetText(self:GetValue(), nil, nil, nil, nil, 1);
+      </OnEnter>
+      <OnLeave>
+        GameTooltip:Hide();
+      </OnLeave>
+      <OnValueChanged>
+        GameTooltip:SetText(self:GetValue());
+      </OnValueChanged>
+    </Scripts>
+  </Slider>
+
+  <!-- Color swatch/picker button template -->
+
+  <Button name="NoxConfigColorButtonTemplate" virtual="true">
+    <Size>
+      <AbsDimension x="16" y="16"/>
+    </Size>
+    <Layers>
+      <Layer level="BACKGROUND">
+        <Texture name="$parentSwatchBg">
+          <Size>
+            <AbsDimension x="14" y="14"/>
+          </Size>
+          <Anchors>
+            <Anchor point="CENTER">
+              <Offset>
+                <AbsDimension x="0" y="0"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+          <Color r="1.0" g="1.0" b="1.0"/>
+        </Texture>
+      </Layer>
+			<Layer level="ARTWORK">
+				<FontString name="$parentLabel" inherits="GameFontNormalSmall" text="">
+					<Anchors>
+						<Anchor point="LEFT" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="4" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+    </Layers>
+    <Scripts>
+      <OnLoad>
+        NoxConfigFrameColorButton_OnLoad(self);
+        _G[self:GetName().."Label"]:SetText(_G["NOXCONFIG_"..self:GetName()]);
+      </OnLoad>
+      <OnClick>
+        self:OpenColorPicker();
+      </OnClick>
+      <OnEnter>
+        self:SetBorderColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b);
+      </OnEnter>
+      <OnLeave>
+        self:SetBorderColor(HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b);
+      </OnLeave>
+    </Scripts>
+    <NormalTexture name="$parentNormalTexture" file="Interface\ChatFrame\ChatFrameColorSwatch" />
+    <NormalText name="$parentNormalText" inherits="GameFontNormalSmall">
+      <Anchors>
+        <Anchor point="LEFT" relativePoint="RIGHT">
+          <Offset>
+            <AbsDimension x="8" y="1"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </NormalText>
+    <DisabledText name="$parentDisabledText" inherits="GameFontDisableSmall">
+      <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="$parentNormalText" />
+        <Anchor point="BOTTOMRIGHT" relativeTo="$parentNormalText" />
+      </Anchors>
+    </DisabledText>
+  </Button>
+
+  <!-- Group box (border and background) template -->
+
+  <Frame name="NoxConfigGroupBoxTemplate" inherits="OptionsBoxTemplate" virtual="true">
+    <Scripts>
+      <OnLoad>
+        self:SetBackdropBorderColor(0.4, 0.4, 0.4);
+        self:SetBackdropColor(0.15, 0.15, 0.15);
+        _G[self:GetName().."Title"]:SetText(_G["NOXCONFIG_" .. self:GetName()]);
+      </OnLoad>
+    </Scripts>
+  </Frame>
+
+  <!-- Slot configuration line template -->
+
+  <Frame name="NoxConfigSlotBoxTemplate" virtual="true">
+    <Size>
+      <AbsDimension x="465" y="31" />
+    </Size>
+    <Frames>
+      <Frame name="$parentLabel">
+        <Size>
+          <AbsDimension x="40" y="20" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="0" y="0" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer name="BACKGROUND">
+            <FontString inherits="GameFontNormalSmall" name="$parentText">
+              <Anchors>
+                <Anchor point="LEFT">
+                  <Offset>
+                    <AbsDimension x="0" y="1"/>
+                  </Offset>
+                </Anchor>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+      </Frame>
+      <CheckButton name="$parentEnabled" inherits="NoxConfigCheckButtonTemplate">
+        <Anchors>
+          <Anchor point="LEFT" relativeto="$parentLabel" relativepoint="RIGHT">
+            <Offset>
+              <AbsDimension x="0" y="0" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </CheckButton>
+      <EditBox name="$parentWidth" letters="4" numeric="true" inherits="NoxConfigEditBoxTemplate">
+        <Size>
+          <AbsDimension x="35" y="16"/>
+        </Size>
+        <Anchors>
+          <Anchor point="LEFT" relativeTo="$parentEnabled" relativePoint="RIGHT">
+            <Offset>
+              <AbsDimension x="20" y="1"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnTabPressed>
+            _G[self:GetParent():GetName() .. "Display"]:SetFocus();
+          </OnTabPressed>
+          <OnEnterPressed>
+            _G[self:GetParent():GetName() .. "Display"]:SetFocus();
+          </OnEnterPressed>
+        </Scripts>
+      </EditBox>
+      <EditBox name="$parentDisplay" letters="1024" inherits="NoxConfigEditBoxTemplate">
+        <Size>
+          <AbsDimension x="240" y="16"/>
+        </Size>
+        <Anchors>
+          <Anchor point="LEFT" relativeTo="$parentWidth" relativePoint="RIGHT">
+            <Offset>
+              <AbsDimension x="20" y="0" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnTabPressed>
+            _G[self:GetParent():GetName() .. "Width"]:SetFocus();
+          </OnTabPressed>
+          <OnEnterPressed>
+            _G[self:GetParent():GetName() .. "Width"]:SetFocus();
+          </OnEnterPressed>
+        </Scripts>
+      </EditBox>
+    </Frames>
+    <Scripts>
+      <OnLoad>
+        _G[self:GetName().."LabelText"]:SetText(_G["NOXCONFIG_" .. self:GetName()]);
+      </OnLoad>
+    </Scripts>
+  </Frame>
+
+  <!-- Mover settings template -->
+
+  <Frame name="NoxConfigMoverTemplate" virtual="true">
+    <Size>
+      <AbsDimension x="300" y="32" />
+    </Size>
+    <Frames>
+      <CheckButton name="$parentEnabled" inherits="NoxConfigCheckButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="0" y="0" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </CheckButton>
+      <Frame name="$parentOffsetLabel">
+        <Size>
+          <AbsDimension x="60" y="16" />
+        </Size>
+        <Anchors>
+          <Anchor point="LEFT" relativeto="$parentEnabled" relativepoint="RIGHT">
+            <Offset>
+              <AbsDimension x="150" y="1"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer name="BACKGROUND">
+            <FontString inherits="GameFontNormalSmall" name="$parentText" text="NOXCONFIG_OFFSET_LABEL">
+              <Anchors>
+                <Anchor point="LEFT">
+                  <Offset>
+                    <AbsDimension x="0" y="-1" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+      </Frame>
+      <EditBox name="$parentOffsetX" letters="5" inherits="NoxConfigEditBoxTemplate">
+        <Size>
+          <AbsDimension x="35" y="16"/>
+        </Size>
+        <Anchors>
+          <Anchor point="LEFT" relativeTo="$parentOffsetLabel" relativePoint="RIGHT">
+            <Offset>
+              <AbsDimension x="10" y="0"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnLoad>
+            _G[self:GetName().."Label"]:SetText(NOXCONFIG_OFFSET_X);
+          </OnLoad>
+        </Scripts>
+      </EditBox>
+      <EditBox name="$parentOffsetY" letters="5" inherits="NoxConfigEditBoxTemplate">
+        <Size>
+          <AbsDimension x="35" y="16"/>
+        </Size>
+        <Anchors>
+          <Anchor point="LEFT" relativeTo="$parentOffsetX" relativePoint="RIGHT">
+            <Offset>
+              <AbsDimension x="30" y="0"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnLoad>
+            _G[self:GetName().."Label"]:SetText(NOXCONFIG_OFFSET_Y);
+          </OnLoad>
+        </Scripts>
+      </EditBox>
+    </Frames>
+  </Frame>
+
+  <!-- Config panel template -->
+
+  <Frame name="NoxConfigPanelTemplate" virtual="true">
+    <Anchors>
+      <Anchor point="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="-12" y="-28" />
+        </Offset>
+      </Anchor>
+      <Anchor point="BOTTOMLEFT">
+        <Offset>
+          <AbsDimension x="12" y="43" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+  </Frame>
+
+  <!-- General purpose button -->
+
+  <Button name="NoxConfigFrameButtonTemplate" inherits="UIPanelButtonTemplate" virtual="true">
+    <Size>
+      <AbsDimension x="80" y="22" />
+    </Size>
+  </Button>
+
+  <!-- Panel switcher button -->
+
+  <Button name="NoxConfigPanelButtonTemplate" inherits="UIPanelButtonTemplate" virtual="true">
+    <Size>
+      <AbsDimension x="80" y="22" />
+    </Size>
+    <Scripts>
+      <OnClick>
+        PlaySound("igMainMenuOptionCheckBoxOn");
+        NoxConfigFrame.currentPanel:Hide();
+        NoxConfigFrame.currentPanel = _G[string.sub(self:GetName(), 1, -7) .. "Panel"];
+        NoxConfigFrame.currentPanel:Show();
+      </OnClick>
+    </Scripts>
+  </Button>
+
+  <!-- Tab button template -->
+
+	<Button name="NoxConfigTabButtonTemplate" inherits="CharacterFrameTabButtonTemplate" virtual="true">
+		<Scripts>
+			<OnClick>
+        PlaySound("igCharacterInfoTab");
+        PanelTemplates_Tab_OnClick(self, NoxConfigFrame);
+        NoxConfigFrame.currentPanel:Hide();
+        NoxConfigFrame.currentPanel = self.panel;
+        NoxConfigFrame.currentPanel:Show();
+			</OnClick>
+		</Scripts>
+	</Button>
+
+  <!-- The config panel itself -->
+
+  <Frame name="NoxConfigFrame" toplevel="true" frameStrata="LOW" movable="false" enableMouse="true" hidden="true" parent="UIParent">
+    <Size>
+      <AbsDimension x="440" y="610" />
+    </Size>
+    <Anchors>
+      <Anchor point="CENTER">
+        <Offset>
+          <AbsDimension x="0" y="40"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+      <BackgroundInsets>
+        <AbsInset left="11" right="12" top="12" bottom="11" />  
+        <Size>
+          <AbsDimension x="128" y="17" />
+        </Size>
+      </BackgroundInsets>
+      <TileSize>
+        <AbsValue val="32" />
+      </TileSize>
+      <EdgeSize>
+        <AbsValue val="32" />
+      </EdgeSize>
+    </Backdrop>
+    <Layers>
+      <Layer level="ARTWORK">
+        <Texture name="$parentTitle" file="Interface\DialogFrame\UI-DialogBox-Header">
+          <Size>
+            <AbsDimension x="340" y="64" />
+          </Size>
+          <Anchors>
+            <Anchor point="TOP">
+              <Offset>
+                <AbsDimension x="0" y="12" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </Texture>
+        <FontString inherits="GameFontNormal" text="NOXCONFIG_TITLE">
+          <Anchors>
+            <Anchor point="TOP" relativeTo="$parent">
+              <Offset><AbsDimension x="0" y="-2" /></Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+      </Layer>
+    </Layers>
+    <Frames>
+<!--
+      <Frame name="$parentButtonStrip">
+        <Size>
+          <AbsDimension x="240" y="22" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOP">
+            <Offset>
+              <AbsDimension x="0" y="-30" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Frames>
+          <Button name="NoxConfigFrameGeneralButton" inherits="NoxConfigPanelButtonTemplate" text="NOXCONFIG_GENERAL_BUTTON">
+            <Anchors>
+              <Anchor point="TOPLEFT" />
+            </Anchors>
+          </Button>
+          <Button name="NoxConfigFrameSlotButton" inherits="NoxConfigPanelButtonTemplate" text="NOXCONFIG_SLOTS_BUTTON">
+            <Anchors>
+              <Anchor point="TOPLEFT" relativeTo="NoxConfigFrameGeneralButton" relativePoint="TOPRIGHT" />
+            </Anchors>
+          </Button>
+          <Button name="NoxConfigFrameTooltipButton" inherits="NoxConfigPanelButtonTemplate" text="NOXCONFIG_TOOLTIP_BUTTON">
+            <Anchors>
+              <Anchor point="TOPLEFT" relativeTo="NoxConfigFrameSlotButton" relativePoint="TOPRIGHT" />
+            </Anchors>
+          </Button>
+        </Frames>
+      </Frame>
+-->
+      <Frame name="$parentGeneralPanel" inherits="NoxConfigPanelTemplate">
+        <Frames>
+          <Frame name="NoxConfigFrameGeneralGroup" inherits="NoxConfigGroupBoxTemplate">
+            <Size>
+              <AbsDimension x="0" y="108" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="0" y="-12" />
+                </Offset>
+              </Anchor>
+              <Anchor point="TOPRIGHT">
+                <Offset>
+                  <AbsDimension x="0" y="-12" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Frames>
+              <CheckButton name="NoxConfigFrameBarVisible" inherits="NoxConfigCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="10" y="-10" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </CheckButton>
+              <CheckButton name="NoxConfigFrameBarMovable" inherits="NoxConfigCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameBarVisible" relativepoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="4" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </CheckButton>
+              <CheckButton name="NoxConfigFrameShowBorder" inherits="NoxConfigCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameBarMovable" relativepoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="4" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </CheckButton>
+              <CheckButton name="NoxConfigFrameExpBarsEnabled" inherits="NoxConfigCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativepoint="TOP">
+                    <Offset>
+                      <AbsDimension x="0" y="-10" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </CheckButton>
+              <Button name="NoxConfigFrameExpBarColor" inherits="NoxConfigColorButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameExpBarsEnabled" relativepoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="30" y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </Button>
+              <Button name="NoxConfigFrameRestedBarColor" inherits="NoxConfigColorButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameExpBarColor" relativepoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </Button>
+            </Frames>
+          </Frame>
+          <Frame name="NoxConfigFrameTooltipGroup" inherits="NoxConfigGroupBoxTemplate">
+            <Size>
+              <AbsDimension x="0" y="108" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT" relativeTo="NoxConfigFrameGeneralGroup" relativePoint="BOTTOMLEFT">
+                <Offset>
+                  <AbsDimension x="0" y="-12" />
+                </Offset>
+              </Anchor>
+              <Anchor point="TOPRIGHT" relativeTo="NoxConfigFrameGeneralGroup" relativePoint="BOTTOMRIGHT">
+                <Offset>
+                  <AbsDimension x="0" y="-12" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Frames>
+              <CheckButton name="NoxConfigFrameTooltipEnabled" inherits="NoxConfigCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="10" y="-10" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </CheckButton>
+              <Frame name="NoxConfigFrameTooltipAnchor" inherits="UIDropDownMenuTemplate" id="1">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameTooltipEnabled" relativepoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="60" y="4"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                    NoxConfigFrameTooltipAnchor_OnLoad(self);
+                  </OnLoad>
+                </Scripts>
+                <Layers>
+                  <Layer level="BACKGROUND">
+                    <FontString name="$parentLabel" inherits="GameFontNormalSmall" text="NOXCONFIG_NoxConfigFrameTooltipAnchor" justifyH="LEFT">
+                      <Anchors>
+                        <Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
+                          <Offset>
+                            <AbsDimension x="-40" y="0"/>
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+              </Frame>
+              <Frame name="NoxConfigFrameTooltipOffsetLabel">
+                <Size>
+                  <AbsDimension x="50" y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameTooltipAnchor" relativepoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="-40" y="-4"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer name="BACKGROUND">
+                    <FontString inherits="GameFontNormalSmall" name="$parentText" text="NOXCONFIG_OFFSET_LABEL">
+                      <Anchors>
+                        <Anchor point="LEFT">
+                          <Offset>
+                            <AbsDimension x="0" y="-1" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+              </Frame>
+              <EditBox name="NoxConfigFrameTooltipX" letters="5" inherits="NoxConfigEditBoxTemplate">
+                <Size>
+                  <AbsDimension x="35" y="16"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="LEFT" relativeTo="NoxConfigFrameTooltipOffsetLabel" relativePoint="RIGHT">
+                    <Offset>
+                      <AbsDimension x="16" y="0"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                    _G[self:GetName().."Label"]:SetText(NOXCONFIG_OFFSET_X);
+                  </OnLoad>
+                  <OnTabPressed>
+                    _G["NoxConfigFrameTooltipY"]:SetFocus();
+                  </OnTabPressed>
+                  <OnEnterPressed>
+                    _G["NoxConfigFrameTooltipY"]:SetFocus();
+                  </OnEnterPressed>
+                </Scripts>
+              </EditBox>
+              <EditBox name="NoxConfigFrameTooltipY" letters="5" inherits="NoxConfigEditBoxTemplate">
+                <Size>
+                  <AbsDimension x="35" y="16"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="LEFT" relativeTo="NoxConfigFrameTooltipX" relativePoint="RIGHT">
+                    <Offset>
+                      <AbsDimension x="30" y="0"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                    _G[self:GetName().."Label"]:SetText(NOXCONFIG_OFFSET_Y);
+                  </OnLoad>
+                </Scripts>
+              </EditBox>
+            </Frames>
+          </Frame>
+          <Frame name="NoxConfigFrameClockGroup" inherits="NoxConfigGroupBoxTemplate">
+            <Size>
+              <AbsDimension x="0" y="64" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT" relativeTo="NoxConfigFrameTooltipGroup" relativePoint="BOTTOMLEFT">
+                <Offset>
+                  <AbsDimension x="0" y="-12" />
+                </Offset>
+              </Anchor>
+              <Anchor point="TOPRIGHT" relativeTo="NoxConfigFrameTooltipGroup" relativePoint="BOTTOMRIGHT">
+                <Offset>
+                  <AbsDimension x="0" y="-12" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Frames>
+              <Slider name="NoxConfigFrameClockOffsetHours" inherits="NoxConfigSliderTemplate" minValue="-25" maxValue="25" valueStep="1" defaultValue="0">
+                <Anchors>
+                  <Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOP">
+                    <Offset>
+                      <AbsDimension x="-12" y="-24" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </Slider>
+              <Slider name="NoxConfigFrameClockOffsetMins" inherits="NoxConfigSliderTemplate" minValue="-60" maxValue="60" valueStep="1" defaultValue="0">
+                <Anchors>
+                  <Anchor point="LEFT" relativeto="NoxConfigFrameClockOffsetHours" relativepoint="RIGHT">
+                    <Offset>
+                      <AbsDimension x="24" y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </Slider>
+            </Frames>
+          </Frame>
+          <Frame name="NoxConfigFrameFontGroup" inherits="NoxConfigGroupBoxTemplate">
+            <Size>
+              <AbsDimension x="0" y="64" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT" relativeTo="NoxConfigFrameClockGroup" relativePoint="BOTTOMLEFT">
+                <Offset>
+                  <AbsDimension x="0" y="-12" />
+                </Offset>
+              </Anchor>
+              <Anchor point="TOPRIGHT" relativeTo="NoxConfigFrameClockGroup" relativePoint="BOTTOMRIGHT">
+                <Offset>
+                  <AbsDimension x="0" y="-12" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Frames>
+              <Slider name="NoxConfigFrameFontSizeBar" inherits="NoxConfigSliderTemplate" minValue="8" maxValue="32" valueStep="0.5" defaultValue="10">
+                <Anchors>
+                  <Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOP">
+                    <Offset>
+                      <AbsDimension x="-12" y="-24" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </Slider>
+              <Slider name="NoxConfigFrameFontSizeTooltip" inherits="NoxConfigSliderTemplate" minValue="8" maxValue="32" valueStep="0.5" defaultValue="10" hidden="true">
+                <Anchors>
+                  <Anchor point="LEFT" relativeto="NoxConfigFrameFontSizeBar" relativepoint="RIGHT">
+                    <Offset>
+                      <AbsDimension x="24" y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </Slider>
+            </Frames>
+          </Frame>
+          <Frame name="NoxConfigFramePersonalGroup" inherits="NoxConfigGroupBoxTemplate">
+            <Size>
+              <AbsDimension x="0" y="135" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT" relativeTo="NoxConfigFrameFontGroup" relativePoint="BOTTOMLEFT">
+                <Offset>
+                  <AbsDimension x="0" y="-12" />
+                </Offset>
+              </Anchor>
+              <Anchor point="TOPRIGHT" relativeTo="NoxConfigFrameFontGroup" relativePoint="BOTTOMRIGHT">
+                <Offset>
+                  <AbsDimension x="0" y="-12" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Frames>
+              <CheckButton name="NoxConfigFrameOverrideGeneral" inherits="NoxConfigCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="10" y="-10" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </CheckButton>
+              <CheckButton name="NoxConfigFrameOverrideClock" inherits="NoxConfigCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameOverrideGeneral" relativepoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="4" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </CheckButton>
+              <CheckButton name="NoxConfigFrameOverrideSlots" inherits="NoxConfigCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameOverrideClock" relativepoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="4" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </CheckButton>
+              <CheckButton name="NoxConfigFrameOverrideTooltip" inherits="NoxConfigCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameOverrideSlots" relativepoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="4" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </CheckButton>
+            </Frames>
+          </Frame>
+        </Frames>
+      </Frame>
+      <Frame name="$parentSlotPanel" inherits="NoxConfigPanelTemplate" hidden="true">
+        <Frames>
+          <Frame name="NoxConfigFrameSlotGroup" inherits="NoxConfigGroupBoxTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="0" y="-12" />
+                </Offset>
+              </Anchor>
+              <Anchor point="BOTTOMRIGHT">
+                <Offset>
+                  <AbsDimension x="0" y="0" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Frames>
+              <Frame>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="$parent" relativepoint="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="10" y="-24" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer name="BACKGROUND">
+                    <FontString inherits="GameFontNormalSmall" text="NOXCONFIG_ENABLED">
+                      <Anchors>
+                        <Anchor point="TOP" relativeto="$parent" relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="65" y="-8"/>
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                    <FontString inherits="GameFontNormalSmall" text="NOXCONFIG_WIDTH">
+                      <Anchors>
+                        <Anchor point="TOP" relativeto="$parent" relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="118" y="-8"/>
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                    <FontString inherits="GameFontNormalSmall" text="NOXCONFIG_DISPLAY">
+                      <Anchors>
+                        <Anchor point="TOP" relativeto="$parent" relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="270" y="-8"/>
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+              </Frame>
+              <Frame name="NoxConfigFrameSlot1" inherits="NoxConfigSlotBoxTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="$parent" relativepoint="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="10" y="-24" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+              <Frame name="NoxConfigFrameSlot2" inherits="NoxConfigSlotBoxTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameSlot1" relativepoint="BOTTOMLEFT" />
+                </Anchors>
+              </Frame>
+              <Frame name="NoxConfigFrameSlot3" inherits="NoxConfigSlotBoxTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameSlot2" relativepoint="BOTTOMLEFT" />
+                </Anchors>
+              </Frame>
+              <Frame name="NoxConfigFrameSlot4" inherits="NoxConfigSlotBoxTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameSlot3" relativepoint="BOTTOMLEFT" />
+                </Anchors>
+              </Frame>
+              <Frame name="NoxConfigFrameSlot5" inherits="NoxConfigSlotBoxTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameSlot4" relativepoint="BOTTOMLEFT" />
+                </Anchors>
+              </Frame>
+              <Frame name="NoxConfigFrameSlot6" inherits="NoxConfigSlotBoxTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameSlot5" relativepoint="BOTTOMLEFT" />
+                </Anchors>
+              </Frame>
+              <Frame name="NoxConfigFrameSlot7" inherits="NoxConfigSlotBoxTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameSlot6" relativepoint="BOTTOMLEFT" />
+                </Anchors>
+              </Frame>
+              <Frame name="NoxConfigFrameSlot8" inherits="NoxConfigSlotBoxTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameSlot7" relativepoint="BOTTOMLEFT" />
+                </Anchors>
+              </Frame>
+              <Frame name="NoxConfigFrameSlot9" inherits="NoxConfigSlotBoxTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameSlot8" relativepoint="BOTTOMLEFT" />
+                </Anchors>
+              </Frame>
+              <Frame name="NoxConfigFrameSlot10" inherits="NoxConfigSlotBoxTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameSlot9" relativepoint="BOTTOMLEFT" />
+                </Anchors>
+              </Frame>
+              <Frame name="NoxConfigFrameSlot11" inherits="NoxConfigSlotBoxTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameSlot10" relativepoint="BOTTOMLEFT" />
+                </Anchors>
+              </Frame>
+              <Frame name="NoxConfigFrameSlot12" inherits="NoxConfigSlotBoxTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameSlot11" relativepoint="BOTTOMLEFT" />
+                </Anchors>
+              </Frame>
+              <Frame name="NoxConfigFrameSlot13" inherits="NoxConfigSlotBoxTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameSlot12" relativepoint="BOTTOMLEFT" />
+                </Anchors>
+              </Frame>
+              <Frame name="NoxConfigFrameSlot14" inherits="NoxConfigSlotBoxTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameSlot13" relativepoint="BOTTOMLEFT" />
+                </Anchors>
+              </Frame>
+              <Frame name="NoxConfigFrameSlot15" inherits="NoxConfigSlotBoxTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameSlot14" relativepoint="BOTTOMLEFT" />
+                </Anchors>
+              </Frame>
+              <Frame name="NoxConfigFrameSlot16" inherits="NoxConfigSlotBoxTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeto="NoxConfigFrameSlot15" relativepoint="BOTTOMLEFT" />
+                </Anchors>
+              </Frame>
+            </Frames>
+          </Frame>
+        </Frames>
+      </Frame>
+      <Frame name="$parentTooltipPanel" inherits="NoxConfigPanelTemplate" hidden="true">
+        <Frames>
+          <Frame name="NoxConfigFrameTooltipContentGroup" inherits="NoxConfigGroupBoxTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="0" y="-12" />
+                </Offset>
+              </Anchor>
+              <Anchor point="BOTTOMRIGHT">
+                <Offset>
+                  <AbsDimension x="0" y="0" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Frames>
+              <EditBox name="NoxConfigTooltip1LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip2LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip3LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip4LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip5LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip6LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip7LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip8LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip9LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip10LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip11LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip12LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip13LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip14LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip15LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip16LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip17LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip18LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip19LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip20LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip21LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip22LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip23LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip24LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip25LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip26LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip27LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip28LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip29LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip30LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip31LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip32LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip33LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip34LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip35LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip36LeftText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip1RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip2RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip3RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip4RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip5RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip6RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip7RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip8RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip9RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip10RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip11RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip12RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip13RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip14RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip15RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip16RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip17RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip18RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip19RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip20RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip21RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip22RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip23RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip24RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip25RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip26RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip27RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip28RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip29RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip30RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip31RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip32RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip33RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip34RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip35RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <EditBox name="NoxConfigTooltip36RightText" inherits="NoxConfigTooltipEditBoxTemplate"/>
+              <Button name="NoxConfigTooltipInsertButton" inherits="NoxConfigFrameButtonTemplate" text="NOXCONFIG_INSERT_BUTTON">
+                <Anchors>
+                  <Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOM">
+                    <Offset>
+                      <AbsDimension x="-8" y="12" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    PlaySound("igMainMenuOptionCheckBoxOn");
+                    NoxConfigFrame_InsertTooltipLine(self);
+                  </OnClick>
+                </Scripts>
+              </Button>
+              <Button name="NoxConfigTooltipDeleteButton" inherits="NoxConfigFrameButtonTemplate" text="NOXCONFIG_DELETE_BUTTON">
+                <Anchors>
+                  <Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="BOTTOM">
+                    <Offset>
+                      <AbsDimension x="8" y="12" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    PlaySound("igMainMenuOptionCheckBoxOn");
+                    NoxConfigFrame_DeleteTooltipLine(self);
+                  </OnClick>
+                </Scripts>
+              </Button>
+            </Frames>
+            <Scripts>
+              <OnShow>
+                for i = 1, 30 do
+                  local left = _G["NoxConfigTooltip" .. i .. "LeftText"];
+                  local right = _G["NoxConfigTooltip" .. i .. "RightText"];
+                  left:ClearAllPoints();
+                  left:SetPoint("TOPLEFT", "NoxConfigFrameTooltipContentGroup", "TOPLEFT", 10, (-16 * i) + 8); 
+                  left:SetPoint("TOPRIGHT", "NoxConfigFrameTooltipContentGroup", "TOP", -1, (-16 * i) + 8); 
+                  right:ClearAllPoints();
+                  right:SetPoint("TOPLEFT", "NoxConfigFrameTooltipContentGroup", "TOP", 1, (-16 * i) + 8); 
+                  right:SetPoint("TOPRIGHT", "NoxConfigFrameTooltipContentGroup", "TOPRIGHT", -10, (-16 * i) + 8); 
+                end
+              </OnShow>
+            </Scripts>
+          </Frame>
+        </Frames>
+      </Frame>
+      <Frame name="$parentMoverPanel" inherits="NoxConfigPanelTemplate" hidden="true">
+        <Frames>
+          <Frame name="NoxConfigFrameMoverGroup" inherits="NoxConfigGroupBoxTemplate">
+            <Size>
+              <AbsDimension x="0" y="180" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="0" y="-12" />
+                </Offset>
+              </Anchor>
+              <Anchor point="TOPRIGHT">
+                <Offset>
+                  <AbsDimension x="0" y="-12" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Frames>
+              <Frame name="NoxConfigFrameMoveBuffs" inherits="NoxConfigMoverTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="10" y="-10" />
+                    </Offset>
+                  </Anchor>
+                  <Anchor point="TOPRIGHT">
+                    <Offset>
+                      <AbsDimension x="-10" y="-10" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+              <Frame name="NoxConfigFrameMoveBGFlag" inherits="NoxConfigMoverTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="NoxConfigFrameMoveBuffs" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="0" />
+                    </Offset>
+                  </Anchor>
+                  <Anchor point="TOPRIGHT" relativeTo="NoxConfigFrameMoveBuffs" relativePoint="BOTTOMRIGHT">
+                    <Offset>
+                      <AbsDimension x="0" y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+              <Frame name="NoxConfigFrameMovePlayer" inherits="NoxConfigMoverTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="NoxConfigFrameMoveBGFlag" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="0" />
+                    </Offset>
+                  </Anchor>
+                  <Anchor point="TOPRIGHT" relativeTo="NoxConfigFrameMoveBGFlag" relativePoint="BOTTOMRIGHT">
+                    <Offset>
+                      <AbsDimension x="0" y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+              <Frame name="NoxConfigFrameMoveTarget" inherits="NoxConfigMoverTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="NoxConfigFrameMovePlayer" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="0" />
+                    </Offset>
+                  </Anchor>
+                  <Anchor point="TOPRIGHT" relativeTo="NoxConfigFrameMovePlayer" relativePoint="BOTTOMRIGHT">
+                    <Offset>
+                      <AbsDimension x="0" y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+              <Frame name="NoxConfigFrameMoveMinimap" inherits="NoxConfigMoverTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="NoxConfigFrameMoveTarget" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="0" />
+                    </Offset>
+                  </Anchor>
+                  <Anchor point="TOPRIGHT" relativeTo="NoxConfigFrameMoveTarget" relativePoint="BOTTOMRIGHT">
+                    <Offset>
+                      <AbsDimension x="0" y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+            </Frames>
+          </Frame>
+        </Frames>
+      </Frame>
+
+      <Button name="$parentResetButton" inherits="NoxConfigFrameButtonTemplate" text="NOXCONFIG_RESET_BUTTON">
+        <Anchors>
+          <Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="BOTTOMLEFT">
+            <Offset>
+              <AbsDimension x="16" y="16" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>
+            PlaySound("igMainMenuOptionCheckBoxOn");
+            NoxConfigFrame_SetDefaults(self);
+          </OnClick>
+        </Scripts>
+      </Button>
+      <Button name="$parentCancelButton" inherits="NoxConfigFrameButtonTemplate" text="NOXCONFIG_CANCEL_BUTTON">
+        <Anchors>
+          <Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT">
+            <Offset>
+              <AbsDimension x="-16" y="16" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>
+            PlaySound("igMainMenuOptionCheckBoxOn");
+            NoxConfigFrame_Close(self);
+          </OnClick>
+        </Scripts>
+      </Button>
+      <Button name="$parentCloseButton" inherits="NoxConfigFrameButtonTemplate" text="NOXCONFIG_CLOSE_BUTTON">
+        <Anchors>
+          <Anchor point="RIGHT" relativeTo="$parentCancelButton" relativePoint="LEFT">
+            <Offset>
+              <AbsDimension x="0" y="0" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>
+            PlaySound("igMainMenuOptionCheckBoxOn");
+            NoxConfigFrame_Save(self);
+            NoxInformationBar_RefreshFrame();
+            NoxConfigFrame_Close(self);
+          </OnClick>
+        </Scripts>
+      </Button>
+      <Button name="$parentApplyButton" inherits="NoxConfigFrameButtonTemplate" text="NOXCONFIG_APPLY_BUTTON">
+        <Anchors>
+          <Anchor point="RIGHT" relativeTo="$parentCloseButton" relativePoint="LEFT">
+            <Offset>
+              <AbsDimension x="0" y="0" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>
+            PlaySound("igMainMenuOptionCheckBoxOn");
+            NoxConfigFrame_Save(self);
+            NoxConfigFrame_Update(self);
+            NoxInformationBar_RefreshFrame();
+          </OnClick>
+        </Scripts>
+      </Button>
+
+      <Button name="NoxConfigFrameTab1" inherits="NoxConfigTabButtonTemplate" id="1" text="NOXCONFIG_GENERAL_BUTTON">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT">
+            <Offset>
+              <AbsDimension x="15" y="6"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnLoad>
+            self.panel = NoxConfigFrameGeneralPanel;
+          </OnLoad>
+        </Scripts>
+      </Button>
+      <Button name="NoxConfigFrameTab2" inherits="NoxConfigTabButtonTemplate" id="2" text="NOXCONFIG_SLOTS_BUTTON">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="NoxConfigFrameTab1" relativePoint="TOPRIGHT">
+            <Offset>
+              <AbsDimension x="-15" y="0"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnLoad>
+            self.panel = NoxConfigFrameSlotPanel;
+          </OnLoad>
+        </Scripts>
+      </Button>
+      <Button name="NoxConfigFrameTab3" inherits="NoxConfigTabButtonTemplate" id="3" text="NOXCONFIG_TOOLTIP_BUTTON">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="NoxConfigFrameTab2" relativePoint="TOPRIGHT">
+            <Offset>
+              <AbsDimension x="-15" y="0"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnLoad>
+            self.panel = NoxConfigFrameTooltipPanel;
+          </OnLoad>
+        </Scripts>
+      </Button>
+      <Button name="NoxConfigFrameTab4" inherits="NoxConfigTabButtonTemplate" id="4" text="NOXCONFIG_MOVERS_BUTTON">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="NoxConfigFrameTab3" relativePoint="TOPRIGHT">
+            <Offset>
+              <AbsDimension x="-15" y="0"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnLoad>
+            self.panel = NoxConfigFrameMoverPanel;
+          </OnLoad>
+        </Scripts>
+      </Button>
+
+    </Frames>
+
+    <Scripts>
+      <OnLoad>
+        self.currentPanel = NoxConfigFrameGeneralPanel;
+        NoxConfigFrame_OnLoad(self);
+      </OnLoad>
+      <OnShow>
+        if (not NoxMover) then
+          PanelTemplates_SetNumTabs(self, 3);
+          NoxConfigFrameTab4:Hide();
+        end
+        NoxConfigFrame_OnShow(self);
+      </OnShow>
+      <OnHide>
+        NoxConfigFrame_OnHide(self);
+      </OnHide>
+      <OnEvent>
+        NoxConfigFrame_OnEvent(self, event, ...);
+      </OnEvent>
+      <OnMouseDown>
+        if (self:IsMovable()) then
+          self:StartMoving();
+        end
+      </OnMouseDown>
+      <OnMouseUp>
+        if (self:IsMovable()) then
+          self:StopMovingOrSizing();
+        end
+      </OnMouseUp>
+      <OnKeyDown>
+        if (arg1 == "ESCAPE") then
+          HideUIPanel(self);
+        end
+      </OnKeyDown>
+    </Scripts>
+  </Frame>
+</Ui>

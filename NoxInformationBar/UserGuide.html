@@ -1,0 +1,1976 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Nox Information Bar - User Guide</title>
+</head>
+<body>
+<h1>Nox Information Bar</h1>
+<h2>User Guide</h2>
+<h3>Version 3.3.0</h3>
+<h3>Description</h3>
+    
+<p style="margin-left: 0.25in">
+      Nox Information Bar is an add-on for World of Warcraft that lets you
+      display the game or character information important to you -
+      continuously and in real-time.  Most other info bars give you a
+      limited selection of data points you can turn on or off, but Nox 
+      gives you exactly what you want to see, exactly the way you want to 
+      see it.
+    </p>
+    
+<p style="margin-left: 0.25in">
+      With the Nox Information Bar, you get the ability to customize both
+      the data displayed on the bar itself, and in the tooltip displayed
+      when you mouse over the bar.  Nox and its various bundled extensions
+      give you a huge number of data points and optional formats to choose
+      from, as well as any static text you want to configure.  All of this
+      configuration can be done through a convenient GUI panel.
+    </p>
+    
+<p style="margin-left: 0.25in">
+      Nox Information Bar comes to you courtesy of ins0mniaque, who created
+      the original addon, and Gruma of Uther, who took over the addon when
+      ins0mniaque became too busy to work on it.  We also have to extend
+      thanks to the innumerable addon authors from whom we borrowed code, 
+      ideas, and techniques, including Mairelon, Telo, the TitanMod team,
+      and many, many others.
+    </p>
+  
+<h3>Features</h3>
+    
+<p style="margin-left: 0.25in">
+      Nox Information Bar has many great features built-in:
+    </p>
+    
+<ul>
+<li>
+        Slim, clean looks integrate with WoW without using unnecessary
+        screen space.
+      </li>
+<li>
+        Sixteen fully customizable data slots.
+      </li>
+<li>
+        A fully customizable 30-line tooltip which by default displays
+        experience stats similar to Telo's Clock, but can be
+        configured to display anything you want.
+      </li>
+<li>
+        Experience bar overlays showing current and rested experience
+        in a format easier to read than the default experience bar.
+      </li>
+<li>
+        Automatic resizing to accommodate the configured data.
+      </li>
+<li>
+        Complete mobility, allowing you to place the bar wherever you like,
+        and optionally lock it in place once there.
+      </li>
+<li>
+        A GUI panel for customizing the bar, data slots, and tooltip.
+      </li>
+<li>
+        Compatibility with myAddOns.
+      </li>
+<li>
+        Clock offsets from server time configurable per-character for
+        local time displays.
+      </li>
+<li>
+        Many configurable variables for everything from client 
+        performance to character honor to combat to inventory and more.
+      </li>
+<li>
+        Optional format selectors for most variables to display them
+        in various ways.
+      </li>
+<li>
+        Ability to configure plain text and colors in any display slot.
+      </li>
+<li>
+        Includes an optional addon to move many default GUI frames where
+        you want them.
+      </li>
+</ul>
+  
+<h3>What's Included</h3>
+    
+<p style="margin-left: 0.25in">
+      Nox Information Bar is delivered as several bundled and related
+      addons.  Since every addon requires some of WoW's limited addon
+      memory, and since some of these add background processing to the
+      WoW client as things happen in the game world - even if their data
+      isn't being displayed - packaging the addons like this lets you
+      choose exactly which ones you want to have loaded.
+    </p>
+    
+<p style="margin-left: 0.25in">
+      Nox Information Bar includes the following addons:
+    </p>
+    
+<table cellspacing="0" style="margin-left: 0.25in">
+<tr>
+<td style="padding: 2pt 16pt 2pt 0; vertical-align: top"><b>NoxInformationBar</b></td><td style="padding: 2pt 0 2pt 0; vertical-align: top">
+        This includes the bar itself and many basic variables.
+        This is required for most of the other addons to work.
+      </td>
+</tr>
+<tr>
+<td style="padding: 2pt 16pt 2pt 0; vertical-align: top"><b>NoxCombatStats</b></td><td style="padding: 2pt 0 2pt 0; vertical-align: top">
+        Adds combat-related information to the bar.
+      </td>
+</tr>
+<tr>
+<td style="padding: 2pt 16pt 2pt 0; vertical-align: top"><b>NoxEquipmentStats</b></td><td style="padding: 2pt 0 2pt 0; vertical-align: top">
+        Adds information about equipped items to the bar, including
+        names, types, durability and repair costs.
+      </td>
+</tr>
+<tr>
+<td style="padding: 2pt 16pt 2pt 0; vertical-align: top"><b>NoxHonorStats</b></td><td style="padding: 2pt 0 2pt 0; vertical-align: top">
+        Adds honor-system information to the bar.
+      </td>
+</tr>
+<tr>
+<td style="padding: 2pt 16pt 2pt 0; vertical-align: top"><b>NoxMoneyExtension</b></td><td style="padding: 2pt 0 2pt 0; vertical-align: top">
+        Adds a coin display showing your current money, like the one
+        at the bottom of the backpack.
+      </td>
+</tr>
+<tr>
+<td style="padding: 2pt 16pt 2pt 0; vertical-align: top"><b>NoxPlayerStats</b></td><td style="padding: 2pt 0 2pt 0; vertical-align: top">
+        Adds basic character and realm information to the bar.
+      </td>
+</tr>
+<tr>
+<td style="padding: 2pt 16pt 2pt 0; vertical-align: top"><b>NoxSkillStats</b></td><td style="padding: 2pt 0 2pt 0; vertical-align: top">
+        Adds information about your character's skills to the bar.
+      </td>
+</tr>
+<tr>
+<td style="padding: 2pt 16pt 2pt 0; vertical-align: top"><b>NoxMover</b></td><td style="padding: 2pt 0 2pt 0; vertical-align: top">
+        Allows you to move several UI frames around to make room for the
+        bar - or just because you want to.  Can be used without the
+        Nox Information Bar, but can only be configured using the bar's
+        config panel.
+      </td>
+</tr>
+<tr>
+<td style="padding: 2pt 16pt 2pt 0; vertical-align: top"><b>NoxSampleExtension</b></td><td style="padding: 2pt 0 2pt 0; vertical-align: top">
+        Demonstrates how to write extension addons for Nox Information Bar,
+        but adds no useful information by itself.
+      </td>
+</tr>
+</table>
+  
+<h3>Installation</h3>
+    
+<p style="margin-left: 0.25in">
+      To install, simply unzip the NoxInformationBar_vX.X.X.zip file into
+      your <i>&lt;World of Warcraft&gt;</i>\Interface\AddOns directory.
+      If you do not have the "Interface\AddOns" subdirectories in your game
+      directory, create them before unzipping the Nox Information Bar.
+    </p>
+    
+<p style="margin-left: 0.25in">
+      If you are already using an older version of the Nox Information Bar, I
+      recommend deleting any old Interface\AddOns\Nox* subdirectories before
+      unzipping the new file.  This will prevent conflicts with files and 
+      addons that have been removed in the new version.
+    </p>
+  
+<h3>Using The Bar</h3>
+    
+<p style="margin-left: 0.25in">
+      Using the Nox Information Bar is easy - it doesn't <i>do</i> much
+      other than show data.
+    </p>
+    
+<p style="margin-left: 0.25in">
+      When you first load the bar, it will show up at the top of your
+      screen displaying its default slots.  Hovering over the bar with
+      the mouse pointer will bring up the tooltip, which also displays
+      its default configuration at first.  Left click on the bar and
+      hold the left mouse button down to drag the bar wherever you
+      like on your screen.  Right click on the bar to bring up a brief
+      menu.  This gives you the options of resetting the current
+      session variables or of opening the configuration panel.  Move
+      the mouse pointer off of the menu for a few seconds or hit the
+      Esc key to close the menu without selecting an option.
+    </p>
+    
+<p style="margin-left: 0.25in">
+      The background of the bar tracks your experience in your current
+      level.  The purple bar shows your current experience earned, and the
+      blue bar behind it shows how much experience you can earn while
+      staying rested.  Once the purple bar passes the blue bar, you no
+      longer earn rested experience until you rest again.  Once the purple
+      bar fills the entire background, your character will progress to the
+      next level and the both the blue and purple bars will reset to
+      reflect your new level.
+    </p>
+    
+<p style="margin-left: 0.25in">
+      Note that you cannot resize the Nox bar explicitly.  Instead you
+      set the size of each of its display slots, and the bar will resize
+      itself to fit them.
+    </p>
+  
+<h3>Slash Commands</h3>
+    
+<p style="margin-left: 0.25in">
+      Slash commands let you quickly control the look and behavior of the
+      Nox bar.  Note that all of the functionality you can access through
+      slash commands can also be accessed through the right-click menu
+      or the configuration GUI.  Conversely, the configuration GUI can
+      do some additional things that the slash commands cannot.
+    </p>
+    
+<p style="margin-left: 0.25in">
+<b>
+        Show the configuration panel:
+      </b>
+</p>
+<p style="margin: 0; margin-left: 0.5in">
+        /noxib config
+      </p>
+    
+<p style="margin-left: 0.25in">
+<b>
+        Show or hide the bar or individual slots:
+      </b>
+</p>
+<p style="margin: 0; margin-left: 0.5in">
+        /noxib show [slot=table]
+      </p>
+<p style="margin: 0; margin-left: 0.5in">
+        /noxib hide [slot=table]
+      </p>
+<p style="margin: 0; margin-left: 0.5in">
+        /noxib toggle [slot=table]
+      </p>
+    
+<p style="margin-left: 0.25in">
+<b>
+        Lock the bar position:
+      </b>
+</p>
+<p style="margin: 0; margin-left: 0.5in">
+        /noxib lock
+      </p>
+<p style="margin: 0; margin-left: 0.5in">
+        /noxib unlock
+      </p>
+    
+<p style="margin-left: 0.25in">
+<b>
+        Customize slot displays:
+      </b>
+</p>
+<p style="margin: 0; margin-left: 0.5in">
+        /noxib resize slot=table width=number
+      </p>
+<p style="margin: 0; margin-left: 0.5in">
+        /noxib remap slot=table display='string'
+      </p>
+    
+<p style="margin-left: 0.25in">
+<b>
+        Reset the curent session statistics:
+      </b>
+</p>
+<p style="margin: 0; margin-left: 0.5in">
+        /noxib reset
+      </p>
+    
+<p style="margin-left: 0.25in">
+<b>
+        Configure the tooltip:
+      </b>
+</p>
+<p style="margin: 0; margin-left: 0.5in">
+        /noxib tooltip [state=&lt;'on', 'off'&gt;] [position=&lt;'anchor'&gt;] [x=number] [y=number]
+      </p>
+    
+<p style="margin-left: 0.25in">
+<b>
+        Configure the clock offset from server time:
+      </b>
+</p>
+<p style="margin: 0; margin-left: 0.5in">
+        /noxib clock [offsethour=number] [offsetminute=number]
+      </p>
+    
+<p style="margin-left: 0.25in">
+      "table" parameters can be specified as:
+    </p>
+    
+<table style="margin-left: 0.5in">
+<tr>
+<td style="padding-right: 8pt">numbers</td><td>"slot=1"</td>
+</tr>
+<tr>
+<td style="padding-right: 8pt">ranges</td><td>"slot=1-6"</td>
+</tr>
+<tr>
+<td style="padding-right: 8pt">lists</td><td>"slot=[ 1 3 7 8 ]"</td>
+</tr>
+</table>
+    
+<p style="margin-left: 0.25in">
+      Display strings for the remap command (enclosed in single
+      quotes) define what each slot will display. Variables in each
+      display string (enclosed in braces) will be replaced in the bar
+      with their current values.
+    </p>
+    
+<p style="margin-left: 0.25in">
+      Anchor values for the tooltip can be:
+    </p>
+    
+<table style="margin-left: 0.5in">
+<tr>
+<td>'left'</td>
+</tr>
+<tr>
+<td>'topleft'</td>
+</tr>
+<tr>
+<td>'top'</td>
+</tr>
+<tr>
+<td>'topright'</td>
+</tr>
+<tr>
+<td>'right'</td>
+</tr>
+<tr>
+<td>'bottomright'</td>
+</tr>
+<tr>
+<td>'bottom'</td>
+</tr>
+<tr>
+<td>'bottomleft'</td>
+</tr>
+<tr>
+<td>'center'</td>
+</tr>
+</table>
+    
+<h4>Examples</h4>
+      
+<p style="margin-left: 0.25in">
+<i>
+          Mark slots 4, 5 and 6 as visible
+        </i>
+</p>
+<p style="margin: 0; margin-left: 0.5in">
+          /noxib show slot=4-6
+        </p>
+      
+<p style="margin-left: 0.25in">
+<i>
+          Display only the clock (in white) in a 100 pixel wide slot
+        </i>
+</p>
+<p style="margin: 0; margin-left: 0.5in">
+          /noxib hide slot=1-9
+        </p>
+<p style="margin: 0; margin-left: 0.5in">
+          /noxib show slot=1
+        </p>
+<p style="margin: 0; margin-left: 0.5in">
+          /noxib resize slot=1 width=100
+        </p>
+<p style="margin: 0; margin-left: 0.5in">
+          /noxib remap slot=1 display='|cffffffff{24hours}:{minutes}'
+        </p>
+      
+<p style="margin-left: 0.25in">
+<i>
+         Display the current framerate in slot 6, followed by a space and 
+         then "fps"
+        </i>
+</p>
+<p style="margin: 0; margin-left: 0.5in">
+          /noxib remap slot=6 display='{framerate} fps'
+        </p>
+      
+<p style="margin-left: 0.25in">
+<i>
+          Put the tooltip in the bottom right corner
+        </i>
+</p>
+<p style="margin: 0; margin-left: 0.5in">
+          /noxib tooltip position='bottomright' x=-32 y=32
+        </p>
+      
+<p style="margin-left: 0.25in">
+<i>
+          Shut off the tooltip
+        </i>
+</p>
+<p style="margin: 0; margin-left: 0.5in">
+          /noxib tooltip state='off'
+        </p>
+      
+<p style="margin-left: 0.25in">
+<i>
+          Reset the clock offsets to zero
+        </i>
+</p>
+<p style="margin: 0; margin-left: 0.5in">
+          /noxib clock
+        </p>
+      
+<p style="margin-left: 0.25in">
+<i>
+          Set the clock offset to minus 2 hours and 30 minutes
+        </i>
+</p>
+<p style="margin: 0; margin-left: 0.5in">
+          /noxib clock offsethour=-2 offsetminute=-30
+        </p>
+    
+  
+<h3>Customizing The Bar</h3>
+    
+<p style="margin-left: 0.25in">
+      Both the main bar and the tooltip of the Nox Information Bar can
+      be customized to show any information you want.  You do this by
+      specifying <i>display strings</i> for the bar to show.
+    </p>
+    
+<h4>Display Strings</h4>
+      
+<p style="margin-left: 0.25in">
+        Display strings determine what each element of the Nox bar will show.
+        These are made of up any combination of variables, formats, color 
+        codes and plain text.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        
+<i>Variables</i> are special words contained in
+        braces that the Nox bar replaces at runtime with the actual values
+        they represent.  Lists of the variables Nox recognizes are shown
+        in the sections that follow.  If Nox does not recognize a variable,
+        for instance if it is misspelled or simply not known, it will not
+        replace the variable and it will instead show up exactly as entered
+        on your screen.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        
+<i>Formats</i> are additional words placed inside the braces of a
+        variable that alter the way the variables shows its value.  These
+        can for instance be used to choose between integer and decimal
+        number displays, or for other similar changes.  These are also
+        listed later, after the variable sections.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        
+<i>Color codes</i> allow you to change the color and transparency of any
+        text entered.  These will work for any variables or plain text,
+        except for certain variables that automatically color themselves.
+        These are explained in more detail later.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        
+<i>Plain text</i> is anything else you enter that is not a variable,
+        color code, or format.  Nox always displays plain text exactly as
+        you entered it.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        For example, in the display string:
+      </p>
+      
+<p style="margin: 0; margin-left: 0.5in">
+        Time played: {timeplayed:short}
+      </p>
+      
+<p style="margin-left: 0.25in">
+        "Time played: " is plain text, "{timeplayed}" is a variable,
+        and "short" is a format that changes the way the {timeplayed} 
+        variable displays.
+      </p>
+    
+    
+<h4>The Main Bar</h4>
+      
+<p style="margin-left: 0.25in">
+        The main bar has sixteen display slots that you can turn on
+        and off, resize, and configure independently.  Each slot gets
+        its own display string which you specify.  You could configure
+        Nox to show one variable in each slot, configure the entire
+        bar to show only one slot with sixteen variables in it, or
+        create any other configuration you choose.  The potential
+        combinations are unlimited.
+      </p>
+    
+    
+<h4>The Tooltip</h4>
+      
+<p style="margin-left: 0.25in">
+        The tooltip consists of 30 lines, each containing a left half and
+        a right half.  A display string entered in the left half of a line
+        will show up left-justified in the tooltip, and a display string
+        in the right half will show up right-justified.  If the right half
+        is left blank, then it will be ignored and the left half will
+        fill the full width of the tooltip.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        To leave a blank line in the tooltip, put at least one space in the
+        left display string and leave the right half empty.  If both halves
+        of a line are empty, the tooltip will ignore the line entirely,
+        and Nox will remove the line the next time you open the
+        configuration GUI.  (This is an easy way to move the contents of the
+        tooltip up - just blank the lines you don't want, close the config
+        GUI and open it up again.  The blank lines will be gone.)
+      </p>
+      
+<p style="margin-left: 0.25in">
+        Tooltip lines cannot be sized.  The tooltip will automatically size
+        itself to fit the text it is showing at the time.
+      </p>
+    
+    
+<h4>Character-specific Overrides</h4>
+      
+<p style="margin-left: 0.25in">
+        Nox allows each character to override specific groups of
+        options, so that each character can share the common settings,
+        can have their own settings, or any combination of the two.
+        The four option groups that can be customized are the General
+        options, the Clock settings, the Slot contents, and the
+        Tooltip settings and contents.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        By default, all characters share one common set of settings.
+        You can give a character private settings by checking the box
+        for the appropriate group (or groups) in the
+        "Character-specific Options" panel in the config GUI.  The
+        common settings for that group will be copied over to the
+        character, and you can start editing them immediately.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        To switch a character back to the common settings from
+        customized settings, just uncheck the appropriate checkbox in
+        the config GUI.  Note that if you make changes to customized
+        settings and turn off the customization checkbox at the same
+        time, the settings changes will <i>not</i> be saved.  Only the
+        customization checkbox will be saved in that case.  If you
+        want to change both in one edit session, turn off the checkbox
+        first and then press the "Apply" button.  Your checkbox change
+        will be saved, and the common settings will be loaded into the
+        config GUI.  Now make your changes to the common settings and
+        save them as normal.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        Note that the common settings are copied into the character's
+        settings when you customize, but there is not yet a way to
+        copy a character's custom settings to the common settings.
+      </p>
+    
+  
+<h3>Variables</h3>
+    
+<p style="margin-left: 0.25in">
+      Variables provide data about the state of the game and your character.
+      This section lists the variables that the Nox Information Bar and
+      its extensions make available to you.
+    </p>
+    
+<h4>Variables provided by NoxInformationBar</h4>
+      
+<table cellspacing="0" width="90%" style="margin-left: 0.5in; margin-right: 0.5in; border-collapse: collapse;">
+<tr>
+<td style="width: 100pt"><b>Name</b></td><td><b>Description</b></td><td style="width: 100pt"><b>Format Type</b></td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{latency}</td><td style="border: 1px solid black; padding: 1px 4px">Current network latency in milliseconds.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{framerate}</td><td style="border: 1px solid black; padding: 1px 4px">Current framerate in frames per second.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{24hours}</td><td style="border: 1px solid black; padding: 1px 4px">Hours in current time in military format.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{hours}</td><td style="border: 1px solid black; padding: 1px 4px">Hours in current time.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{minutes}</td><td style="border: 1px solid black; padding: 1px 4px">Minutes in current time.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{ampm}</td><td style="border: 1px solid black; padding: 1px 4px">AM or PM of current time.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{x}</td><td style="border: 1px solid black; padding: 1px 4px">Current horizontal map location.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{y}</td><td style="border: 1px solid black; padding: 1px 4px">Current vertical map location.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{money}</td><td style="border: 1px solid black; padding: 1px 4px">Current amount of money owned.</td><td style="border: 1px solid black; padding: 1px 4px">Money </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{hpregen}</td><td style="border: 1px solid black; padding: 1px 4px">Current health regeneration rate.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{manaregen}</td><td style="border: 1px solid black; padding: 1px 4px">Current mana regeneration rate.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{hp}</td><td style="border: 1px solid black; padding: 1px 4px">Current health points.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{hploss}</td><td style="border: 1px solid black; padding: 1px 4px">Current health loss (max - current).</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{hp%}</td><td style="border: 1px solid black; padding: 1px 4px">Current health percentage.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{maxhp}</td><td style="border: 1px solid black; padding: 1px 4px">Maximum health.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{mana}</td><td style="border: 1px solid black; padding: 1px 4px">Current mana points.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{manaloss}</td><td style="border: 1px solid black; padding: 1px 4px">Current mana loss (max - current).</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{mana%}</td><td style="border: 1px solid black; padding: 1px 4px">Current mana percentage.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{maxmana}</td><td style="border: 1px solid black; padding: 1px 4px">Current mana loss (max - current).</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{xp}</td><td style="border: 1px solid black; padding: 1px 4px">Current experience points earned.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{xptolevel}</td><td style="border: 1px solid black; padding: 1px 4px">Additional XP needed to reach next level.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{xp%}</td><td style="border: 1px solid black; padding: 1px 4px">Current XP percentage earned towards next level.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{xptolevel%}</td><td style="border: 1px solid black; padding: 1px 4px">Percentage XP needed to level. (inverse of {xp%})</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{maxxp}</td><td style="border: 1px solid black; padding: 1px 4px">Total XP to get to next level.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{rest}</td><td style="border: 1px solid black; padding: 1px 4px">
+            Amount of "free" XP that is left to be earned for being rested.
+          </td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{level}</td><td style="border: 1px solid black; padding: 1px 4px">Current level.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{ubs}</td><td style="border: 1px solid black; padding: 1px 4px">Used bag slots.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{abs}</td><td style="border: 1px solid black; padding: 1px 4px">Available bag slots.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{tbs}</td><td style="border: 1px solid black; padding: 1px 4px">Total bag slots.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{mem}</td><td style="border: 1px solid black; padding: 1px 4px">The current amount of UI memory used by addons.</td><td style="border: 1px solid black; padding: 1px 4px">Memory </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{restbonus}</td><td style="border: 1px solid black; padding: 1px 4px">
+            Amount of additional experience that will be counted as "rested".
+          </td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{restlimit}</td><td style="border: 1px solid black; padding: 1px 4px">
+            Total amount of experience needed before the "rested" bonus is 
+            used up.
+          </td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{ammo}</td><td style="border: 1px solid black; padding: 1px 4px">Total amount of equipped ammo.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionttl}</td><td style="border: 1px solid black; padding: 1px 4px">Estimated time to level for this session.</td><td style="border: 1px solid black; padding: 1px 4px">Time </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{levelttl}</td><td style="border: 1px solid black; padding: 1px 4px">Estimated time to level for this level.</td><td style="border: 1px solid black; padding: 1px 4px">Time </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{bestttl}</td><td style="border: 1px solid black; padding: 1px 4px">Smallest of session TTL and level TTL.</td><td style="border: 1px solid black; padding: 1px 4px">Time </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{totaltime}</td><td style="border: 1px solid black; padding: 1px 4px">The total amount of time played for this character.</td><td style="border: 1px solid black; padding: 1px 4px">Time </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessiontime}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The amount of time played this session, or since the last
+            session reset.
+          </td><td style="border: 1px solid black; padding: 1px 4px">Time </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{leveltime}</td><td style="border: 1px solid black; padding: 1px 4px">The amount of time played at this character level.</td><td style="border: 1px solid black; padding: 1px 4px">Time </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionxprate}</td><td style="border: 1px solid black; padding: 1px 4px">The average rate of experience gain this session.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{levelxprate}</td><td style="border: 1px solid black; padding: 1px 4px">The average rate of experience gain this level.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{income}</td><td style="border: 1px solid black; padding: 1px 4px">The amount of money earned this session.</td><td style="border: 1px solid black; padding: 1px 4px">Money </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{expense}</td><td style="border: 1px solid black; padding: 1px 4px">The amount of money earned this session.</td><td style="border: 1px solid black; padding: 1px 4px">Money </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{netincome}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The net amount of money earned (or lost) this session.  
+            This is the same as {income} - {expense}.
+          </td><td style="border: 1px solid black; padding: 1px 4px">Money </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{incomerate}</td><td style="border: 1px solid black; padding: 1px 4px">The average amount of money earned per hour this session.</td><td style="border: 1px solid black; padding: 1px 4px">Money </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{expenserate}</td><td style="border: 1px solid black; padding: 1px 4px">The average amount of money spent per hour this session.</td><td style="border: 1px solid black; padding: 1px 4px">Money </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{netincomerate}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The net amount of money earned (or lost) per hour this session.  
+            This is the same as {incomerate} - {expenserate}.
+          </td><td style="border: 1px solid black; padding: 1px 4px">Money </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{factionname}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The name of the indicated faction.  Since this returns the same
+            thing as the faction name indicated, it is not expected to be
+            very useful.
+          </td><td style="border: 1px solid black; padding: 1px 4px">Faction </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{factionstanding}</td><td style="border: 1px solid black; padding: 1px 4px">
+            Your current standing with the indicated faction: Friendly,
+            Hostile, etc.
+          </td><td style="border: 1px solid black; padding: 1px 4px">Faction </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{reputation}</td><td style="border: 1px solid black; padding: 1px 4px">
+            Your current reputation with the indicated faction, expressed
+            as a number.  This is the same number that shows up on your
+            character's reputation panel.
+          </td><td style="border: 1px solid black; padding: 1px 4px">Faction </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{reputationmax}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The maximum number of reputation points you can earn with the
+            indicated faction, before advancing to the next standing.
+          </td><td style="border: 1px solid black; padding: 1px 4px">Faction </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{reputation%}</td><td style="border: 1px solid black; padding: 1px 4px">
+            Your current reputation with the indicated faction, expressed
+            as a percentage of the maximum points in this standing.
+          </td><td style="border: 1px solid black; padding: 1px 4px">Faction, Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{factionatwar}</td><td style="border: 1px solid black; padding: 1px 4px">
+            Indicates whether or not you are at war with the indicated
+            faction.
+          </td><td style="border: 1px solid black; padding: 1px 4px">Faction, Boolean </td>
+</tr>
+</table>
+    
+    
+<h4>Variables provided by NoxCombatStats</h4>
+      
+<table cellspacing="0" width="90%" style="margin-left: 0.5in; margin-right: 0.5in; border-collapse: collapse;">
+<tr>
+<td style="width: 100pt"><b>Name</b></td><td><b>Description</b></td><td style="width: 100pt"><b>Format Type</b></td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{dps}</td><td style="border: 1px solid black; padding: 1px 4px">Damage per second this fight.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{hps}</td><td style="border: 1px solid black; padding: 1px 4px">Healing per second this fight.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{petdps}</td><td style="border: 1px solid black; padding: 1px 4px">Pet damage per second fight.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{totaldamage}</td><td style="border: 1px solid black; padding: 1px 4px">Total damage dealt this fight.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{totalheal}</td><td style="border: 1px solid black; padding: 1px 4px">Total points healed this fight.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{combatduration}</td><td style="border: 1px solid black; padding: 1px 4px">Time spent in combat this fight.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{meleehits}</td><td style="border: 1px solid black; padding: 1px 4px">Number of melee hits this fight.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{meleemisses}</td><td style="border: 1px solid black; padding: 1px 4px">Number of melee misses this fight.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{meleecrits}</td><td style="border: 1px solid black; padding: 1px 4px">Number of melee critical hits this fight.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{meleehits%}</td><td style="border: 1px solid black; padding: 1px 4px">Percentage of melee hits this fight.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{meleemisses%}</td><td style="border: 1px solid black; padding: 1px 4px">Percentage of melee misses this fight.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{meleecrits%}</td><td style="border: 1px solid black; padding: 1px 4px">Percentage of melee critical hits this fight.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{nonmeleehits}</td><td style="border: 1px solid black; padding: 1px 4px">Number of non-melee hits this fight.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{nonmeleemisses}</td><td style="border: 1px solid black; padding: 1px 4px">Number of non-melee misses this fight.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{nonmeleecrits}</td><td style="border: 1px solid black; padding: 1px 4px">Number of non-melee critical hits this fight.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{nonmeleehits%}</td><td style="border: 1px solid black; padding: 1px 4px">Percentage of non-melee hits this fight.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{nonmeleemisses%}</td><td style="border: 1px solid black; padding: 1px 4px">Percentage of non-melee misses this fight.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{nonmeleecrits%}</td><td style="border: 1px solid black; padding: 1px 4px">Percentage of non-melee critical hits this fight.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{healhits}</td><td style="border: 1px solid black; padding: 1px 4px">Number of successful heals this fight.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{healmisses}</td><td style="border: 1px solid black; padding: 1px 4px">Number of failed heals this fight.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{healcrits}</td><td style="border: 1px solid black; padding: 1px 4px">Number of critical heals this fight.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{healhits%}</td><td style="border: 1px solid black; padding: 1px 4px">Percentage of successful heals this fight.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{healmisses%}</td><td style="border: 1px solid black; padding: 1px 4px">Percentage of failed heals this fight.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{healcrits%}</td><td style="border: 1px solid black; padding: 1px 4px">Percentage of critical heals this fight.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessiondps}</td><td style="border: 1px solid black; padding: 1px 4px">Damage per second, averaged over this session.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionhps}</td><td style="border: 1px solid black; padding: 1px 4px">Healing per second, averaged over this session.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionpetdps}</td><td style="border: 1px solid black; padding: 1px 4px">Pet damage per second, averaged over this session.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessiontotaldamage}</td><td style="border: 1px solid black; padding: 1px 4px">Total damage dealt this session.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessiontotalheal}</td><td style="border: 1px solid black; padding: 1px 4px">Total points healed this session.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessioncombatduration}</td><td style="border: 1px solid black; padding: 1px 4px">Time spent in combat this session.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionmeleehits}</td><td style="border: 1px solid black; padding: 1px 4px">Number of melee hits this session.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionmeleemisses}</td><td style="border: 1px solid black; padding: 1px 4px">Number of melee misses this session.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionmeleecrits}</td><td style="border: 1px solid black; padding: 1px 4px">Number of melee critical hits this session.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionmeleehits%}</td><td style="border: 1px solid black; padding: 1px 4px">Percentage of melee hits this session.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionmeleemisses%}</td><td style="border: 1px solid black; padding: 1px 4px">Percentage of melee misses this session.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionmeleecrits%}</td><td style="border: 1px solid black; padding: 1px 4px">Percentage of melee critical hits this session.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionnonmeleehits}</td><td style="border: 1px solid black; padding: 1px 4px">Number of non-melee hits this session.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionnonmeleemisses}</td><td style="border: 1px solid black; padding: 1px 4px">Number of non-melee misses this session.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionnonmeleecrits}</td><td style="border: 1px solid black; padding: 1px 4px">Number of non-melee critical hits this session.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionnonmeleehits%}</td><td style="border: 1px solid black; padding: 1px 4px">Percentage of non-melee hits this session.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionnonmeleemisses%}</td><td style="border: 1px solid black; padding: 1px 4px">Percentage of non-melee misses this session.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionnonmeleecrits%}</td><td style="border: 1px solid black; padding: 1px 4px">Percentage of non-melee critical hits this session.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionhealhits}</td><td style="border: 1px solid black; padding: 1px 4px">Number of successful heals this session.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionhealmisses}</td><td style="border: 1px solid black; padding: 1px 4px">Number of failed heals this session.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionhealcrits}</td><td style="border: 1px solid black; padding: 1px 4px">Number of critical heals this session.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionhealhits%}</td><td style="border: 1px solid black; padding: 1px 4px">Percentage of successful heals this session.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionhealmisses%}</td><td style="border: 1px solid black; padding: 1px 4px">Percentage of failed heals this session.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionhealcrits%}</td><td style="border: 1px solid black; padding: 1px 4px">Percentage of critical heals this session.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{kills}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The number of kills made by your party this session.
+          </td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{xpperkill}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The average experienced gained per kill for your last four
+            kills.
+          </td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{killstolevel}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The estimated number of kills needed to gain the next
+            character level, based on the average experience gained
+            from your last four kills.
+          </td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+</table>
+    
+    
+<h4>Variables provided by NoxEquipmentStats</h4>
+      
+<table cellspacing="0" width="90%" style="margin-left: 0.5in; margin-right: 0.5in; border-collapse: collapse;">
+<tr>
+<td style="width: 100pt"><b>Name</b></td><td><b>Description</b></td><td style="width: 100pt"><b>Format Type</b></td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{equipslot}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The name of the slot where the item is equipped (eg. "Head", 
+            "Legs", etc).
+          </td><td style="border: 1px solid black; padding: 1px 4px">Equipment </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{equipname}</td><td style="border: 1px solid black; padding: 1px 4px">The name of the item equipped in the named slot.</td><td style="border: 1px solid black; padding: 1px 4px">Equipment </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{currdurability}</td><td style="border: 1px solid black; padding: 1px 4px">The current durability of the item in the named slot.</td><td style="border: 1px solid black; padding: 1px 4px">Equipment </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{maxdurability}</td><td style="border: 1px solid black; padding: 1px 4px">The maximum durability of the item in the named slot.</td><td style="border: 1px solid black; padding: 1px 4px">Equipment </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{durability%}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The percent durability of the item in the named slot.  An
+            item at 100% is in perfect condition, and one at 0% is broken.
+          </td><td style="border: 1px solid black; padding: 1px 4px">Equipment </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{repaircost}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The amount of money required to repair the item in the named slot.
+          </td><td style="border: 1px solid black; padding: 1px 4px">Equipment, Money </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{totalrepaircost}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The amount of money required to repair all equipped items.  This
+            does not count damaged items in your bags.
+          </td><td style="border: 1px solid black; padding: 1px 4px">Money </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{totalcurrdurability}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The total current durability of all of your equipped items.  This
+            gives you a general feel for your overall equipment damage.
+          </td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{totalmaxdurability}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The total maximum durability of all of your equipped items.
+          </td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{totaldurability%}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The percent durability of all of your equipped items.  At 100%,
+            all of your equipment is in perfect condition.  At 0%, it is
+            all broken.  Note that you may have some broken items and still
+            have more than 0% total durability.
+          </td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+</table>
+    
+    
+<h4>Variables provided by NoxHonorStats</h4>
+      
+<table cellspacing="0" width="90%" style="margin-left: 0.5in; margin-right: 0.5in; border-collapse: collapse;">
+<tr>
+<td style="width: 100pt"><b>Name</b></td><td><b>Description</b></td><td style="width: 100pt"><b>Format Type</b></td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{lifetimehk}</td><td style="border: 1px solid black; padding: 1px 4px">Number of honorable kills over lifetime.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{lifetimerank}</td><td style="border: 1px solid black; padding: 1px 4px">Highest rank achieved over lifetime.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{yesterdayhk}</td><td style="border: 1px solid black; padding: 1px 4px">Number of honorable kills earned yesterday.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{yesterdayhonor}</td><td style="border: 1px solid black; padding: 1px 4px">Number of honor points earned yesterday.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{todayhk}</td><td style="border: 1px solid black; padding: 1px 4px">Number of honorable kills earned today.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{todayhonor}</td><td style="border: 1px solid black; padding: 1px 4px">Number of honor points earned today.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{currentrank}</td><td style="border: 1px solid black; padding: 1px 4px">Player's current rank.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{currentstanding}</td><td style="border: 1px solid black; padding: 1px 4px">Player's current numeric standing.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{rankprogress}</td><td style="border: 1px solid black; padding: 1px 4px">Player's percentage progress towards next PvP rank.</td><td style="border: 1px solid black; padding: 1px 4px">Number </td>
+</tr>
+</table>
+    
+    
+<h4>Variables provided by NoxPlayerStats</h4>
+      
+<table cellspacing="0" width="90%" style="margin-left: 0.5in; margin-right: 0.5in; border-collapse: collapse;">
+<tr>
+<td style="width: 100pt"><b>Name</b></td><td><b>Description</b></td><td style="width: 100pt"><b>Format Type</b></td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{name}</td><td style="border: 1px solid black; padding: 1px 4px">Current character's name.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{class}</td><td style="border: 1px solid black; padding: 1px 4px">Current character's class.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{realm}</td><td style="border: 1px solid black; padding: 1px 4px">Current character's realm.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sex}</td><td style="border: 1px solid black; padding: 1px 4px">Current character's sex.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{race}</td><td style="border: 1px solid black; padding: 1px 4px">Current character's race.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{faction}</td><td style="border: 1px solid black; padding: 1px 4px">Current character's faction (Horde or Alliance).</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{strength}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The character's current strength score, colored for bonuses and 
+            penalties.
+          </td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{agility}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The character's current agility score, colored for bonuses and
+            penalties.
+          </td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{stamina}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The character's current stamina score, colored for bonuses and
+            penalties.
+          </td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{intellect}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The character's current intellect score, colored for bonuses and
+            penalties.
+          </td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{spirit}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The character's current spirit score, colored for bonuses and
+            penalties.
+          </td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{armor}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The character's current armor score, colored for bonuses and
+            penalties.
+          </td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{resistholy}</td><td style="border: 1px solid black; padding: 1px 4px">The character's current holy magic resistance.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{resistarcane}</td><td style="border: 1px solid black; padding: 1px 4px">The character's current arcane magic resistance.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{resistfire}</td><td style="border: 1px solid black; padding: 1px 4px">The character's current fire magic resistance.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{resistnature}</td><td style="border: 1px solid black; padding: 1px 4px">The character's current nature magic resistance.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{resistfrost}</td><td style="border: 1px solid black; padding: 1px 4px">The character's current frost magic resistance.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{resistshadow}</td><td style="border: 1px solid black; padding: 1px 4px">The character's current shadow magic resistance.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{zone}</td><td style="border: 1px solid black; padding: 1px 4px">
+            Current zone the character is in.  Colored green if the
+            player is in friendly territory, red in hostile territory
+            and arenas, orange in contested territory, and yellow
+            everywhere else.
+          </td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{subzone}</td><td style="border: 1px solid black; padding: 1px 4px">Current subzone the character is in.  Colored like {zone}.</td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{shortzone}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The zone name as it appears in the minimap.  Seems to be the 
+            same thing as subzone.  Colored like {zone}
+          </td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{realzone}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The real name of an instance if the player is in one, otherwise
+            the same as {zone}.  Colored like {zone}.
+          </td><td style="border: 1px solid black; padding: 1px 4px"> </td>
+</tr>
+</table>
+    
+    
+<h4>Variables provided by NoxSkillStats</h4>
+      
+<table cellspacing="0" width="90%" style="margin-left: 0.5in; margin-right: 0.5in; border-collapse: collapse;">
+<tr>
+<td style="width: 100pt"><b>Name</b></td><td><b>Description</b></td><td style="width: 100pt"><b>Format Type</b></td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{skillrank}</td><td style="border: 1px solid black; padding: 1px 4px">The character's current level in the named skill.</td><td style="border: 1px solid black; padding: 1px 4px">Skill </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{skillmax}</td><td style="border: 1px solid black; padding: 1px 4px">The character's maximum level in the named skill.</td><td style="border: 1px solid black; padding: 1px 4px">Skill </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{skillname}</td><td style="border: 1px solid black; padding: 1px 4px">
+            The name of the named skill.  This is most useful when
+            used with the "generic" skill names like "Professions 1".
+            In that case it will return the real name of the skill,
+            instead of the generic name.
+          </td><td style="border: 1px solid black; padding: 1px 4px">Skill </td>
+</tr>
+</table>
+    
+    
+<h4>Variables provided by NoxMoneyExtension</h4>
+      
+<p style="margin-left: 0.25in">
+        NoxMoneyExtension provides only one variable: {coins}.  This
+        variable shows your current amount of money using coin
+        graphics similar to what appears at the bottom of the
+        backpack.  This variable can only be used in one slot at a
+        time on the main bar, and must be the only thing in that slot.
+        Currently the other money-related variables ({income},
+        {repaircost}, etc.)  cannot be shown with coin graphics.
+      </p>
+    
+    
+<h4>Deprecated Variables</h4>
+      
+<p style="margin-left: 0.25in">
+        This section lists variables that are being phased out and may
+        disappear from future versions, but are still supported for backward
+        compatibility.  All of these variables have newer equivalents using
+        format codes, as shown in the table below.
+      </p>
+      
+<table cellspacing="0" width="90%" style="margin-left: 0.5in; margin-right: 0.5in; border-collapse: collapse;">
+<tr>
+<td style="width: 100pt"><b>Name</b></td><td><b>Description</b></td><td style="width: 100pt"><b>Replaced by</b></td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionttlshort}</td><td style="border: 1px solid black; padding: 1px 4px">
+            Estimated time to level for this session, in "d.h:m:s" format.
+          </td><td style="border: 1px solid black; padding: 1px 4px">{sessionttl:short} </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{levelttlshort}</td><td style="border: 1px solid black; padding: 1px 4px">
+            Estimated time to level for this level, in "d.h:m:s" format.
+          </td><td style="border: 1px solid black; padding: 1px 4px">{levelttl:short} </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{bestttlshort}</td><td style="border: 1px solid black; padding: 1px 4px">
+            Smallest of session TTL and level TTL, in "d.h:m:s" format.
+          </td><td style="border: 1px solid black; padding: 1px 4px">{bestttl:short} </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{memmb}</td><td style="border: 1px solid black; padding: 1px 4px">UI memory used in megabytes.</td><td style="border: 1px solid black; padding: 1px 4px">{mem:mb,int} </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{memkb}</td><td style="border: 1px solid black; padding: 1px 4px">UI memory used in kilobytes.</td><td style="border: 1px solid black; padding: 1px 4px">{mem:kb} </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{memlimitmb}</td><td style="border: 1px solid black; padding: 1px 4px">UI memory GC threshold, in megabytes.</td><td style="border: 1px solid black; padding: 1px 4px">{memlimit:mb,int} </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{memlimitkb}</td><td style="border: 1px solid black; padding: 1px 4px">UI memory GC threshold, in kilobytes.</td><td style="border: 1px solid black; padding: 1px 4px">{memlimit:kb} </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{allmoney}</td><td style="border: 1px solid black; padding: 1px 4px">Money displayed in "0g 0s 0c" format.</td><td style="border: 1px solid black; padding: 1px 4px">{money:short} </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{gold}</td><td style="border: 1px solid black; padding: 1px 4px">Current amount of gold.</td><td style="border: 1px solid black; padding: 1px 4px">{money:gold} </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{silver}</td><td style="border: 1px solid black; padding: 1px 4px">Current amount of silver.</td><td style="border: 1px solid black; padding: 1px 4px">{money:silver} </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{copper}</td><td style="border: 1px solid black; padding: 1px 4px">Current amount of copper.</td><td style="border: 1px solid black; padding: 1px 4px">{money:copper} </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{yesterdaycp}</td><td style="border: 1px solid black; padding: 1px 4px">Number of contribution points earned yesterday.</td><td style="border: 1px solid black; padding: 1px 4px">{yesterdayhonor} </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">{sessionhk}</td><td style="border: 1px solid black; padding: 1px 4px">Number of honorable kills earned this session.</td><td style="border: 1px solid black; padding: 1px 4px">{todayhk} </td>
+</tr>
+</table>
+    
+  
+<h3>Supported Formats</h3>
+    
+<p style="margin-left: 0.25in">
+      Formats are a new feature in version 2.0 that let you change the
+      way many of the variables display their values.  This one
+      feature adds a whole new layer of configurability to the Nox bar
+      - as well as allowing for whole new types of variables.  The
+      sections shown here match up with the allowed formats shown in
+      the tables of variables above.
+    </p>
+    
+<p style="margin-left: 0.25in">
+      To use a format, you simply place a colon after the variable name,
+      <i>inside</i> the brackets, and place one of the format names shown
+      below after it.  There should be no spaces between the colon and
+      the format name, or between the format name and the end brace.  Some
+      formats allow multiple options at once, and in this case you simply
+      separate each option with a comma, again with no extra spaces.  Multiple
+      options <i>must</i> be specified in the order shown below.
+    </p>
+    
+<p style="margin-left: 0.25in">
+      Except where noted, formats are always optional - if you leave them
+      out, the variable will display itself using a reasonable default format.
+    </p>
+    
+<p style="margin-left: 0.25in">
+      For example, to display the total time played in a shortened form,
+      you would use:
+    </p>
+    
+<p style="margin: 0; margin-left: 0.5in">
+      {totaltime:short}
+    </p>
+    
+<p style="margin-left: 0.25in">
+      To display your current money in a long form, with the numbers and
+      letters colored like coins, you would use:
+    </p>
+    
+<p style="margin: 0; margin-left: 0.5in">
+      {money:long,1,1}
+    </p>
+    
+<p style="margin-left: 0.25in">
+      To display the total time played in the default format, which happens
+      to be the same as the medium format, you would use:
+    </p>
+    
+<p style="margin: 0; margin-left: 0.5in">
+      {totaltime}
+    </p>
+    
+<p style="margin-left: 0.25in">
+      Note in this case that since the formats are left out, the colon is
+      left out too.
+    </p>
+    
+<h4>Number Formats</h4>
+      
+<p style="margin-left: 0.25in">
+        Numbers can be displayed as integers, or as real numbers with
+        two decimal places.
+      </p>
+      
+<table cellspacing="0" width="90%" style="margin-left: 0.5in; margin-right: 0.5in; border-collapse: collapse;">
+<tr>
+<td style="width: 100pt"><b>Format</b></td><td><b>Description</b></td><td style="width: 100pt"><b>Example</b></td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">int</td><td style="border: 1px solid black; padding: 1px 4px">
+            Displays the value as an integer.  Any fractional part is
+            truncated.
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            10
+           </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">dec</td><td style="border: 1px solid black; padding: 1px 4px">
+            Displays the value as a real number with two decimal places.
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            21.34
+           </td>
+</tr>
+</table>
+    
+    
+<h4>Boolean Formats</h4>
+      
+<p style="margin-left: 0.25in">
+        Boolean variables express a value that can be <i>true</i> or
+        <i>false</i>.  Normally these variables will print either the name
+        "true" or the name "false", depending on their value.  Boolean
+        formats let you change either or both of these names.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        Boolean formats are expressed as {<i>variable</i>:<i>text if true</i>,<i>text if false</i>}.  Either of the text values may be omitted, but note that if you include a false value without a true value, you must still include the comma.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        For example, to print "yes" or "no" instead of "true" and "false", you
+        would use:
+      </p>
+      
+<p style="margin: 0; margin-left: 0.5in">
+        {factionatwar:Bloodsail Buccaneers,yes,no}
+      </p>
+      
+<p style="margin-left: 0.25in">
+        (The "Bloodsail Buccaneers" part is the required "faction" format
+        for this variable, explained below, and is not part of the boolean
+        format.  The boolean part follows it.)
+      </p>
+      
+<p style="margin-left: 0.25in">
+        If instead you wanted the text "At War" to show up in red only when
+        you were at war, you would use:
+      </p>
+      
+<p style="margin: 0; margin-left: 0.5in">
+        {factionatwar:Everlook,|cffff0000At War}
+      </p>
+      
+<p style="margin-left: 0.25in">
+        By contrast, this is how you would do it if you only wanted "At Peace"
+        to show up in green:
+      </p>
+      
+<p style="margin: 0; margin-left: 0.5in">
+        {factionatwar:Everlook,,|cff00ff00At Peace}
+      </p>
+      
+<p style="margin-left: 0.25in">
+        Note the extra comma in the format, reserving the "empty" true value.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        See below for a discussion of color codes.
+      </p>
+    
+    
+<h4>Time Formats</h4>
+      
+<p style="margin-left: 0.25in">
+        Times can be displayed in forms of different lengths.
+      </p>
+      
+<table cellspacing="0" width="90%" style="margin-left: 0.5in; margin-right: 0.5in; border-collapse: collapse;">
+<tr>
+<td style="width: 100pt"><b>Format</b></td><td><b>Description</b></td><td style="width: 100pt"><b>Example</b></td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">long</td><td style="border: 1px solid black; padding: 1px 4px">
+            Displays the time with each increment spelled out in full.
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            1 day, 21 hours, 36 minutes, 5 seconds
+           </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">medium</td><td style="border: 1px solid black; padding: 1px 4px">
+            Displays the time with abbreviations for each increment.
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            1d 21h 36m 5s
+           </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">short</td><td style="border: 1px solid black; padding: 1px 4px">
+            Displays the time in a compacted format, without increment names.
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            1.21:36:05
+           </td>
+</tr>
+</table>
+    
+    
+<h4>Money Formats</h4>
+      
+<p style="margin-left: 0.25in">
+        Money can be displayed in a great variety of formats affecting not
+        only how it is shown, but even <i>what part</i> is shown.  Money
+        values can even be colored like the coins - yellow for gold, grey
+        for silver, and orange for copper.  To color the coins, just include
+        a ",1" at the end of the format, or ",1,1" to color the number and
+        the name of the coin, for formats that include names.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        Money formats can even be used to extract part of a money
+        value.  For instance, if you are only interested in the amount
+        of gold you have, you can use the "gold" format to show only
+        that part.  The "as gold" format will show you the same thing,
+        but will also include your silver as a decimal fraction.  Note
+        that this behavior is not exactly the same for silver and
+        copper formats.  For example "silver" will show you
+        <i>only</i> the silver part, but "as silver" will also include
+        gold in the value as 100's of silver.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        This means that a slot configured like:
+      </p>
+      
+<p style="margin: 0; margin-left: 0.5in">
+        {money:gold}g {money:silver}s {money:copper}c
+      </p>
+      
+<p style="margin-left: 0.25in">
+        will display the same thing as:
+      </p>
+      
+<p style="margin: 0; margin-left: 0.5in">
+        {money:short}
+      </p>
+      
+<p style="margin-left: 0.25in">
+        Note that the latter takes less processing power from the
+        game, though.  (Actually these examples are not strictly the
+        same - the "short" format will omit the gold portion if it is
+        zero, and the silver portion if both gold and silver are zero.
+        The version with three variables will always show all
+        portions, even if they are zero.)
+      </p>
+      
+<p style="margin-left: 0.25in">
+        Money variables support the following formats:
+      </p>
+      
+<table cellspacing="0" width="90%" style="margin-left: 0.5in; margin-right: 0.5in; border-collapse: collapse;">
+<tr>
+<td style="width: 100pt"><b>Format</b></td><td><b>Description</b></td><td style="width: 100pt"><b>Example</b></td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">as gold[,dec[,1]]</td><td style="border: 1px solid black; padding: 1px 4px">
+            Display the total amount as gold, with silver after the
+            decimal.  The number format "dec" may optionally be
+            included, but must be included if you want to color
+            the number gold (with ",1").
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            1.02
+           </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">as gold,int[,1]</td><td style="border: 1px solid black; padding: 1px 4px">
+            Display the total amount in gold, as a whole number.  The
+            "int" portion is the number format for whole numbers.
+            Include the ",1" to color the number gold.
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            1
+           </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">as silver[,dec[,1]]</td><td style="border: 1px solid black; padding: 1px 4px">
+            Display the total amount as silver, with copper after the
+            decimal.  The number format "dec" may optionally be
+            included, but must be included if you want to color
+            the number silver (with ",1").
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            102.03
+           </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">as silver,int[,1]</td><td style="border: 1px solid black; padding: 1px 4px">
+            Display the total amount in silver, as a whole number.
+            The "int" portion is the number format for whole numbers.
+            Include the ",1" to color the number silver.
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            102
+           </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">as copper,dec[,1]</td><td style="border: 1px solid black; padding: 1px 4px">
+            Display the total amount as copper, with zeros after the
+            decimal.  The "dec" portion is the number format for real
+            numbers.  Include the ",1" to color the number copper.
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            10203.00
+           </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">as copper[,int[,1]]</td><td style="border: 1px solid black; padding: 1px 4px">
+            Display the total amount in copper, as a whole number.
+            The number format "int" may optionally be included, but
+            must be included if you want to color the number
+            copper (with ",1").
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            10203
+           </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">gold[,1]</td><td style="border: 1px solid black; padding: 1px 4px">
+            Display the gold portion of the amount.  Include the ",1"
+            to color the number gold.
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            1
+           </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">silver[,1]</td><td style="border: 1px solid black; padding: 1px 4px">
+            Display the silver portion of the amount.  Include the
+            ",1" to color the number silver.
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            2
+           </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">copper[,1]</td><td style="border: 1px solid black; padding: 1px 4px">
+            Display the copper portion of the amount.  Include the
+            ",1" to color the number copper.
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            3
+           </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">long[,1[,1]]</td><td style="border: 1px solid black; padding: 1px 4px">
+            Display the total amount spelled out.  If gold is zero, it will be
+            omitted.  If both gold and silver are zero, both will be omitted.
+            Copper is always shown.  Include ",1" to color the
+            numbers only, or ",1,1" to color the numbers and words.
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            1 gold 2 silver 3 copper
+           </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">short[,1[,1]]</td><td style="border: 1px solid black; padding: 1px 4px">
+            Display the total amount with abbreviations.  If gold is zero, 
+            it will be omitted.  If both gold and silver are zero, both will 
+            be omitted. Copper is always shown.  Include ",1" to color the
+            numbers only, or ",1,1" to color the numbers and words.
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            1g 2s 3c
+           </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">numeric[,1]</td><td style="border: 1px solid black; padding: 1px 4px">
+            Display the total amount in numbers only.  If gold is zero, 
+            it will be omitted.  If both gold and silver are zero, both will 
+            be omitted. Copper is always shown.  Include ",1" to color the
+            numbers.
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            1 2 3
+           </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">compact[,1]</td><td style="border: 1px solid black; padding: 1px 4px">
+            Display the total amount in numbers only, with separators between
+            each number.  If gold is zero, it will be omitted.  If both gold 
+            and silver are zero, both will be omitted. Copper is always shown.
+            Include ",1" to color the numbers.
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            1.2.3
+           </td>
+</tr>
+</table>
+    
+    
+<h4>Memory Formats</h4>
+      
+<p style="margin-left: 0.25in">
+        Memory formats allow you to display memory values as kilobytes or
+        megabytes.
+      </p>
+      
+<table cellspacing="0" width="90%" style="margin-left: 0.5in; margin-right: 0.5in; border-collapse: collapse;">
+<tr>
+<td style="width: 100pt"><b>Format</b></td><td><b>Description</b></td><td style="width: 100pt"><b>Example</b></td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">kb</td><td style="border: 1px solid black; padding: 1px 4px">
+            Display the amount in kilobytes.
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            21345
+           </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">mb[,dec]</td><td style="border: 1px solid black; padding: 1px 4px">
+            Display the amount in megabytes, to two decimal places.
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            21.34
+           </td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">mb,int</td><td style="border: 1px solid black; padding: 1px 4px">
+            Display the amount in megabytes, truncated to the nearest whole 
+            megabyte.
+          </td><td style="border: 1px solid black; padding: 1px 4px; white-space: nowrap">
+            21
+           </td>
+</tr>
+</table>
+    
+    
+<h4>Equipment Formats</h4>
+      
+<p style="margin-left: 0.25in">
+        Equipment "formats" don't actually affect <i>how</i> a variable
+        is displayed, rather, they determine which equipment slot the
+        variable reports about.  The equipment format is required for
+        variables that use it.  If it is omitted or unknown, the variable
+        that uses it will display "n/a" instead.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        The names below can be used for equipment formats.  Note that
+        several alias names are included for convenience, but all names
+        work the same way.  For example, both "shoulders" and "pauldrons"
+        can be used to refer to the shoulder item, regardless of what is
+        worn there.  These are used just like normal format codes.  For 
+        example, {repaircost:chest} will display the repair cost of the
+        armor worn on your character's chest, and {equipname:trinket1}
+        will return the name of your first equipped trinket. 
+      </p>
+      
+<table cellspacing="0" style="margin-left: 0.5in; margin-right: 0.5in; border-collapse: collapse;">
+<tr>
+<td style="width: 100pt"><b>Format</b></td><td style="width: 250pt"><b>Refers to the item equipped in the slot for:</b></td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">head</td><td style="border: 1px solid black; padding: 1px 4px">Head</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">helm</td><td style="border: 1px solid black; padding: 1px 4px">Head</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">hat</td><td style="border: 1px solid black; padding: 1px 4px">Head</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">goggles</td><td style="border: 1px solid black; padding: 1px 4px">Head</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">shoulders</td><td style="border: 1px solid black; padding: 1px 4px">Shoulders</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">pauldrons</td><td style="border: 1px solid black; padding: 1px 4px">Shoulders</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">chest</td><td style="border: 1px solid black; padding: 1px 4px">Chest</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">torso</td><td style="border: 1px solid black; padding: 1px 4px">Chest</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">robe</td><td style="border: 1px solid black; padding: 1px 4px">Chest</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">vest</td><td style="border: 1px solid black; padding: 1px 4px">Chest</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">breastplate</td><td style="border: 1px solid black; padding: 1px 4px">Chest</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">tunic</td><td style="border: 1px solid black; padding: 1px 4px">Chest</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">wrist</td><td style="border: 1px solid black; padding: 1px 4px">Wrists</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">bracers</td><td style="border: 1px solid black; padding: 1px 4px">Wrists</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">hands</td><td style="border: 1px solid black; padding: 1px 4px">Hands</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">gloves</td><td style="border: 1px solid black; padding: 1px 4px">Hands</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">gauntlets</td><td style="border: 1px solid black; padding: 1px 4px">Hands</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">waist</td><td style="border: 1px solid black; padding: 1px 4px">Waist</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">belt</td><td style="border: 1px solid black; padding: 1px 4px">Waist</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">legs</td><td style="border: 1px solid black; padding: 1px 4px">Legs</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">pants</td><td style="border: 1px solid black; padding: 1px 4px">Legs</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">skirt</td><td style="border: 1px solid black; padding: 1px 4px">Legs</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">kilt</td><td style="border: 1px solid black; padding: 1px 4px">Legs</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">leggings</td><td style="border: 1px solid black; padding: 1px 4px">Legs</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">feet</td><td style="border: 1px solid black; padding: 1px 4px">Feet</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">boots</td><td style="border: 1px solid black; padding: 1px 4px">Feet</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">shoes</td><td style="border: 1px solid black; padding: 1px 4px">Feet</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">mainhand</td><td style="border: 1px solid black; padding: 1px 4px">Main Hand Weapon</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">weapon</td><td style="border: 1px solid black; padding: 1px 4px">Main Hand Weapon</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">offhand</td><td style="border: 1px solid black; padding: 1px 4px">Off-hand Weapon</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">shield</td><td style="border: 1px solid black; padding: 1px 4px">Off-hand Weapon</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">ranged</td><td style="border: 1px solid black; padding: 1px 4px">Ranged Weapon</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">gun</td><td style="border: 1px solid black; padding: 1px 4px">Ranged Weapon</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">bow</td><td style="border: 1px solid black; padding: 1px 4px">Ranged Weapon</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">finger1</td><td style="border: 1px solid black; padding: 1px 4px">Finger</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">ring1</td><td style="border: 1px solid black; padding: 1px 4px">Finger</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">finger2</td><td style="border: 1px solid black; padding: 1px 4px">Finger</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">ring2</td><td style="border: 1px solid black; padding: 1px 4px">Finger</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">trinket1</td><td style="border: 1px solid black; padding: 1px 4px">Trinket</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">trinket2</td><td style="border: 1px solid black; padding: 1px 4px">Trinket</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">neck</td><td style="border: 1px solid black; padding: 1px 4px">Neck</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">necklace</td><td style="border: 1px solid black; padding: 1px 4px">Neck</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">pendant</td><td style="border: 1px solid black; padding: 1px 4px">Neck</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">back</td><td style="border: 1px solid black; padding: 1px 4px">Back</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">cloak</td><td style="border: 1px solid black; padding: 1px 4px">Back</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">shirt</td><td style="border: 1px solid black; padding: 1px 4px">Shirt</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">tabard</td><td style="border: 1px solid black; padding: 1px 4px">Tabard</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; padding: 1px 4px">ammo</td><td style="border: 1px solid black; padding: 1px 4px">Ammo</td>
+</tr>
+</table>
+    
+    
+<h4>Skills Formats</h4>
+      
+<p style="margin-left: 0.25in">
+        Skills "formats" determine which skill a variable applies to, rather
+        than changing the look of the variable.  Because of this, skills
+        formats are required for those variables that use them.  If the skill
+        format is omitted, misspelled, or if your character does not know
+        the skill named, skills variables will display "n/a" instead.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        Normally, skill formats are entered exactly as the names read on
+        your character's skill panel, for example "Leatherworking" or
+        "Daggers".  So, for instance, if you wanted to know your current
+        alchemy skill, you could use the variable "{skillrank:Alchemy}". 
+        Note the capitalization of the name - it must appear <i>exactly</i>
+        as it does on the skills panel.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        Skills variables also support "generic" skill formats.  These are
+        special names you can use to refer to your skill when you don't
+        know ahead of time what the real skill name is.  The generic
+        names are formed by taking the name of the skill group on the
+        skills panel (for example, "Professions") and adding a number to
+        the end of it which corresponds to the number of the skill in the
+        group.  So, for example, "Professions 1" refers to your first
+        profession skill, and "Weapon Skills 5" refers to your fifth weapon
+        skill, as shown on the skills panel.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        The generic names for professions ("Professions 1" and
+        "Professions 2") are the most useful, as they let you set up
+        displays that work for all of your characters, regardless of
+        what professions they have.  If you use these, you might also
+        find the {skillname} variable useful for returning the real
+        name of the skill.  For instance, the variable
+        {skillname:Professions 1} will display the real name of your
+        first profession, no matter what it is.
+      </p>
+    
+    
+<h4>Faction Formats</h4>
+      
+<p style="margin-left: 0.25in">
+        Like skill formats, faction "formats" determine which faction
+        a variable applies to, rather than changing the look of the
+        variable.  Because of this, faction formats are required for
+        those variables that use them.  If the faction format is
+        omitted, misspelled, or if your character has no reputation with
+        the named faction, faction variables will display "n/a" instead.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        Faction formats are entered exactly as the names read on
+        your character's reputation panel, for example "Ironforge" or
+        "Cenarion Circle".  So, for instance, if you wanted to know your 
+        current reputation with Honor Hold, you would use the variable 
+        "{reputation:Honor Hold}".
+        Note the capitalization of the name - it must appear <i>exactly</i>
+        as it does on the reputation panel.
+      </p>
+    
+    
+<h4>Color Codes</h4>
+      
+<p style="margin-left: 0.25in">
+        Any slot can be colored by entering the following code before it:
+      </p>
+      
+<p style="margin: 0; margin-left: 0.5in">
+        |c<i>aarrggbb</i>
+      
+</p>
+      
+<p style="margin-left: 0.25in">
+        where
+      </p>
+      
+<p style="margin: 0; margin-left: 0.5in">
+        
+<i>aa</i> is the alpha (transparency) value,
+      </p>
+      
+<p style="margin: 0; margin-left: 0.5in">
+        
+<i>rr</i> is the red value,
+      </p>
+      
+<p style="margin: 0; margin-left: 0.5in">
+        
+<i>gg</i> is the green value, and
+      </p>
+      
+<p style="margin: 0; margin-left: 0.5in">
+        
+<i>bb</i> is the blue value.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        All color values are given as two hexadecimal digits from "00"
+        (no color, or transparent in the case of the alpha value) to "ff" 
+        (full color, or opaque for the alpha value).
+      </p>
+      
+<p style="margin-left: 0.25in">
+        Also, the code:
+      </p>
+      
+<p style="margin: 0; margin-left: 0.5in">
+        |r
+      </p>
+      
+<p style="margin-left: 0.25in">
+        will restore the color that was in effect before the last
+        color change.  Even if you leave off the restore code, your
+        color changes will only affect the slot they appear in -
+        colors will not bleed into adjacent slots.  This also means
+        that every slot must be colored independently.  Also, each
+        slot can have several color codes, and the restore code is not
+        required between each color change.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        For example, a slot containing the display string
+        '|cffff0000{dps}|r dps' will display the current dps in opaque
+        red (ff, ff, 00, 00), and then " dps" in the default color
+        (which is a nearly pure yellow).  As another example, the
+        display string '|cffff0000r|cff00ff00g|cff0000ffb' will
+        display a red 'r', a green 'g', and a blue 'b'.
+      </p>
+      
+<p style="margin-left: 0.25in">
+        Note that color codes will have no effect when used with
+        variables that color themselves, such as {latency}.
+      </p>
+    
+  
+<h3>More Information</h3>
+    
+<p style="margin-left: 0.25in">
+      For more information, or to download the latest version of Nox
+      Information Bar, see the addon page on Curse Gaming at
+      <a href="http://wow.curse-gaming.com/downloads/details/1008/">http://wow.curse-gaming.com/downloads/details/1008/</a>.
+    </p>
+  
+</body>
+</html>

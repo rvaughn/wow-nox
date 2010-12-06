@@ -1,0 +1,32 @@
+2010-12-05 version 4.0.3b1
+        
+    * Fixed the coins display to initialize correctly at login.
+
+    * Fixed combat stats so they don't constantly throw an error.
+
+    * Completely removed the {ammo} parameter.
+        
+    * Raised the level cap to 85.
+
+    - Combat stats have not been verified working yet, they just
+      don't throw the Lua error anymore.
+
+    - The documentation needs updating.
+
+    - There is still a startup problem where the bar sometimes shows
+      up with default settings, rather than the configured settings.
+      Enter "/console reloadui" in chat to reload it (and everything
+      else too).
+        
+    - The NoxMover still throws errors.
+
+2010-11-11 version 4.0.0b2
+        
+    * Fixes support for professions. All other skill stats are either
+      removed from the game or unsupported right now. Also adds the
+      new {skill title:} parameter that returns the name of your
+      current profession rank. (eg. "Journeyman", "Expert", etc.)
+
+2010-10-18 version 4.0.0a1
+        
+    * Alpha version - includes basic fixes for 4.0. Work in progress.

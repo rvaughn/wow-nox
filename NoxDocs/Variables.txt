@@ -1,0 +1,121 @@
+This is a complete listing of all of the variables supported by the
+Nox Information Bar to date.
+
+{latency}          -> Latency in milliseconds.
+{framerate}        -> Framerate (fps).
+{24hours}          -> Hours in current time in military format.
+{hours}            -> Hours in current time.
+{minutes}          -> Minutes in current time.
+{ampm}             -> AM or PM of current time.
+{speed}            -> Travelling speed in percentage.
+{x}                -> Current horizontal map location.
+{y}                -> Current vertical map location.
+{money}            -> Current total amount of money (in copper).
+{gold}             -> Current amount of gold.
+{silver}           -> Current amount of silver.
+{copper}           -> Current amount of copper.
+{hpregen}          -> Current health regeneration rate.
+{manaregen}        -> Current mana regeneration rate.
+{hp}               -> Current health.
+{hploss}           -> Current health loss (max - current).
+{hp%}              -> Current health percentage.
+{maxhp}            -> Maximum health.
+{mana}             -> Current mana.
+{manaloss}         -> Current mana loss (max - current).
+{mana%}            -> Current mana percentage.
+{maxmana}          -> Current mana loss (max - current).
+{xp}               -> Current XP.
+{xptolevel}        -> XP to reach next level.
+{xp%}              -> Current XP percentage earned towards next level.
+{maxxp}            -> Total XP to get to next level.
+{rest}             -> Amount of rest XP.
+{level}            -> Current level.
+{ubs}              -> Used bag slots.
+{abs}              -> Available bag slots.
+{tbs}              -> Total bag slots.
+{memmb}            -> UI memory used in megabytes.
+{memkb}            -> UI memory used in kilobytes.
+{memlimitkb}       -> UI memory GC threshold, in kilobytes.
+{memlimitmb}       -> UI memory GC threshold, in megabytes.
+{xptolevel%}       -> Percentage XP needed to level.  (inverse of {xp%})
+{restbonus}        -> Amount of additional experience that will be counted as "rested".
+{restlimit}        -> Total amount of experience needed before the "rested" bonus is used up.
+{ammo}             -> Total amount of equipped ammo.
+{sessionttl}       -> Estimated time to level for this session, in "0d 0h 0m 0s" format.
+{sessionttlshort}  -> Estimated time to level for this session, in "d.h:m:s" format.
+{levelttl}         -> Estimated time to level for this level, in "0d 0h 0m 0s" format.
+{levelttlshort}    -> Estimated time to level for this level, in "d.h:m:s" format.
+{bestttl}          -> Smallest of session TTL and level TTL, in "0d 0h 0m 0s" format.
+{bestttlshort}     -> Smallest of session TTL and level TTL, in "d.h:m:s" format.
+{allmoney}         -> Money displayed in "0g 0s 0c" format.
+
+Provided by NoxCombatStats:
+
+{dps}              -> Damage per second.
+{hps}              -> Healing per second.
+{petdps}           -> Pet damage per second.
+{totaldamage}      -> Total damage.
+{totalheal}        -> Total healing.
+{combatduration}   -> Combat duration.
+{meleehits}        -> Number of melee hits.
+{meleemisses}      -> Number of melee misses.
+{meleecrits}       -> Number of melee critical hits.
+{meleehits%}       -> Percentage of melee hits.
+{meleemisses%}     -> Percentage of melee misses.
+{meleecrits%}      -> Percentage of melee critical hits.
+{nonmeleehits}     -> Number of non-melee hits.
+{nonmeleemisses}   -> Number of non-melee misses.
+{nonmeleecrits}    -> Number of non-melee critical hits.
+{nonmeleehits%}    -> Percentage of non-melee hits.
+{nonmeleemisses%}  -> Percentage of non-melee misses.
+{nonmeleecrits%}   -> Percentage of non-melee critical hits.
+{healhits}         -> Number of successful heals.
+{healmisses}       -> Number of failed heals.
+{healcrits}        -> Number of critical heals.
+{healhits%}        -> Percentage of successful heals.
+{healmisses%}      -> Percentage of failed heals.
+{healcrits%}       -> Percentage of critical heals.
+
+Provided by NoxHonorStats:
+
+{lifetimeHK}       -> Number of honorable kills over lifetime.
+{lifetimeDK}       -> Number of dishonorable kills over lifetime.
+{lifetimeRank}     -> Highest rank achieved over lifetime.
+{lastweekHK}       -> Number of honorable kills earned last week.
+{lastweekDK}       -> Number of dishonorable kills earned last week.
+{lastweekCP}       -> Number of contribution points earned last week.
+{lastweekStanding} -> Numeric standing achieved last week.
+{yesterdayHK}      -> Number of honorable kills earned yesterday.
+{yesterdayDK}      -> Number of dishonorable kills earned yesterday.
+{yesterdayCP}      -> Number of contribution points earned yesterday.
+{sessionHK}        -> Number of honorable kills earned this session.
+{sessionDK}        -> Number of dishonorable kills earned this session.
+{currentRank}      -> Player's current rank.
+{currentStanding}  -> Player's current numeric standing.
+
+Provided by NoxSampleExtension:
+
+{name}             -> Current player's name.
+{class}            -> Current player's class.
+{realm}            -> Current player's realm.
+{zone}             -> Current zone the player is in.
+{shortzone}        -> The zone name in the minimap.  Seems to be the same thing as subzone.
+{subzone}          -> Current subzone the player is in.
+
+Provided by NoxMoneyExtension:
+
+{coins}            -> Player's current money, with coin graphics.
+
+
+And for color:
+
+|caarrggbb         -> aa = Hexadecimal display of alpha value
+                   -> rr = Hexadecimal display of red value
+                   -> gg = Hexadecimal display of green value
+                   -> bb = Hexadecimal display of blue value
+
+|r                 -> Restore previous color
+
+e.g. '|cffff0000{dps}|r dps' will display the current dps in
+     opaque red (ff, ff, 00, 00), and then " dps" in the 
+     default color (which is a nearly pure yellow).

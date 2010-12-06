@@ -1,0 +1,897 @@
+<changelog>
+  <project>Nox Information Bar</project>
+  <topic>Version History</topic>
+  <version number="3.0.0" author="Gruma" date="2008/11/22">
+    <change>
+      Raised the level limit to 80.
+    </change>
+    <change>
+      Fixed the combat stats to work with 3.0.
+    </change>
+    <change>
+      The honor stats weren't actually broken, so they're fixed too.
+    </change>
+    <change>
+      Fixed the money extension to work with 3.0.
+    </change>
+    <change>
+      Changed the way the money extension works to make it possible to have multiple coin displays in the future.
+    </change>
+  </version>
+  <version number="3.0.0pre" author="Gruma" date="2008/11/15">
+    <change>
+      Updated the TOC for 3.0.
+    </change>
+    <change>
+      Removed the {memlimit} variable.  This value is no longer available from the WoW client.
+    </change>
+    <change>
+      Fixed the basics that were broken by the 3.0 update.
+    </change>
+  </version>
+  <version number="2.6" author="Gruma" date="2007/06/03">
+    <change>
+      Added font scaling for the main bar.
+    </change>
+    <change>
+      Added new faction/reputation variables.  The new variables include:
+      <ul>
+        <li>{faction name:}</li>
+        <li>{faction standing:}</li>
+        <li>{reputation:}</li>
+        <li>{reputation max:}</li>
+        <li>{reputation %:}</li>
+        <li>{faction at war:}</li>
+      </ul>
+    </change>
+    <change>
+      Updated myAddons support.
+    </change>
+    <change>
+      Updated latency colors to match Blizzard's interpretation (I think).
+    </change>
+  </version>
+  <version number="2.5.2" author="Gruma" date="2007/05/25">
+    <change>
+      Updated to work with WoW 2.1.
+    </change>
+    <change>
+      Fixed the player coordinates so that they track across zone
+      changes correctly.
+    </change>
+    <change>
+      Fixed column titles on the slot configuration GUI to display
+      properly.
+    </change>
+  </version>
+  <version number="2.5.1" author="Gruma" date="2007/02/04">
+    <change>
+      Updated to work with Burning Crusade (raised the level limit).
+    </change>
+  </version>
+  <version number="2.5" author="Gruma" date="2006/12/12">
+    <change>
+      Updated to work with WoW 2.0.
+    </change>
+  </version>
+  <version number="2.4.1" author="Gruma" date="2006/04/07">
+    <change>
+      Fixed bugs that caused the tooltips and the buff icon mover
+      to get reset to defaults at login.
+    </change>
+  </version>
+  <version number="2.4" author="Gruma" date="2006/04/03">
+    <change>
+      Fixed a startup bug for new users.  Thanks to DrWiggly for
+      spotting this one and tracking it down.
+    </change>
+    <change>
+      Fixed equipment stats for client version 1.10.
+    </change>
+    <change>
+      Removed the default coloring for the {mem} variable, since
+      the upper limit is (and has been for a while) configurable now.
+    </change>
+    <change>
+      Updated to client version 1.10.
+    </change>
+  </version>
+  <version number="2.3" author="Gruma" date="2006/01/03">
+    <change>
+      Added per-character configuration options.  Switches now appear
+      in the config GUI that allow specific groups of options to be
+      overridden for each character.  This required a fairly extensive
+      rework of the configuration code, so bugs are expected.
+    </change>
+    <change>
+      Fixed a problem that caused an occasional error message in
+      NoxSkillStats when zoning in.
+    </change>
+    <change>
+      Changed tab selection buttons in the config GUI to real tabs.
+    </change>
+  </version>
+  <version number="2.2" author="Gruma" date="2005/09/06">
+    <change>
+      Reduced the number of tooltip lines to 30.  This seems to be all
+      the game will support in the default tooltip.
+    </change>
+    <change>
+      Enabled the shift-tab key in the tooltip edit dialog. (finally)
+    </change>
+    <change>
+      Added buttons to insert and delete lines in the tooltip edit
+      dialog.
+    </change>
+    <change>
+      Changed the display for unknown skills from "n/a" to "0".
+    </change>
+    <change>
+      Added per-session combat stats.  In general, just add "session"
+      in front of any existing combat stat to get the session
+      cumulative version.  (For example, {crit%} becomes {session
+      crit%}.)  See the docs for complete details.
+    </change>
+    <change>
+      Added a menu option to reset session combat stats independently
+      of other session variables.
+    </change>
+    <change>
+      Added new variables for {kills}, {xp per kill} and {kills to
+      level} to Nox Combat Stats.  {xp per kill} and {kills to level}
+      are both averages based on the last four kills made.  Note that
+      kills that don't net you experience ("grey" kills) are not
+      counted in any of these variables, since the game doesn't
+      provide any way to distinguish your non-xp kills from the kills
+      of other nearby players.  (Yes, your chat log even shows kills
+      from nearby players who aren't in your party!)
+    </change>
+  </version>
+  <version number="2.1.1" author="Gruma" date="2005/08/19">
+    <change>
+      Fixed the {healcrits%}, {healmisses}, {healmisses%},
+      {nonmeleecrits%}, {nonmeleemisses}, and {nonmeleemisses%}
+      variables in NoxCombatStats.  Note that heal misses and
+      non-melee misses don't actually happen, but there are variables
+      for them anyway.
+    </change>
+    <change>
+      Added coloring to zone text in NoxPlayerStats.  Zone names will
+      now be colored just like the minimap text - green for friendly
+      territory, red for hostile territory, and orange for contested
+      territories and yellow for everything else.  This applies to the
+      {zone}, {shortzone}, {subzone}, and {realzone} variables.
+    </change>
+    <change>
+      Added the {realzone} variable to NoxPlayerStats.  This variable
+      displays the real name of the instance if the player is in one, 
+      otherwise it displays the same thing as {zone}.
+    </change>
+  </version>
+  <version number="2.1" author="Gruma" date="2005/07/12">
+    <change>
+      Slightly changed the way durability is recognized to hopefully
+      eliminate random errors with the German client.
+    </change>
+    <change>
+      Made the border and background of the bar hideable.
+    </change>
+    <change>
+      Added the {totalcurrdurability}, {totalmaxdurability}, and 
+      {totaldurability%} variables to NoxEquipment stats.
+    </change>
+    <change>
+      Changed to allow optional spaces in variable names, so for example
+      you could use {total curr durability} instead of {totalcurrdurability}.
+    </change>
+    <change>
+      Changed to allow optional uppercase in variables names, so for
+      example you could use {TotalCurrDurability} instead of
+      {totalcurrdurability}.  You can even combine this with the
+      optional spaces enhancement and use {Total Curr Durability}.
+      Note that using spaces or uppercase may increase your dynamic
+      memory usage rate slightly.  (If you don't understand what that
+      means, don't worry about it.)
+    </change>
+    <change>
+      Updated for client version 1.6 (interface version 1600).
+    </change>
+    <change>
+      Added new variables for today's and this week's honor points, and
+      for rank progress.  See the user's guide for details.  Please note
+      that I am guessing how rank progress works at the moment, and that
+      DK stats for yesterday and last week might not work correctly anymore.
+      The DK stats are still in the API, but the default UI no longer uses
+      them.  If you discover any problems with either the progress or DK
+      stats, please let me know.
+    </change>
+    <change>
+      Changed honor "cp" variables to "honor" variables.  This should have
+      been done after the last patch when Blizzard changed the names in the
+      default UI.  Oops.
+    </change>
+    <change>
+      Fixed an occasional bug in NoxEquipmentStats referring to a nil
+      repairCost value.
+    </change>
+  </version>
+  <version number="2.0.1" date="2005/06/28" author="Gruma">
+    <change>
+      Improved the new variable rendering to correctly handle
+      nested (decorative) braces.
+    </change>
+  </version>
+  <version number="2.0" date="2005/06/26" author="Gruma">
+    <change>
+      Reworked the rendering core to allow options for variables.
+      This adds a huge amount of configurability.
+    </change>
+    <change>
+      Made the tooltip configurable using the same variables as
+      the bar itself.  Unfortunately this means that tooltip lines
+      will no longer hide themselves for level 60 chars.
+    </change>
+    <change>
+      Revised the time to level estimates so that they return "n/a"
+      for level 60 chars.
+    </change>
+    <change>
+      Added many variables, added options to many others, and deprecated
+      a few that are now redundant.  See the documentation for specifics.
+    </change>
+    <change>
+      Expanded the number of available slots to 16.
+    </change>
+    <change>
+      Combined the NoxMoveBuffs and NoxMoveBGFlag extensions into a single
+      NoxMover extension.
+    </change>
+    <change>
+      Added the ability to move the minimap, target frame, and player
+      frame to the NoxMover.
+    </change>
+    <change>
+      Moved the variables handled by NoxSampleExtension into a new "real"
+      extension - NoxPlayerStats.  NoxSampleExtension now handles only
+      junk variables.
+    </change>
+    <change>
+      Added the NoxEquipmentStats extension to add inventory and
+      durability variables to the bar.
+    </change>
+    <change>
+      Added the NoxSkillStats extension to add skills variables to the
+      bar.
+    </change>
+    <change>
+      Rewrote the documentation.  It should be much more complete now.
+    </change>
+    <change>
+      Revised the config GUI to handle the additional slots, tooltip 
+      configuration, and mover configuration.
+    </change>
+  </version>
+  <version number="1.8.4" date="2005/06/13" author="Gruma">
+    <change>
+     Fixed NoxMoveBuffs so that it will correctly use the offsets
+     configured in SavedVariables.
+    </change>
+    <change>
+      Added NoxMoveBGFlag to move the "capture the flag" icon down a
+      few pixels.
+    </change>
+  </version>
+  <version number="1.8.3" date="2005/06/10" author="Gruma">
+    <change>
+      Added a missing "round" function to fix problems with NoxMoveBuffs
+      and two of the memory variables.
+    </change>
+    <change>
+      Improved the way "time played" messages are blocked from showing in
+      chat.
+    </change>
+    <change>
+      Made NoxMoveBuffs save its offsets, for primitive configurability.
+    </change>
+  </version>
+  <version number="1.8.2" date="2005/06/07" author="Gruma">
+    <change>Updated for interface version 1500 (client patch 1.5.0).</change>
+  </version>
+  <version number="1.8.1" date="2005/06/06" author="Gruma">
+    <change>Corrected a minor issue with the German translation that prevented the tooltip from working with that client.</change>
+  </version>
+  <version number="1.4" date="2005/04/01" author="ins0mniaque">
+    <change>Added German translation provided by Wolfgang St&#x00f6;ckle. Danke sch&#x00f6;n!</change>
+    <change>Changed TOC to 1300.</change>
+  </version>
+  <version number="1.8" date="2005/06/04" author="Gruma">
+    <change>
+      Added a configuration GUI.  This can be invoked by the right-clicking
+      this bar, through myAddOns, or by the command "/noxib config".
+    </change>
+    <change>
+      Removed the slash command for colors, as this was never implemented.
+      Colors can be configured through the new GUI.
+    </change>
+    <change>
+      Added usage summaries for all slash commands.
+    </change>
+    <change>
+      Added compatibility with MyAddOns.
+    </change>
+    <change>
+      Moved combat stats to a separate bundled addon, NoxCombatStats.
+    </change>
+    <change>
+      Added honor stats via a separate bundled addon, NoxHonorStats.
+      These are:
+      <param-list>
+      <param name="{lifetimeHK}">
+        Number of honorable kills over lifetime.
+      </param>
+      <param name="{lifetimeHK}">
+        Number of honorable kills over lifetime.
+      </param>
+      <param name="{lifetimeDK}">
+        Number of dishonorable kills over lifetime.
+      </param>
+      <param name="{lifetimeRank}">
+        Highest rank achieved over lifetime.
+      </param>
+      <param name="{lastweekHK}">
+        Number of honorable kills earned last week.
+      </param>
+      <param name="{lastweekDK}">
+        Number of dishonorable kills earned last week.
+      </param>
+      <param name="{lastweekCP}">
+        Number of contribution points earned last week.
+      </param>
+      <param name="{lastweekStanding}">
+        Numeric standing achieved last week.
+      </param>
+      <param name="{yesterdayHK}">
+        Number of honorable kills earned yesterday.
+      </param>
+      <param name="{yesterdayDK}">
+        Number of dishonorable kills earned yesterday.
+      </param>
+      <param name="{yesterdayCP}">
+        Number of contribution points earned yesterday.
+      </param>
+      <param name="{sessionHK}">
+        Number of honorable kills earned this session.
+      </param>
+      <param name="{sessionDK}">
+        Number of dishonorable kills earned this session.
+      </param>
+      <param name="{currentRank}">
+        Player's current rank.
+      </param>
+      <param name="{currentStanding}">
+        Player's current numeric standing.
+      </param>
+      </param-list>
+    </change>
+    <change>
+      Added two new parameters in the core addon:
+      <param-list>
+      <param name="{memlimitkb}">
+        UI memory GC threshold, in kilobytes.
+      </param>
+      <param name="{memlimitmb}">
+        UI memory GC threshold, in megabytes.
+      </param>
+      </param-list>
+      Note that this isn't the total amount of memory available, but is
+      instead the amount of memory that must be used before the UI runs the
+      next garbage collection cycle.
+    </change>
+    <change>
+      Reworked the tooltip to add more experience info and hopefully make it
+      easier to read overall.
+    </change>
+    <change>
+      Made the experience bars configurable, both for visibility and color.
+    </change>
+    <change>
+      Modified the tooltip and experience bars to hide experience stats
+      for level 60 characters.
+    </change>
+    <change>
+      Added a tiny bundled addon to move the buff icons down a few pixels.
+      This might be useful to players who use a wide Nox bar at the top
+      of their screens.  This addon is not configurable at the moment (but
+      you can easily edit the offsets in the code).
+    </change>
+    <change>
+      Changed the "reset" slash command to reset the session instead of
+      restoring defaults.  Defaults are available via a button in the config
+      panel.
+    </change>
+    <change>
+      Broke most of the remaining localization.  There wasn't much lost as
+      the German translation was only partially done and the French
+      translation was never done anyway.  We would welcome volunteers to
+      do these translations for us.
+    </change>
+  </version>
+  <version number="1.7" date="2005/04/27" author="Gruma">
+    <change>
+      Tweaked a few cosmetic issues to hopefully make the bar slightly
+      more attractive.
+    </change>
+    <change>
+      Fixed the {hours} display so that noon and midnight show as "12"
+      rather than 0.
+    </change>
+    <change>
+      Fixed the handling of rested experience so that the experience
+      bars display correctly now.
+    </change>
+    <change>
+      Made the clock offset settings configurable per-character.  This
+      was needed since different realms are on different time standards.
+      Unfortunately there is no "default" at this time - you have to
+      configure each character separately, but only for the clock offset.
+    </change>
+    <change>
+      Changed all bag slot calculations to ignore ammo bags.
+    </change>
+    <change>
+      Fixed a problem with the text from slots still being displayed
+      after a slot is hidden.
+    </change>
+    <change>
+      Fixed some minor memory allocation issues.
+    </change>
+    <change>
+      Added new variables:
+      <param-list>
+      <param name="{memmb}">
+        UI memory used in megabytes.
+      </param>
+      <param name="{memkb}">
+        UI memory used in kilobytes.
+      </param>
+      <param name="{xptolevel%}">
+        Percentage XP needed to level.
+      </param>
+      <param name="{restbonus}">
+        Amount of additional experience that will be counted as "rested".
+      </param>
+      <param name="{restlimit}">
+        Total amount of experience needed before the "rested" bonus is used up.
+      </param>
+      <param name="{ammo}">
+        Total amount of equipped ammo.
+      </param>
+      <param name="{sessionttl}">
+        Estimated time to level for this session, in "0d 0h 0m 0s" format.
+      </param>
+      <param name="{sessionttlshort}">
+        Estimated time to level for this session, in "d.h:m:s" format.
+      </param>
+      <param name="{levelttl}">
+        Estimated time to level for this level, in "0d 0h 0m 0s" format.
+      </param>
+      <param name="{levelttlshort}">
+        Estimated time to level for this level, in "d.h:m:s" format.
+      </param>
+      <param name="{bestttl}">
+        Smallest of session TTL and level TTL, in "0d 0h 0m 0s" format.
+      </param>
+      <param name="{bestttlshort}">
+        Smallest of session TTL and level TTL, in "d.h:m:s" format.
+      </param>
+      <param name="{allmoney}">
+        Money displayed in "0g 0s 0c" format.
+      </param>
+      </param-list>
+      The rested numbers need a little explanation.  {rest} returns
+      the amount of extra bonus experience the game gives you for being
+      rested.  This is half of {restbonus} which is the raw number the
+      game reports.  {restlimit} is the total amount of experience that
+      can be gained before the rested bonus expires, and is the same as 
+      {xp} + {restbonus}.
+    </change>
+    <change>
+      Reworked the code enough to allow extensions, and added a sample
+      extension with a handful of new (probably useless) parameters:
+      <param-list>
+      <param name="{name}">
+        Current player's name.
+      </param>
+      <param name="{class}">
+        Current player's class.
+      </param>
+      <param name="{realm}">
+        Current player's realm.
+      </param>
+      <param name="{zone}">
+        Current zone the player is in.
+      </param>
+      <param name="{shortzone}">
+        The zone name in the minimap.  Seems to be the same thing as subzone.
+      </param>
+      <param name="{subzone}">
+        Current subzone the player is in.
+      </param>
+      </param-list>
+    </change>
+    <change>
+      Added an "advanced" extension that adds a coin display to the bar.
+      This is enabled by using the "{coins}" variable in the display
+      string.
+    </change>
+  </version>
+  <version number="1.6" date="2005/04/04" author="ins0mniaque">
+    <change>
+      Fixed the infamous rest bug. Thank you Darklynx, because I really
+      don't have the time to test this out.
+    </change>
+  </version>
+  <version number="1.5" date="2005/04/03" author="ins0mniaque">
+    <change>
+      Fixed German (and other languages) translation for plural based on
+      code by Starmaster. Danke!
+    </change>
+    <change>
+      *SHOULD* have fixed most maths errors. I currently do not have time
+      to test it, so I used my "instinct" to correct the bugs.
+    </change>
+  </version>
+  <version number="1.4" date="2005/04/01" author="ins0mniaque">
+    <change>Added German translation provided by Wolfgang St&#x00f6;ckle. Danke sch&#x00f6;n!</change>
+    <change>Changed TOC to 1300.</change>
+  </version>
+  <version number="1.3" date="2005/03/25" author="ins0mniaque">
+    <change>
+      Still an alpha release...
+    </change>
+    <change>
+      Removed the speed display to make it work with the most recent patch.
+    </change>
+    <change>
+      Requested feature will have to wait for me to have time to play...
+    </change>
+  </version>
+  <version number="1.2" date="2005/03/19" author="ins0mniaque">
+    <change>
+      Still an alpha release...
+    </change>
+    <change>
+      Fixed path in zip file.
+    </change>
+    <change>
+      Fixed bug when player had no rest XP.
+    </change>
+    <change>
+      Fixed bug that made it crash on load when language was not english.
+      (Should work with french and german versions right now, but it is
+      not translated, and I doubt that the dps calculator will work in
+      those languages...)
+    </change>
+    <change>
+      Added clock and tooltip parameters...
+      <pre>
+      New slash commands:
+
+      /noxib tooltip [state=&lt;'on', 'off'&gt;] 
+                     [position=&lt;'anchor'&gt;]
+                     [x=number]
+                     [y=number]
+                     
+      List of anchor values:
+        - 'left'
+        - 'topleft'
+        - 'top'
+        - 'topright'
+        - 'right'
+        - 'bottomright'
+        - 'bottom'
+        - 'bottomleft'
+                    
+      e.g. Putting the tooltip in the bottom right corner...
+           /noxib tooltip position='bottomright' x=-32 y=32
+           
+           Shutting off the tooltip
+           /noxib tooltip state='off'
+           
+      
+      /noxib clock [offsethour=number] [offsetminute=number]
+      
+      e.g. Resetting the offsets to zero
+           /noxib clock
+           
+           Putting an offset of minus 2 hours and 30 minutes
+           /noxib clock offsethour=-2 offsetminute=-30
+      </pre>       
+    </change>
+    <change>
+      A complete help file is still in progress.
+    </change>
+    <change>
+      The color parameters are still not implemented yet...
+    </change>
+  </version>
+  <version number="1.1" date="2005/03/17" author="ins0mniaque">
+    <change>
+      Alpha release (to tease you all... lol).
+    </change>
+    <change>
+      Nearly a complete rewrite of the bar.
+    </change>
+    <change>
+      Localization has been "lost". Will be relocalized when beta version
+      goes out. Sorry for the delay.
+    </change>
+    <change>
+      Fixed bug with rest xp showing in bar.
+    </change>
+    <change>
+      Has now 9 completly customizable slots.
+    </change>
+    <change>
+      The Clock, Tooltip and Colors parameters are not implemented yet
+      (but they are listed in help).
+    </change>
+    <change>
+      Now uses a modified version of the FlexBar Slash Command Parser.
+    </change>
+    <change>
+      Now has a key binding for toggling visibility.
+    </change>
+    <change>
+      Rapid listing of slash commands:
+      <pre>
+      "Table" parameters values notes:
+        - numbers -> "slot=1"
+        - ranges  -> "slot=1-6"
+        - tables  -> "slot=[ 1 3 7 8 ]"
+      
+      Commands:
+      
+        Troubleshooting:
+          /noxib reset -> Resets the bar and slots
+      
+        Visibility:
+          /noxib show   [slot=table] -> Shows bar/slots
+          /noxib hide   [slot=table] -> Hides bar/slots
+          /noxib toggle [slot=table] -> Toggles bar/slots
+      
+          e.g. /noxib show slot=4-6 -> Mark slots 4, 5 and 6 as visible.
+      
+        Locking:
+          /noxib lock   -> Lock the bar
+          /noxib unlock -> Unlocks the bar
+          
+        Slots:
+          /noxib resize slot=table width=number -> Resizes slots to 
+                                                   specified width.
+          /noxib remap slot=table display='string' -> Remaps slots to 
+                                                      specified display 
+                                                      string.
+                                                      
+          Display strings:
+            Displays string (enclosed in single quotes) defines what
+            each slot will display. Variables (enclosed withing braces)
+            will be replaced in the bar with the current value.
+            
+            e.g. '{framerate} fps' will display the current framerate,
+                 followed by a space and then "fps".
+                 
+                 
+      </pre>                 
+      
+      List of variables (yep, there is a whole lot) :
+      <param-list>      
+      <param name="{latency}">
+        Latency in milliseconds (Lag)
+      </param>
+      <param name="{framerate}">
+        Framerate (fps)
+      </param>
+      <param name="{24hours}">
+        Hours in current time in military format.
+      </param>
+      <param name="{hours}">
+        Hours in current time.
+      </param>
+      <param name="{minutes}">
+        Minutes in current time.
+      </param>
+      <param name="{ampm}">
+        AM or PM of current time.
+      </param>
+      <param name="{speed}">
+        Travelling speed in percentage.
+      </param>
+      <param name="{x}">
+        Current horizontal map location.
+      </param>
+      <param name="{y}">
+        Current vertical map location.
+      </param>
+      <param name="{money}">
+        Current total amount of money (in copper).
+      </param>
+      <param name="{gold}">
+        Current amount of gold.
+      </param>
+      <param name="{silver}">
+        Current amount of silver.
+      </param>
+      <param name="{copper}">
+        Current amount of copper.
+      </param>
+      <param name="{hpregen}">
+        Current health regeneration rate.
+      </param>
+      <param name="{manaregen}">
+        Current mana regeneration rate.
+      </param>
+      <param name="{hp}">
+        Current health.
+      </param>
+      <param name="{hploss}">
+        Current health loss (max - current).
+      </param>
+      <param name="{hp%}">
+        Current health percentage.
+      </param>
+      <param name="{maxhp}">
+        Maximum health.
+      </param>
+      <param name="{mana}">
+        Current mana.
+      </param>
+      <param name="{manaloss}">
+        Current mana loss (max - current).
+      </param>
+      <param name="{mana%}">
+        Current mana percentage.
+      </param>
+      <param name="{maxmana}">
+        Current mana loss (max - current).
+      </param>
+      <param name="{xp}">
+        Current XP.
+      </param>
+      <param name="{xptolevel}">
+        XP to reach next level.
+      </param>
+      <param name="{xp%}">
+        Current XP percentage of next level.
+      </param>
+      <param name="{maxxp}">
+        Total XP to get to next level.
+      </param>
+      <param name="{rest}">
+        Amount of rest XP.
+      </param>
+      <param name="{level}">
+        Current level.
+      </param>
+      <param name="{ubs}">
+        Used bag slots.
+      </param>
+      <param name="{abs}">
+        Available bag slots.
+      </param>
+      <param name="{tbs}">
+        Total bag slots.
+      </param>
+      </param-list>      
+      
+      For current combat (or last combat) :
+      <param-list>      
+      <param name="{dps}">
+        Damage per second.
+      </param>
+      <param name="{hps}">
+        Healing per second.
+      </param>
+      <param name="{petdps}">
+        Pet damage per second.
+      </param>
+      <param name="{totaldamage}">
+        Total damage.
+      </param>
+      <param name="{totalheal}">
+        Total healing.
+      </param>
+      <param name="{combatduration}">
+        Combat duration.
+      </param>
+      <param name="{meleehits}">
+        Number of melee hits.
+      </param>
+      <param name="{meleemisses}">
+        Number of melee misses.
+      </param>
+      <param name="{meleecrits}">
+        Number of melee critical hits.
+      </param>
+      <param name="{meleehits%}">
+        Percentage of melee hits.
+      </param>
+      <param name="{meleemisses%}">
+        Percentage of melee misses.
+      </param>
+      <param name="{meleecrits%}">
+        Percentage of melee critical hits.
+      </param>
+      <param name="{nonmeleehits}">
+        Number of non-melee hits.
+      </param>
+      <param name="{nonmeleemisses}">
+        Number of non-melee misses.
+      </param>
+      <param name="{nonmeleecrits}">
+        Number of non-melee critical hits.
+      </param>
+      <param name="{nonmeleehits%}">
+        Percentage of non-melee hits.
+      </param>
+      <param name="{nonmeleemisses%}">
+        Percentage of non-melee misses.
+      </param>
+      <param name="{nonmeleecrits%}">
+        Percentage of non-melee critical hits.
+      </param>
+      <param name="{healhits}">
+        Number of successful heals.
+      </param>
+      <param name="{healmisses}">
+        Number of failed heals.
+      </param>
+      <param name="{healcrits}">
+        Number of critical heals.
+      </param>
+      <param name="{healhits%}">
+        Percentage of successful heals.
+      </param>
+      <param name="{healmisses%}">
+        Percentage of failed heals.
+      </param>
+      <param name="{healcrits%}">
+        Percentage of critical heals.
+      </param>
+      </param-list>  
+            And for color:
+      <pre>            
+            |caarrggbb         -> aa = Hexadecimal display of alpha value
+                               -> rr = Hexadecimal display of red value
+                               -> gg = Hexadecimal display of green value
+                               -> bb = Hexadecimal display of blue value
+        
+            |r                 -> Restore previous color
+            
+            e.g. '|cffff0000{dps}|r dps' will display the current dps in
+                 opaque red (ff, ff, 00, 00), and then " dps" in the 
+                 default color (which is a nearly pure yellow).
+      </pre>           
+      Quick exemples:
+      <pre>  
+        Display only clock (in white) in a 100 pixel large bar:
+        
+          /noxib hide slot=1-9           -> Hide all slots
+          /noxib show slot=1             -> Show slot 1
+          /noxib resize slot=1 width=100 -> Resize slot 1 to 100 pixels
+          /noxib remap slot=1 display='|cffffffff{24hours}:{minutes}'
+      </pre>      
+    </change>
+    <change>
+      A complete help file in progress.
+    </change>
+  </version>
+  <version number="1.0" date="2005/03/07" author="ins0mniaque">
+    <change>
+      First version.
+    </change>
+    <change>
+      Usage is quite obvious, type /noxib for more information.
+    </change>
+  </version>
+</changelog>

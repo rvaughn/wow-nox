@@ -1,0 +1,10 @@
+## Interface: 40000
+## Title: Nox Information Bar Tester
+## Notes: Tests Nox Information Bar data functions.
+## Author: Gruma
+## Version: 4.0.0a1
+## DefaultState: Disabled
+## SavedVariables: 
+## Dependencies: NoxInformationBar
+## OptionalDeps: NoxCombatStats, NoxEquipmentStats, NoxHonorStats, NoxPlayerStats, NoxSkillStats
+NoxTester.xml

@@ -1,0 +1,161 @@
+<!--
+  Nox Money Extension
+
+  Adds a coin display to the Nox Information Bar, and also serves as
+  an example of how to add complex extensions to the Nox Bar.
+
+  @author Gruma
+-->
+
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+  <Script file="Localization.lua" />
+  <Script file="NoxMoneyExtension.lua" />
+  <Frame name="NoxMoneyFrameTemplate" virtual="true">
+    <Size>
+      <AbsDimension x="128" y="13"/>
+    </Size>
+    <Frames>
+      <Button name="$parentCopperButton">
+        <Size>
+          <AbsDimension x="32" y="13"/>
+        </Size>
+        <Anchors>
+          <Anchor point="RIGHT">
+            <Offset>
+              <AbsDimension x="-13" y="0"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <NormalTexture file="Interface\MoneyFrame\UI-MoneyIcons">
+          <Size>
+            <AbsDimension x="13" y="13"/>
+          </Size>
+          <Anchors>
+            <Anchor point="RIGHT"/>
+          </Anchors>
+          <TexCoords left="0.5" right="0.75" top="0" bottom="1"/>
+        </NormalTexture>
+        <ButtonText name="$parentText">
+          <Anchors>
+            <Anchor point="RIGHT">
+              <Offset>
+                <AbsDimension x="-13" y="1"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </ButtonText>
+        <NormalFont style="GameFontNormalSmall" justifyH="RIGHT" />
+        <PushedTextOffset>
+          <AbsDimension x="0" y="0"/>
+        </PushedTextOffset>
+        <Scripts>
+          <OnClick>
+            NoxMoneyFrameButton_OnClick(self, 1);
+          </OnClick>
+        </Scripts>
+      </Button>
+
+      <Button name="$parentSilverButton">
+        <Size>
+          <AbsDimension x="32" y="13"/>
+        </Size>
+        <Anchors>
+          <Anchor point="RIGHT" relativeTo="$parentCopperButton" relativePoint="LEFT">
+            <Offset>
+              <AbsDimension x="4" y="0"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <NormalTexture file="Interface\MoneyFrame\UI-MoneyIcons">
+          <Size>
+            <AbsDimension x="13" y="13"/>
+          </Size>
+          <Anchors>
+            <Anchor point="RIGHT"/>
+          </Anchors>
+          <TexCoords left="0.25" right="0.5" top="0" bottom="1"/>
+        </NormalTexture>
+        <ButtonText name="$parentText">
+          <Anchors>
+            <Anchor point="RIGHT">
+              <Offset>
+                <AbsDimension x="-13" y="1"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </ButtonText>
+        <NormalFont style="GameFontNormalSmall" />
+        <PushedTextOffset>
+          <AbsDimension x="0" y="0"/>
+        </PushedTextOffset>
+        <Scripts>
+          <OnClick>
+            NoxMoneyFrameButton_OnClick(self, COPPER_PER_SILVER);
+          </OnClick>
+        </Scripts>
+      </Button>
+
+      <Button name="$parentGoldButton">
+        <Size>
+          <AbsDimension x="32" y="13"/>
+        </Size>
+        <Anchors>
+          <Anchor point="RIGHT" relativeTo="$parentSilverButton" relativePoint="LEFT">
+            <Offset>
+              <AbsDimension x="-4" y="0"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <NormalTexture file="Interface\MoneyFrame\UI-MoneyIcons">
+          <Size>
+            <AbsDimension x="13" y="13"/>
+          </Size>
+          <Anchors>
+            <Anchor point="RIGHT"/>
+          </Anchors>
+          <TexCoords left="0" right="0.25" top="0" bottom="1"/>
+        </NormalTexture>
+        <ButtonText name="$parentText">
+          <Anchors>
+            <Anchor point="RIGHT">
+              <Offset>
+                <AbsDimension x="-13" y="1"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </ButtonText>
+        <NormalFont style="GameFontNormalSmall" />
+        <PushedTextOffset>
+          <AbsDimension x="0" y="0"/>
+        </PushedTextOffset>
+        <Scripts>
+          <OnClick>
+            NoxMoneyFrameButton_OnClick(self, COPPER_PER_GOLD);
+          </OnClick>
+        </Scripts>
+      </Button>
+    </Frames>
+    <Scripts>
+      <OnLoad>
+        SmallMoneyFrame_OnLoad(self, "NOX_STATIC");
+      </OnLoad>
+      <OnEvent>
+        NoxMoneyFrame_OnEvent(self, event, ...);
+      </OnEvent>
+      <OnShow>
+        NoxMoneyFrame_OnShow(self);
+      </OnShow>
+      <OnHide>
+        NoxMoneyFrame_OnHide(self);
+      </OnHide>
+    </Scripts>
+  </Frame>
+  <Frame name="NoxMoneyExtensionFrame" hidden="true">
+    <Scripts>
+      <OnLoad>
+        NoxMoneyExtension_OnLoad(self);
+      </OnLoad>
+    </Scripts>
+  </Frame>
+</Ui>

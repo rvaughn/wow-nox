@@ -1,0 +1,96 @@
+Nox Information Bar is a simple customizable frame that lets you display nearly any data available to the WoW client - in real time.  It can show the current time, experience, game performance, combat efficiency and more - pretty much any data you want in the format you want.  This "Redux" edition is the same thing as the original Nox bar (see http://www.curse-gaming.com/mod.php?addid=613 ), but with additional features and a new maintainer.
+
+Features:
+- Sixteen customizable data slots.
+- 32 customizable tooltip lines.
+- Experience bar overlays showing current and rested experience in a format easier to read than the default experience bar.
+- A new GUI panel for customizing the bar.
+- Compatibility with myAddOns.
+- Clock offsets from server time configurable per-character for local time displays.
+
+You can customize the Nox Bar by specifying a mix of text and "variables" for each slot to display.  For instance, to make a slot display the current time in 24-hour format, you might configure a slot to display "The current time is {24hours}:{minutes}".  The names enclosed in brackets (eg. "{24hours}") are the variables, and are replaced at runtime with their appropriate values, while all other text is displayed as configured.  Nox supports many of these variables - too many to list here.  See the user's guide included in the download for the latest list.  If you don't see the data you need in the list, please feel free to suggest additions!
+
+Nox Information Bar is delivered as several separate addons so that you can load only the pieces you need.  These are:
+* NoxInformationBar is the bar itself, with the standard set of variables.
+* NoxCombatStats adds combat-related variables to the bar.
+* NoxHonorStats adds honor-related variables to the bar.
+* NoxMoneyExtension adds a graphical money display, similar to the one at the bottom of the backpack.
+* NoxEquipmentStats adds information about equipped items, including durability.
+* NoxSkillStats adds information about character skills.
+* NoxPlayerStats adds basic information about your character.
+* NoxSampleExtension shows how to write plugins for the Nox Bar.
+* NoxMover shifts UI frames around to make room for your Nox Bar.
+
+All of these addons are included in the download file.  The "NoxMover" addon is completely standalone, and can be used with or without the Nox Bar, or can be turned off or deleted if you don't need it.
+
+I have to thank ins0mniaque for the original Nox bar, plus the authors of all of the other addons I have borrowed bits and pieces or techniques from - as well as the authors of addons ins0mniaque originally borrowed from.
+
+The Nox Bar supports the following slash commands:
+
+Show the configuration panel:
+/noxib config
+
+Show or hide the bar or individual slots:
+/noxib show [slot=table]
+/noxib hide [slot=table]
+/noxib toggle [slot=table]
+
+Lock the bar position:
+/noxib lock
+/noxib unlock
+
+Customize slot displays:
+/noxib resize slot=table width=number
+/noxib remap slot=table display='string'
+
+Reset the curent session statistics:
+/noxib reset
+
+Configure the tooltip:
+/noxib tooltip [state=<'on', 'off'>] [position=<'anchor'>] [x=number] [y=number]
+
+Configure the clock offset from server time:
+/noxib clock [offsethour=number] [offsetminute=number]
+
+"table" parameters can be specified as:
+- numbers -> "slot=1"
+- ranges  -> "slot=1-6"
+- lists   -> "slot=[ 1 3 7 8 ]"
+
+Display strings for the remap command (enclosed in single quotes) define what each slot will display. Variables in each display string (enclosed in braces) will be replaced in the bar with their current values.
+
+Anchor values for the tooltip can be:
+- 'left'
+- 'topleft'
+- 'top'
+- 'topright'
+- 'right'
+- 'bottomright'
+- 'bottom'
+- 'bottomleft'
+- 'center'
+
+Examples:
+* Mark slots 4, 5 and 6 as visible
+/noxib show slot=4-6
+
+* Display only the clock (in white) in a 100 pixel wide slot
+/noxib hide slot=1-9
+/noxib show slot=1
+/noxib resize slot=1 width=100
+/noxib remap slot=1 display='|cffffffff{24hours}:{minutes}'
+
+* Display the current framerate in slot 6, followed by a space and then "fps"
+/noxib remap slot=6 display='{framerate} fps'
+
+* Put the tooltip in the bottom right corner
+/noxib tooltip position='bottomright' x=-32 y=32
+
+* Shut off the tooltip
+/noxib tooltip state='off'
+
+* Reset the offsets to zero
+/noxib clock
+
+* Set the clock offset to minus 2 hours and 30 minutes
+/noxib clock offsethour=-2 offsetminute=-30

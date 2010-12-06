@@ -1,0 +1,317 @@
+<!--
+  Nox Information Bar
+-->
+
+<Ui xmlns="http://www.blizzard.com/wow/ui/" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<!-- ======================================================= -->
+	<!--  Scripts                                                -->
+	<!-- ======================================================= -->
+
+    <Script file="SlashCommandParser.lua"        />
+    <Script file="Localization.lua"              />
+    <Script file="Globals.lua"                   />
+    <Script file="Externals.lua"                 />
+    <Script file="SlashCommands.lua"             />
+    <Script file="NoxInformationBarHelpers.lua"  />
+    <Script file="NoxInformationBarEvents.lua"   />
+    <Script file="NoxInformationBarProgress.lua" />
+    <Script file="NoxInformationBar.lua"         />
+    <Script file="NoxDataFuncs.lua"              />
+    <Script file="NoxTooltip.lua"                />
+    
+    <!-- ======================================================= -->
+    <!--  Main Frame                                             -->
+    <!-- ======================================================= -->
+    
+    <Frame name="NoxInformationBarFrame" toplevel="true" movable="true" parent="UIParent">
+    
+        <!-- ======================================================= -->
+        <!--  Location                                               -->
+        <!-- ======================================================= -->
+        
+        <Size><AbsDimension x="400" y="23" /></Size>
+        <Anchors><Anchor point="TOP" /></Anchors>
+        
+        <Frames>
+        <!-- ======================================================= -->
+        <!--  Backdrop                                               -->
+        <!-- ======================================================= -->
+        
+            <Frame name="$parentBackdrop" setAllPoints="true"> <!-- frameStrata="BACKGROUND" -->
+              <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                <BackgroundInsets>
+                  <AbsInset left="5" right="5" top="5" bottom="5" />
+                </BackgroundInsets>
+                <TileSize>
+                  <AbsValue val="16" />
+                </TileSize>
+                <EdgeSize>
+                  <AbsValue val="16" />
+                </EdgeSize>
+              </Backdrop>
+              <Scripts>
+                <OnLoad>
+                  self:SetBackdropBorderColor(TOOLTIP_DEFAULT_COLOR.r, TOOLTIP_DEFAULT_COLOR.g, TOOLTIP_DEFAULT_COLOR.b);
+                  self:SetBackdropColor(TOOLTIP_DEFAULT_BACKGROUND_COLOR.r, TOOLTIP_DEFAULT_BACKGROUND_COLOR.g, TOOLTIP_DEFAULT_BACKGROUND_COLOR.b);
+                </OnLoad>
+              </Scripts>
+            </Frame>
+
+        <!-- ======================================================= -->
+        <!--  Content                                                -->
+        <!-- ======================================================= -->
+        
+            <Button name="NoxInformationBarTextButton">
+            
+                <Size><AbsDimension x="390" y="12" /></Size>
+                <Anchors>
+                    <Anchor point="LEFT">
+                        <Offset><AbsDimension x="5" y="1" /></Offset>
+                    </Anchor>
+                </Anchors>
+                
+                <Layers>
+                
+                    <Layer level="ARTWORK">
+                    
+                        <!-- ======================================================= -->
+                        <!--  Slots                                                  -->
+                        <!-- ======================================================= -->
+                        
+                        <FontString name="NoxInformationBarSlot1" inherits="GameFontNormalSmall">
+                            <Size><AbsDimension x="0" y="12" /></Size>
+                            <Anchors><Anchor point="LEFT" /></Anchors>
+                        </FontString>
+                        
+                        <FontString name="NoxInformationBarSlot2" inherits="GameFontNormalSmall">
+                            <Size><AbsDimension x="0" y="12" /></Size>
+                            <Anchors><Anchor point="LEFT" relativeTo="NoxInformationBarSlot1" relativePoint="RIGHT" /></Anchors>
+                        </FontString>
+                        
+                        <FontString name="NoxInformationBarSlot3" inherits="GameFontNormalSmall">
+                            <Size><AbsDimension x="0" y="12" /></Size>
+                            <Anchors><Anchor point="LEFT" relativeTo="NoxInformationBarSlot2" relativePoint="RIGHT" /></Anchors>
+                        </FontString>
+                        
+                        <FontString name="NoxInformationBarSlot4" inherits="GameFontNormalSmall">
+                            <Size><AbsDimension x="0" y="12" /></Size>
+                            <Anchors><Anchor point="LEFT" relativeTo="NoxInformationBarSlot3" relativePoint="RIGHT" /></Anchors>
+                        </FontString>
+                        
+                        <FontString name="NoxInformationBarSlot5" inherits="GameFontNormalSmall">
+                            <Size><AbsDimension x="0" y="12" /></Size>
+                            <Anchors><Anchor point="LEFT" relativeTo="NoxInformationBarSlot4" relativePoint="RIGHT" /></Anchors>
+                        </FontString>
+                        
+                        <FontString name="NoxInformationBarSlot6" inherits="GameFontNormalSmall">
+                            <Size><AbsDimension x="0" y="12" /></Size>
+                            <Anchors><Anchor point="LEFT" relativeTo="NoxInformationBarSlot5" relativePoint="RIGHT" /></Anchors>
+                        </FontString>
+                        
+                        <FontString name="NoxInformationBarSlot7" inherits="GameFontNormalSmall">
+                            <Size><AbsDimension x="0" y="12" /></Size>
+                            <Anchors><Anchor point="LEFT" relativeTo="NoxInformationBarSlot6" relativePoint="RIGHT" /></Anchors>
+                        </FontString>
+                        
+                        <FontString name="NoxInformationBarSlot8" inherits="GameFontNormalSmall">
+                            <Size><AbsDimension x="0" y="12" /></Size>
+                            <Anchors><Anchor point="LEFT" relativeTo="NoxInformationBarSlot7" relativePoint="RIGHT" /></Anchors>
+                        </FontString>
+
+                        <FontString name="NoxInformationBarSlot9" inherits="GameFontNormalSmall">
+                            <Size><AbsDimension x="0" y="12" /></Size>
+                            <Anchors><Anchor point="LEFT" relativeTo="NoxInformationBarSlot8" relativePoint="RIGHT" /></Anchors>
+                        </FontString>
+
+                        <FontString name="NoxInformationBarSlot10" inherits="GameFontNormalSmall">
+                            <Size><AbsDimension x="0" y="12" /></Size>
+                            <Anchors><Anchor point="LEFT" relativeTo="NoxInformationBarSlot9" relativePoint="RIGHT" /></Anchors>
+                        </FontString>
+
+                        <FontString name="NoxInformationBarSlot11" inherits="GameFontNormalSmall">
+                            <Size><AbsDimension x="0" y="12" /></Size>
+                            <Anchors><Anchor point="LEFT" relativeTo="NoxInformationBarSlot10" relativePoint="RIGHT" /></Anchors>
+                        </FontString>
+
+                        <FontString name="NoxInformationBarSlot12" inherits="GameFontNormalSmall">
+                            <Size><AbsDimension x="0" y="12" /></Size>
+                            <Anchors><Anchor point="LEFT" relativeTo="NoxInformationBarSlot11" relativePoint="RIGHT" /></Anchors>
+                        </FontString>
+
+                        <FontString name="NoxInformationBarSlot13" inherits="GameFontNormalSmall">
+                            <Size><AbsDimension x="0" y="12" /></Size>
+                            <Anchors><Anchor point="LEFT" relativeTo="NoxInformationBarSlot12" relativePoint="RIGHT" /></Anchors>
+                        </FontString>
+
+                        <FontString name="NoxInformationBarSlot14" inherits="GameFontNormalSmall">
+                            <Size><AbsDimension x="0" y="12" /></Size>
+                            <Anchors><Anchor point="LEFT" relativeTo="NoxInformationBarSlot13" relativePoint="RIGHT" /></Anchors>
+                        </FontString>
+
+                        <FontString name="NoxInformationBarSlot15" inherits="GameFontNormalSmall">
+                            <Size><AbsDimension x="0" y="12" /></Size>
+                            <Anchors><Anchor point="LEFT" relativeTo="NoxInformationBarSlot14" relativePoint="RIGHT" /></Anchors>
+                        </FontString>
+
+                        <FontString name="NoxInformationBarSlot16" inherits="GameFontNormalSmall">
+                            <Size><AbsDimension x="0" y="12" /></Size>
+                            <Anchors><Anchor point="LEFT" relativeTo="NoxInformationBarSlot15" relativePoint="RIGHT" /></Anchors>
+                        </FontString>
+
+                    </Layer>
+                    
+                </Layers>
+                
+                <!-- ======================================================= -->
+                <!--  Layers Scripts                                         -->
+                <!-- ======================================================= -->
+                
+                <Scripts>
+                  <OnLoad>
+                    self:SetFrameLevel(self:GetFrameLevel() + 3);
+                  </OnLoad>
+                  <OnEnter>
+                    NoxInformationBarText_OnEnter(self);
+                  </OnEnter>
+                  <OnLeave>
+                    NoxInformationBarText_OnLeave(self);
+                  </OnLeave>
+                  <OnMouseDown>
+                    NoxInformationBar_OnMouseDown(self, button);
+                  </OnMouseDown>
+                  <OnMouseUp>
+                    NoxInformationBar_OnMouseUp(self, button); 
+                  </OnMouseUp>
+                </Scripts>
+                
+            </Button>
+
+            <!-- ======================================================= -->
+            <!--  XP Bar                                                 -->
+            <!-- ======================================================= -->
+            
+            <StatusBar name="NoxInformationBarPlayerXPBar" inherits="TextStatusBar">
+                <Size><AbsDimension x="390" y="14" /></Size>
+                <Anchors>
+                    <Anchor point="LEFT">
+                        <Offset><AbsDimension x="5" y="0" /></Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                      self:SetFrameLevel(self:GetFrameLevel() + 2);
+                      NoxInformationBarPlayerXPBar_OnLoad(self); 
+                    </OnLoad>
+                    <OnEvent>
+                      NoxInformationBarPlayerXPBar_OnEvent(self, event, ...);
+                    </OnEvent>
+                    <OnMouseDown>
+                      NoxInformationBar_OnMouseDown(self, button);
+                    </OnMouseDown>
+                    <OnMouseUp>
+                      NoxInformationBar_OnMouseUp(self, button);
+                    </OnMouseUp>
+                </Scripts>
+                <BarTexture file="Interface\TargetingFrame\UI-StatusBar" />
+                <BarColor r="0.58" g="0.0" b="0.55" />
+            </StatusBar>
+            
+            <!-- ======================================================= -->
+            <!--  Rest XP Bar                                            -->
+            <!-- ======================================================= -->
+            
+            <StatusBar name="NoxInformationBarPlayerRestXPBar" inherits="TextStatusBar">
+                <Size><AbsDimension x="390" y="14" /></Size>
+                <Anchors>
+                    <Anchor point="LEFT">
+                        <Offset><AbsDimension x="5" y="0" /></Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                      self:SetFrameLevel(self:GetFrameLevel() + 1);
+                    </OnLoad>
+                    <OnMouseDown>
+                      NoxInformationBar_OnMouseDown(self, button);
+                    </OnMouseDown>
+                    <OnMouseUp>
+                      NoxInformationBar_OnMouseUp(self, button);
+                    </OnMouseUp>
+                </Scripts>
+                <BarTexture file="Interface\TargetingFrame\UI-StatusBar" />
+                <BarColor r="0.0" g="0.39" b="1.0" />
+            </StatusBar>
+            
+            <!-- ======================================================= -->
+            <!--  XP Bar Background                                      -->
+            <!-- ======================================================= -->
+<!--            
+            <StatusBar name="NoxInformationBarPlayerXPBarBackground" inherits="TextStatusBar">
+                <Size><AbsDimension x="390" y="16" /></Size>
+                <Anchors>
+                    <Anchor point="LEFT">
+                        <Offset><AbsDimension x="5" y="0" /></Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                      self:SetFrameLevel(self:GetFrameLevel() - 2);
+                    </OnLoad>
+                    <OnMouseDown>
+                      NoxInformationBar_OnMouseDown(self, button);
+                    </OnMouseDown>
+                    <OnMouseUp>
+                      NoxInformationBar_OnMouseUp(self, button);
+                    </OnMouseUp>
+                </Scripts>
+                <BarTexture file="Interface\TargetingFrame\UI-StatusBar" />
+                <BarColor r="0.0" g="0.0" b="0.0" a="0.0" />
+            </StatusBar>
+-->
+        </Frames>
+        
+        <!-- ======================================================= -->
+        <!--  Main Frame Scripts                                     -->
+        <!-- ======================================================= -->
+        
+        <Scripts>
+            <OnLoad>
+              NoxInformationBar_OnLoad(self);
+            </OnLoad>
+            <OnUpdate>
+              NoxInformationBar_OnUpdate(self, elapsed);
+            </OnUpdate>
+            <OnEvent>
+              NoxInformationBar_OnEvent(self, event, ...);
+            </OnEvent>
+            <OnMouseDown>
+              NoxInformationBar_OnMouseDown(self, button);
+            </OnMouseDown>
+            <OnMouseUp>
+              NoxInformationBar_OnMouseUp(self, button);
+            </OnMouseUp>
+            <OnShow>
+              NoxInformationBar_OnShow(self);
+            </OnShow>
+            <OnHide>
+              NoxInformationBar_OnHide(self);
+            </OnHide>
+        </Scripts>
+        
+    </Frame>
+    
+    <!-- not used right now -->
+    <GameTooltip name="NoxTooltip" frameStrata="TOOLTIP" hidden="true" parent="UIParent" inherits="GameTooltipTemplate">
+        <Scripts>
+            <OnLoad>
+                --GameTooltip_OnLoad(self);
+            </OnLoad>
+            <OnHide>
+                --GameTooltip_OnHide(self);
+            </OnHide>
+        </Scripts>
+    </GameTooltip>
+</Ui>

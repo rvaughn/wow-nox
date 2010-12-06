@@ -1,0 +1,30 @@
+<!--
+  Nox Equipment Stats
+
+  Makes equipment stats available to the Nox Information Bar. 
+
+  @author Gruma
+-->
+
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+  <Script file="Localization.lua" />
+  <Script file="NoxEquipmentStats.lua" />
+  <Frame name="NoxEquipmentStatsFrame" parent="UIParent" hidden="true">
+    <Scripts>
+      <OnLoad>
+        NoxEquipmentStats_OnLoad(self);
+      </OnLoad>
+      <OnEvent>
+        NoxEquipmentStats_OnEvent(self, event, ...);
+      </OnEvent>
+    </Scripts>
+  </Frame>
+	<GameTooltip name="NoxEquipmentTooltip" frameStrata="TOOLTIP" hidden="true" inherits="GameTooltipTemplate">
+    <Scripts>
+      <OnLoad>
+        self:SetOwner(NoxInformationBarFrame, "ANCHOR_NONE");
+      </OnLoad>
+    </Scripts>
+  </GameTooltip>
+</Ui>

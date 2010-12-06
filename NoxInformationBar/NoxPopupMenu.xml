@@ -1,0 +1,161 @@
+<!--
+  Nox Information Bar
+-->
+
+<Ui xmlns="http://www.blizzard.com/wow/ui/" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+  <Script file="NoxPopupMenu.lua" />
+
+  <Button name="NoxPopupMenuButtonTemplate" hidden="false" virtual="true">
+    <Size>
+      <AbsDimension x="64" y="16" />
+    </Size>
+
+		<ButtonText name="$parentNormalText">
+      <Anchors>
+        <Anchor point="LEFT">
+          <Offset>
+            <AbsDimension x="0" y="0"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </ButtonText>
+
+		<NormalFont style="GameFontHighlightSmallLeft" />
+		<HighlightFont style="GameFontHighlightSmallLeft" />
+		<DisabledFont style="GameFontDisableSmallLeft" />
+		<HighlightTexture name="$parentHighlight" file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD">
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="-5" y="0" />
+          </Offset>
+        </Anchor>
+        <Anchor point="BOTTOMRIGHT">
+          <Offset>
+            <AbsDimension x="5" y="0" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </HighlightTexture>
+<!--
+    This is the original UIDropDownMenu layout, but results in a weak, faded bar....most of the time
+			<Layer level="BACKGROUND">
+				<Texture name="$parentHighlight" file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD" setAllPoints="true" hidden="true" />
+			</Layer>
+    </Layers>
+-->
+    <Scripts>
+      <OnClick>
+        PlaySound("igMainMenuOptionCheckBoxOn");
+        NoxPopupMenuButton_OnClick(self);
+      </OnClick>
+			<OnEnter>
+				NoxPopupMenuFrame_StopCounting(self:GetParent());
+				--getglobal(self:GetName().."Highlight"):Show();
+				if (self.tooltipTitle) then
+					GameTooltip_AddNewbieTip(self, self.tooltipTitle, 1.0, 1.0, 1.0, self.tooltipText, 1);
+				end
+			</OnEnter>
+			<OnLeave>
+				NoxPopupMenuFrame_StartCounting(self:GetParent());
+				--getglobal(self:GetName().."Highlight"):Hide();
+				GameTooltip:Hide();
+			</OnLeave>
+    </Scripts>
+  </Button>
+
+  <Frame name="NoxPopupMenuFrame" frameStrata="DIALOG" hidden="true" enableMouse="true" parent="UIParent">
+    <Size>
+      <AbsDimension x="200" y="200" />
+    </Size>
+    <Frames>
+			<Frame name="$parentDialogBackdrop" setAllPoints="true">
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<BackgroundInsets>
+						<AbsInset left="11" right="12" top="12" bottom="11"/>
+					</BackgroundInsets>
+					<TileSize>
+						<AbsValue val="32"/>
+					</TileSize>
+					<EdgeSize>
+						<AbsValue val="32"/>
+					</EdgeSize>
+				</Backdrop>
+			</Frame>
+			<Frame name="$parentMenuBackdrop" setAllPoints="true">
+				<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="16"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="16"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Scripts>
+					<OnLoad>
+						self:SetBackdropBorderColor(TOOLTIP_DEFAULT_COLOR.r, TOOLTIP_DEFAULT_COLOR.g, TOOLTIP_DEFAULT_COLOR.b);
+						self:SetBackdropColor(TOOLTIP_DEFAULT_BACKGROUND_COLOR.r, TOOLTIP_DEFAULT_BACKGROUND_COLOR.g, TOOLTIP_DEFAULT_BACKGROUND_COLOR.b);
+					</OnLoad>
+				</Scripts>
+			</Frame>
+      <Button name="NoxPopupMenuButton1" inherits="NoxPopupMenuButtonTemplate" id="1" />
+      <Button name="NoxPopupMenuButton2" inherits="NoxPopupMenuButtonTemplate" id="2" />
+      <Button name="NoxPopupMenuButton3" inherits="NoxPopupMenuButtonTemplate" id="3" />
+      <Button name="NoxPopupMenuButton4" inherits="NoxPopupMenuButtonTemplate" id="4" />
+      <Button name="NoxPopupMenuButton5" inherits="NoxPopupMenuButtonTemplate" id="5" />
+      <Button name="NoxPopupMenuButton6" inherits="NoxPopupMenuButtonTemplate" id="6" />
+      <Button name="NoxPopupMenuButton7" inherits="NoxPopupMenuButtonTemplate" id="7" />
+      <Button name="NoxPopupMenuButton8" inherits="NoxPopupMenuButtonTemplate" id="8" />
+      <Button name="NoxPopupMenuButton9" inherits="NoxPopupMenuButtonTemplate" id="9" />
+      <Button name="NoxPopupMenuButton10" inherits="NoxPopupMenuButtonTemplate" id="10" />
+      <Button name="NoxPopupMenuButton11" inherits="NoxPopupMenuButtonTemplate" id="11" />
+      <Button name="NoxPopupMenuButton12" inherits="NoxPopupMenuButtonTemplate" id="12" />
+      <Button name="NoxPopupMenuButton13" inherits="NoxPopupMenuButtonTemplate" id="13" />
+      <Button name="NoxPopupMenuButton14" inherits="NoxPopupMenuButtonTemplate" id="14" />
+      <Button name="NoxPopupMenuButton15" inherits="NoxPopupMenuButtonTemplate" id="15" />
+      <Button name="NoxPopupMenuButton16" inherits="NoxPopupMenuButtonTemplate" id="16" />
+      <Button name="NoxPopupMenuButton17" inherits="NoxPopupMenuButtonTemplate" id="17" />
+      <Button name="NoxPopupMenuButton18" inherits="NoxPopupMenuButtonTemplate" id="18" />
+      <Button name="NoxPopupMenuButton19" inherits="NoxPopupMenuButtonTemplate" id="19" />
+      <Button name="NoxPopupMenuButton20" inherits="NoxPopupMenuButtonTemplate" id="20" />
+      <Button name="NoxPopupMenuButton21" inherits="NoxPopupMenuButtonTemplate" id="21" />
+      <Button name="NoxPopupMenuButton22" inherits="NoxPopupMenuButtonTemplate" id="22" />
+      <Button name="NoxPopupMenuButton23" inherits="NoxPopupMenuButtonTemplate" id="23" />
+      <Button name="NoxPopupMenuButton24" inherits="NoxPopupMenuButtonTemplate" id="24" />
+      <Button name="NoxPopupMenuButton25" inherits="NoxPopupMenuButtonTemplate" id="25" />
+      <Button name="NoxPopupMenuButton26" inherits="NoxPopupMenuButtonTemplate" id="26" />
+      <Button name="NoxPopupMenuButton27" inherits="NoxPopupMenuButtonTemplate" id="27" />
+      <Button name="NoxPopupMenuButton28" inherits="NoxPopupMenuButtonTemplate" id="28" />
+      <Button name="NoxPopupMenuButton29" inherits="NoxPopupMenuButtonTemplate" id="29" />
+      <Button name="NoxPopupMenuButton30" inherits="NoxPopupMenuButtonTemplate" id="30" />
+      <Button name="NoxPopupMenuButton31" inherits="NoxPopupMenuButtonTemplate" id="31" />
+      <Button name="NoxPopupMenuButton32" inherits="NoxPopupMenuButtonTemplate" id="32" />
+    </Frames>
+    <Scripts>
+      <OnLoad>
+        NoxPopupMenuFrame_OnLoad(self);
+      </OnLoad>
+      <OnShow>
+        NoxPopupMenuFrame_OnShow(self);
+      </OnShow>
+      <OnHide>
+        NoxPopupMenuFrame_OnHide(self);
+      </OnHide>
+			<OnEnter>
+				NoxPopupMenuFrame_StopCounting(self);
+			</OnEnter>
+			<OnLeave>
+				NoxPopupMenuFrame_StartCounting(self);
+			</OnLeave>
+			<OnUpdate>
+				NoxPopupMenuFrame_OnUpdate(self, elapsed);
+			</OnUpdate>
+    </Scripts>    
+  </Frame>
+</Ui>
