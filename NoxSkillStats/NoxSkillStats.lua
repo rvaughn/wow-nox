@@ -39,7 +39,7 @@ function NoxSkillStats_InitFormats()
       { code = NOX_SS_PARAM.skillrank,  func = NoxSkillStats_GetSkillRank, desc="the player's current skill level" },
       { code = NOX_SS_PARAM.skillmax,   func = NoxSkillStats_GetSkillMax,  desc="the player's current skill max" },
       { code = NOX_SS_PARAM.skillname,  func = NoxSkillStats_GetSkillName, desc="the skill name, useful for 'generic' skill lookups" },
-      { code = NOX_SS_PARAM.skilltitle, func = NoxSkillStats_GetSkillTitle, desc="the title for the player's current rank" },
+      { code = NOX_SS_PARAM.skilltitle, func = NoxSkillStats_GetSkillTitle, desc="the title for the player's current rank" }
    );
 end
 
@@ -56,16 +56,11 @@ function NoxSkillStats_OnEvent(self, event, ...)
 end
 
 function NoxSkillStats_UpdateSkills()
---[[
-   local genericName, genericNum;
-   local n = GetNumSkillLines();
-   for i = 1,n do
-      local skillName, isHeader, isExpanded, skillRank, numTempPoints, skillModifier, skillMaxRank, isAbandonable, stepCost, rankCost, minLevel, skillCostType = GetSkillLineInfo(i);
-      if (skillName) then
-         if (isHeader) then
-            genericName = skillName;
-            genericNum = 1;
-         else
+   local profs = {GetProfessions()}; -- returns primary 1, 2, arch, fishing, cooking, first aid
+   for i = 1,#profs do
+      if profs[i] then
+         local skillName, texture, skillRank, skillMaxRank, numSpells, spelloffset, skillLine = GetProfessionInfo(profs[i]);
+         if skillName then
             local skill = NoxSkillStats[CanonicalName(skillName)];
             if (skill) then
                skill.rank = skillRank;
@@ -74,71 +69,20 @@ function NoxSkillStats_UpdateSkills()
                skill = { name=skillName, rank=skillRank, max=skillMaxRank };
                NoxSkillStats[CanonicalName(skillName)] = skill;
             end
-            NoxSkillStats[CanonicalName(genericName .. " " .. genericNum)] = skill;
-            genericNum = genericNum + 1;
-         end
-      end
-   end
-]]
-
-   local profs = GetProfessions(); -- returns primary 1, 2, arch, fishing, cooking, first aid
-   for i,v in ipairs(profs) do
-      local skillName, texture, skillRank, skillMaxRank, numSpells, spelloffset, skillLine = GetProfessionInfo(v);
-      if skillName then
-         local skill = NoxSkillStats[CanonicalName(skillName)];
-         if (skill) then
-            skill.rank = skillRank;
-            skill.max  = skillMaxRank;
-         else
-            skill = { name=skillName, rank=skillRank, max=skillMaxRank };
             for i = 1,#PROFESSION_RANKS do
                local value,title = PROFESSION_RANKS[i][1], PROFESSION_RANKS[i][2];
                if skillMaxRank < value then 
                   break 
                end
-              skill.title = title;
+               skill.title = title;
             end
-            NoxSkillStats[CanonicalName(skillName)] = skill;
+            -- for compatibility with old version
+            NoxSkillStats[CanonicalName("Professions " .. i)] = skill;
+            -- this reads better
+            NoxSkillStats[CanonicalName("Profession " .. i)] = skill;
          end
-         NoxSkillStats[CanonicalName("Profession " .. i)] = skill;
       end
    end
-
---[[
-   local link;
-
-   link = GetInventoryItemLink("player", GetInventorySlotInfo("MainHandSlot"));
-   if (link) then
-      local _, _, _, _, _, _, type = GetItemInfo(link);
-      if (type) then
-         type = string.gsub(type, "One.Handed ", "");
-         NoxSkillStats[NOX_SS_SLOT.mainhand] = NoxSkillStats[CanonicalName(type)]; 
-      else
-         NoxSkillStats[NOX_SS_SLOT.mainhand] = "n/a";
-      end
-   end
-
-   link = GetInventoryItemLink("player", GetInventorySlotInfo("SecondaryHandSlot"));
-   if (link) then
-      local _, _, _, _, _, _, type = GetItemInfo(link);
-      if (type) then
-         type = string.gsub(type, "One.Handed ", "");
-         NoxSkillStats[NOX_SS_SLOT.offhand] = NoxSkillStats[CanonicalName(type)];
-      else
-         NoxSkillStats[NOX_SS_SLOT.mainhand] = "n/a";
-      end
-   end
-
-   link = GetInventoryItemLink("player", GetInventorySlotInfo("RangedSlot"));
-   if (link) then
-      local _, _, _, _, _, _, type = GetItemInfo(link);
-      if (type) then
-         NoxSkillStats[NOX_SS_SLOT.ranged] = NoxSkillStats[CanonicalName(type)];
-      else
-         NoxSkillStats[NOX_SS_SLOT.mainhand] = "n/a";
-      end
-   end
-]]--
 end
 
 ---------------------------------------------------------------------------
