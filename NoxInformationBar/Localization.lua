@@ -13,7 +13,7 @@ NOX_IB = { };
 ---------------------------------------------------------------------------
 
 NOX_IB.Name                            = "Nox Information Bar";
-NOX_IB.Version                         = "4.0.3b1";
+NOX_IB.Version                         = "5.0.0";
 NOX_IB.SlashCommand                    = "/noxib";
 NOX_IB.UI                              = "Nox";
 NOX_IB.Description                     = "A configurable information bar.";

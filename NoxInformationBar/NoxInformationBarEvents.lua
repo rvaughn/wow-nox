@@ -126,29 +126,39 @@ NoxInformationBarEvents["TIME_PLAYED_MSG"] = function(arg1, arg2)
 end
 
 NoxInformationBarEvents["PLAYER_LEVEL_UP"] = function()
-   -- Update data
-   Nox.Global.LevelTimePlayed = Nox.Global.SessionTimePlayed - floor(Nox.Global.SessionTimePlayed);
-   Nox.Global.RolloverXP = Nox.Global.SessionXP;
-   Nox.Global.InitialXP = 0;
+   if Nox.ready then
+      -- Update data
+      Nox.Global.LevelTimePlayed = Nox.Global.SessionTimePlayed - floor(Nox.Global.SessionTimePlayed);
+      Nox.Global.RolloverXP = Nox.Global.SessionXP;
+      Nox.Global.InitialXP = 0;
    
-   Nox.Global.MaxLevel = (UnitLevel("player") == NoxInformationBarPlayerLevelMax);
+      Nox.Global.MaxLevel = (UnitLevel("player") == NoxInformationBarPlayerLevelMax);
         
-   -- Update tooltip if it is up
-   if (GameTooltip:IsOwned(NoxInformationBarFrame) and GameTooltip:IsVisible()) then 
-      NoxInformationBar_SetTooltip(); 
+      -- Update tooltip if it is up
+      if (GameTooltip:IsOwned(NoxInformationBarFrame) and GameTooltip:IsVisible()) then 
+         NoxInformationBar_SetTooltip(); 
+      end
    end
 end
 
 NoxInformationBarEvents["PLAYER_ENTERING_WORLD"] = function()
-   -- start all counters from this event  
-   NoxInformationBar_ResetCounters();
-   NoxInformationBarPlayer_Update();
-   NoxInformationBar_RefreshFrame();
+   NoxInformationBar_InitPlayer();
+   NoxInformationBar_UpdateConfig();
+
+   if Nox.ready then
+      -- start all counters from this event
+      NoxInformationBar_ResetCounters();
+      NoxInformationBar_RefreshFrame();
+   end
 end
 
 NoxInformationBarEvents["UNIT_NAME_UPDATE"] = function()
-   NoxInformationBarPlayer_Update();
-   NoxInformationBar_RefreshFrame();
+   NoxInformationBar_InitPlayer();
+   NoxInformationBar_UpdateConfig();
+
+   if Nox.ready then
+      NoxInformationBar_RefreshFrame();
+   end
 end
 
 NoxInformationBarEvents["PLAYER_XP_UPDATE"] = function()
@@ -159,17 +169,16 @@ NoxInformationBarEvents["PLAYER_XP_UPDATE"] = function()
 end
 
 NoxInformationBarEvents["VARIABLES_LOADED"] = function()
-   -- Hook into myAddOns, if available
    NoxInformationBar_RegisterMyAddOns();
-
-   -- Initialize data formatters
    NoxInformationBar_InitFormats();
 
-   -- Validate variables
-   NoxInformationBarConfig_Validate();
+   NoxInformationBar_InitVariables();
+   NoxInformationBar_UpdateConfig();
 
-   -- Refresh
-   NoxInformationBar_RefreshFrame();
+   if Nox.ready then
+      NoxInformationBar_ResetCounters();
+      NoxInformationBar_RefreshFrame();
+   end
 end
 
 NoxInformationBarEvents["ZONE_CHANGED"] = function()

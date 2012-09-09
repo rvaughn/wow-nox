@@ -1,4 +1,4 @@
----------------------------------------------------------------------------
+--------------------------------------------------------------------------
 -- Nox Information Bar
 ---------------------------------------------------------------------------
 
@@ -20,9 +20,9 @@ function NoxInformationBar_RequestTimePlayed()
    RequestTimePlayed();
 end
 
-function NoxInformationBar_DisplayTimePlayed(totalTime, levelTime)
+function NoxInformationBar_DisplayTimePlayed(...)
    if (not ChatSuppressed) then
-      Original_DisplayTimePlayed(totalTime, levelTime);
+      Original_DisplayTimePlayed(...);
    else
       ChatSuppressed = false;
    end
@@ -113,18 +113,20 @@ end
 
 function NoxInformationBar_RefreshDisplay(arg1)
    -- Make sure player is initialized
-   NoxInformationBarPlayer_Update();
+   -- NoxInformationBarPlayer_Update();
 
-   NoxInformationBar_CalculateRegeneration(arg1);
-   NoxInformationBar_UpdateTimers(arg1);
+   if Nox.ready then
+      NoxInformationBar_CalculateRegeneration(arg1);
+      NoxInformationBar_UpdateTimers(arg1);
 
-   if (NoxInformationBarFrame.TimeSinceLastUpdate > NOX_IB_UPDATE_RATE) then
-      NoxInformationBarFrame.TimeSinceLastUpdate = 0;
+      if (NoxInformationBarFrame.TimeSinceLastUpdate > NOX_IB_UPDATE_RATE) then
+         NoxInformationBarFrame.TimeSinceLastUpdate = 0;
 
-      NoxInformationBar_UpdateSlots();
+         NoxInformationBar_UpdateSlots();
       
-      if (GameTooltip:IsOwned(NoxInformationBarFrame)) then 
-         NoxInformationBar_SetTooltip(); 
+         if (GameTooltip:IsOwned(NoxInformationBarFrame)) then 
+            NoxInformationBar_SetTooltip(); 
+         end
       end
    end
 end

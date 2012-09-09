@@ -113,6 +113,7 @@ Nox = {
    Formats = {};
    Slots   = {};
    Global  = {};
+   ready = false;
 };
 
 -- this is the actual saved variable
@@ -158,6 +159,8 @@ Nox.RegistrationInfo = {
 ---------------------------------------------------------------------------
 
 local playerInitialized = false;
+local gotPlayer = false;
+local gotVariables = false;
 local playermeta = {};
 
 ---------------------------------------------------------------------------
@@ -260,33 +263,45 @@ function NoxInformationBar_GetFormat(name)
    return Nox.Formats[name];
 end
 
-function NoxInformationBarConfig_Validate()
-   -- fill in any missing fields and init for new users
-   NoxInformationBarConfig = NoxInformationBar_DuplicateTable(NoxInformationBarDefaults, NoxInformationBarConfig);
-
-   if (not NoxInformationBarConfig.Tooltip.Content) then
-      NoxInformationBarConfig.Tooltip.Content = NoxInformationBar_DuplicateTable(NoxTooltipDefaults);
-   end
-
-   -- make sure we're referring to the saved table
-   Nox.Config = NoxInformationBarConfig;
-
-   -- delete old unused fields
-   Nox.Config.HideMainXPBar = nil;
-    
-   -- alias GUI slots for easy access
-   for i = 1, NoxInformationBar_MaxSlots do
-      Nox.Slots[i] = _G["NoxInformationBarSlot" .. i];
-   end
-end
-
-function NoxInformationBarPlayer_Update()
-   if (not playerInitialized) then
+function NoxInformationBar_InitPlayer()
+   if not gotPlayer then
       -- Do nothing if player name is not available
       local playerName = UnitName("player");
       if (playerName == nil or playerName == UNKNOWNOBJECT or playerName == UKNOWNBEING) then
          return;
       end
+      gotPlayer = true;
+   end
+end
+
+function NoxInformationBar_InitVariables()
+   if not gotVariables then
+      -- fill in any missing fields and init for new users
+      NoxInformationBarConfig = NoxInformationBar_DuplicateTable(NoxInformationBarDefaults, NoxInformationBarConfig);
+      
+      if (not NoxInformationBarConfig.Tooltip.Content) then
+         NoxInformationBarConfig.Tooltip.Content = NoxInformationBar_DuplicateTable(NoxTooltipDefaults);
+      end
+
+      -- make sure we're referring to the saved table
+      Nox.Config = NoxInformationBarConfig;
+
+      -- delete old unused fields
+      Nox.Config.HideMainXPBar = nil;
+    
+      -- alias GUI slots for easy access
+      for i = 1, NoxInformationBar_MaxSlots do
+         Nox.Slots[i] = _G["NoxInformationBarSlot" .. i];
+      end
+
+      gotVariables = true;
+   end
+end
+
+function NoxInformationBar_UpdateConfig()
+   if (gotVariables and gotPlayer and not Nox.ready) then
+      -- Do nothing if player name is not available
+      local playerName = UnitName("player");
       local realm = GetCVar("realmName");
 	
       -- create realm/player if missing, and move from old player location if that one is present
@@ -328,7 +343,7 @@ function NoxInformationBarPlayer_Update()
       NoxInformationBar_UpdateInventory();
       NoxInformationBar_UpdateFactions();
 
-      playerInitialized = true;
+      Nox.ready = true;
 
       -- now fire an event to notify any interested extensions
       NoxInformationBar_OnPlayerInitialized();
