@@ -26,7 +26,7 @@ NoxEquipmentStats = {
    [NOX_ES_SLOT.feet]      = { slot="FeetSlot",          name=FEETSLOT },
    [NOX_ES_SLOT.mainhand]  = { slot="MainHandSlot",      name=MAINHANDSLOT },
    [NOX_ES_SLOT.offhand]   = { slot="SecondaryHandSlot", name=SECONDARYHANDSLOT },
-   [NOX_ES_SLOT.ranged]    = { slot="RangedSlot",        name=RANGEDSLOT },
+--   [NOX_ES_SLOT.ranged]    = { slot="RangedSlot",        name=RANGEDSLOT },
 -- others
    [NOX_ES_SLOT.finger1]   = { slot="Finger0Slot",       name=FINGER0SLOT },
    [NOX_ES_SLOT.finger2]   = { slot="Finger1Slot",       name=FINGER1SLOT },
@@ -54,8 +54,8 @@ NoxEquipmentAliases = {
    [NOX_ES_SLOT.boots]       = NoxEquipmentStats.feet;
    [NOX_ES_SLOT.pauldrons]   = NoxEquipmentStats.shoulders;
    [NOX_ES_SLOT.weapon]      = NoxEquipmentStats.mainhand;
-   [NOX_ES_SLOT.gun]         = NoxEquipmentStats.ranged;
-   [NOX_ES_SLOT.bow]         = NoxEquipmentStats.ranged;
+--   [NOX_ES_SLOT.gun]         = NoxEquipmentStats.ranged;
+--   [NOX_ES_SLOT.bow]         = NoxEquipmentStats.ranged;
    [NOX_ES_SLOT.torso]       = NoxEquipmentStats.chest;
    [NOX_ES_SLOT.pendant]     = NoxEquipmentStats.neck;
    [NOX_ES_SLOT.robe]        = NoxEquipmentStats.chest;
