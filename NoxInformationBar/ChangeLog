@@ -1,3 +1,15 @@
+2012-09-09 version 5.0.0
+        
+    * Updated for WoW 5.0.4.
+        
+    * Removed support for the ranged slot.
+        
+    * Reworked the skill stats plugin to handle major skill API
+      changes in Cataclysm.
+        
+    * Reworked the startup sequence so that the bar always loads
+      correctly at login.
+
 2010-12-05 version 4.0.3b1
         
     * Fixed the coins display to initialize correctly at login.
