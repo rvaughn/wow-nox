@@ -1,9 +1,9 @@
-## Interface: 40300
+## Interface: 50001
 ## Title: Nox Honor Stats
 ## Notes: Makes honor stats available to the Nox Information Bar.
 ## Author: Gruma
-## Version: 4.0.3
-## X-Date: December 5, 2010
+## Version: 5.0.0
+## X-Date: September 9, 2012
 ## X-Email: gruma@pobox.com
 ## X-Website: http://my.curse.com/downloads/wow-addons/details/nox-information-bar-redux.aspx
 ## SavedVariables:

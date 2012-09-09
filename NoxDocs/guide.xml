@@ -1884,18 +1884,6 @@
           <desc>Off-hand Weapon</desc>
         </format>
         <format>
-          <spec>ranged</spec>
-          <desc>Ranged Weapon</desc>
-        </format>
-        <format>
-          <spec>gun</spec>
-          <desc>Ranged Weapon</desc>
-        </format>
-        <format>
-          <spec>bow</spec>
-          <desc>Ranged Weapon</desc>
-        </format>
-        <format>
           <spec>finger1</spec>
           <desc>Finger</desc>
         </format>
